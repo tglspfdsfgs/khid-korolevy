@@ -7,6 +7,7 @@
         @vite(["resources/css/app.css", "resources/js/app.js"])
     </head>
     <body>
+        {{-- TODO: bind links to contoller actions --}}
         <x-header></x-header>
         <main class="container mx-auto mt-5 lg:flex">
             <section class="grow-3 mb-5">
