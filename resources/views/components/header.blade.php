@@ -8,7 +8,7 @@
             <div class="text-lg lg:text-3xl">Спортивно-інтелектуальний клуб шахів</div>
         </div>
     </div>
-    <div class="bg-neutral text-neutral-content w-full">
+    <div class="bg-accent text-accent-content w-full">
         <div class="mx-auto md:container">
             <div class="navbar shadow-sm">
                 <!-- mobile nav: -->
@@ -36,8 +36,7 @@
                     </div>
                 </div>
                 <a href="#" class="flex-1 md:hidden">
-                    <x-small-logo background="--color-neutral" pieces="white" primary="black" secondary="#FFFF00"
-                        small />
+                    <x-small-logo background="oklch(0% 0 0)" pieces="white" primary="black" secondary="#FFFF00" small />
                 </a>
                 <div class="flex-none md:hidden">
                     <button class="btn btn-square btn-ghost">
@@ -74,7 +73,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                             </svg>
-                            <span class="badge badge-xs badge-secondary indicator-item"></span>
+                            <span class="badge badge-xs badge-error indicator-item"></span>
                         </div>
                     </button>
                     <div class="dropdown dropdown-end">
