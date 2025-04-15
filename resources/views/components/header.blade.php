@@ -3,10 +3,10 @@
         <a href="#">
             <x-logo background="white" pieces="black" primary="black" secondary="#FFFF00" />
         </a>
-        <div class="text-base-content mb-5 ml-5 mt-5 flex-col content-center">
-            <div class="text-3xl font-bold lg:text-5xl">«ХІД КОРОЛЕВИ»</div>
-            <div class="text-lg lg:text-3xl">Спортивно-інтелектуальний клуб шахів</div>
-        </div>
+        <h1 class="text-base-content mb-5 ml-5 mt-5 grid flex-1 flex-col content-center">
+            <i class="mx-auto text-center text-2xl lg:text-3xl">Спортивно-інтелектуальний клуб шахів</i>
+            <strong class="mx-auto text-center text-3xl font-bold lg:text-5xl">«ХІД КОРОЛЕВИ»</strong>
+        </h1>
     </div>
     <div class="bg-accent text-accent-content w-full">
         <div class="mx-auto md:container">
