@@ -8,9 +8,9 @@
             <div class="text-lg lg:text-3xl">Спортивно-інтелектуальний клуб шахів</div>
         </div>
     </div>
-    <div class="bg-neutral w-full">
+    <div class="bg-neutral text-neutral-content w-full">
         <div class="mx-auto md:container">
-            <div class="navbar bg-neutral text-primary-content shadow-sm">
+            <div class="navbar shadow-sm">
                 <!-- mobile nav: -->
                 <div class="flex-none md:hidden">
                     <div class="dropdown">
