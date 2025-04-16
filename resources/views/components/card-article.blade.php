@@ -2,18 +2,19 @@
     "imageSrc" => "",
     "title",
     "description",
+    "link",
 ])
 
 <div class="card lg:card-side bg-base-100 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
-    <figure class="h-auto">
-        <img class="h-full w-full object-cover object-center" src="{{ $imageSrc }}" alt="{{ $title }}" />
-    </figure>
+    <a href="{{ $link }}}" class="block h-auto">
+        <img class="h-full w-full rounded-xl object-cover object-center" src="{{ $imageSrc }}"
+            alt="{{ $title }}" />
+    </a>
     <div class="card-body lg:pt-0">
         <h2 class="card-title">
-            {{ $title }}
-
+            <a href="{{ $link }}">{{ $title }}</a>
         </h2>
-        <i class="badge">
+        <i class="badge badge-sm">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-calendar-check" viewBox="0 0 16 16">
                 <path
@@ -25,7 +26,14 @@
         </i>
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
-            <a href="#" class="btn btn-primary">Читати</a>
+            <a href="{{ $link }}" class="btn btn-sm btn-info">
+                Читати
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                </svg>
+            </a>
         </div>
     </div>
 </div>

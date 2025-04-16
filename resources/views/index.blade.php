@@ -17,16 +17,16 @@
                 tall img: --}}
                 {{-- src="http://127.0.0.1:8000/storage/chess(1).jpg" --}}
 
-                <x-card-event image-src="http://127.0.0.1:8000/storage/chess(1).jpg"
+                <x-card-event image-src="http://127.0.0.1:8000/storage/chess(1).jpg" link="#"
                     title="Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!"
                     description="Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!"></x-card-event>
-                <x-card-article image-src="http://127.0.0.1:8000/storage/chess(2).jpg"
+                <x-card-article image-src="http://127.0.0.1:8000/storage/chess(2).jpg" link="#"
                     title="Шахи: правила, стратегії та цікаві факти для початківців і професіоналів"
                     description="Все про шахи: від основ до просунутих тактик. Читайте!"></x-card-article>
-                <x-card-event image-src="http://127.0.0.1:8000/storage/chess(1).jpg"
+                <x-card-event image-src="http://127.0.0.1:8000/storage/chess(1).jpg" link="#"
                     title="Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!"
                     description="Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!"></x-card-event>
-                <x-card-article image-src="http://127.0.0.1:8000/storage/chess(2).jpg"
+                <x-card-article image-src="http://127.0.0.1:8000/storage/chess(2).jpg" link="#"
                     title="Шахи: правила, стратегії та цікаві факти для початківців і професіоналів"
                     description="Все про шахи: від основ до просунутих тактик. Читайте!"></x-card-article>
                 <div class="join mt-5 flex justify-center">
