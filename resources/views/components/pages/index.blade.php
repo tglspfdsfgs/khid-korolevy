@@ -1,5 +1,5 @@
-<main class="container mx-auto mt-5 lg:flex">
-    <section class="grow-3 mb-5">
+<main class="container mx-auto my-7 lg:flex">
+    <section class="grow-3">
         {{--
         wide img:
         src="http://127.0.0.1:8000/storage/chess(1).jpg"
@@ -18,7 +18,7 @@
         <x-cards.article image-src="http://127.0.0.1:8000/storage/chess(2).jpg" link="#"
             title="Шахи: правила, стратегії та цікаві факти для початківців і професіоналів"
             description="Все про шахи: від основ до просунутих тактик. Читайте!"></x-cards.article>
-        <div class="join mt-5 flex justify-center">
+        <div class="join my-5 flex justify-center">
             <a href="#" class="join-item btn btn-disabled">«</a>
             <a class="join-item btn btn-active btn-primary">1</a>
             <a href="#" class="join-item btn">2</a>
