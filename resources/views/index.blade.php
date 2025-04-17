@@ -8,9 +8,9 @@
     </head>
     <body>
         {{-- TODO: bind links to contoller actions --}}
-        <x-header></x-header>
-        <x-main-index></x-main-index>
-        <x-footer></x-footer>
+        <x-layout.header />
+        <x-pages.index />
+        <x-layout.footer />
         @vite("resources/js/app.js")
     </body>
 </html>

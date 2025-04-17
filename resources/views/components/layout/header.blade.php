@@ -15,7 +15,7 @@
         class="bg-[url('http://127.0.0.1:8000/storage/header-image.jpg')] bg-cover bg-center bg-no-repeat max-md:h-auto">
         <div class="mx-auto hidden md:container md:flex">
             <a href="#">
-                <x-logo background="white" pieces="black" primary="black" secondary="#FFFF00" />
+                <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
             </a>
             <h1 class="text-base-content mb-5 ml-5 mt-5 grid flex-1 flex-col content-center">
                 <i class="mx-auto text-center text-2xl lg:text-3xl">Спортивно-інтелектуальний клуб шахів</i>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <a href="#" class="flex-1 md:hidden">
-                        <x-small-logo class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
+                        <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
                             secondary="#FFFF00" />
                     </a>
                     <div class="flex-none md:hidden">
