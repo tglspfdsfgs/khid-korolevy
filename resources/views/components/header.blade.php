@@ -51,8 +51,8 @@
                         </div>
                     </div>
                     <a href="#" class="flex-1 md:hidden">
-                        <x-small-logo background="oklch(0% 0 0)" pieces="white" primary="black" secondary="#FFFF00"
-                            small />
+                        <x-small-logo class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
+                            secondary="#FFFF00" />
                     </a>
                     <div class="flex-none md:hidden">
                         <button class="btn btn-square btn-ghost">

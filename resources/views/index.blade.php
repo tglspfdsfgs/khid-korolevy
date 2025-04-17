@@ -38,7 +38,6 @@
                     <a href="#" class="join-item btn">100</a>
                     <a href="#" class="join-item btn">»</a>
                 </div>
-
             </section>
             <aside class="lg:w-[30%]">
                 <div class="overflow-x-auto">
@@ -103,9 +102,7 @@
                 </div>
             </aside>
         </main>
-        <footer class="footer">
-            #Footer
-        </footer>
+        <x-footer></x-footer>
         @vite("resources/js/app.js")
     </body>
 </html>

@@ -1,6 +1,6 @@
 @props(["background", "primary", "secondary", "pieces"])
 
-<div class='pl-3 pr-3'>
+<div {{ $attributes }}>
     <svg style="background-color: {{ $background }};" class="h-15 block w-auto" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" viewBox="0 0 1550 1057"
         enable-background="new 0 0 1550 1057" xml:space="preserve">
