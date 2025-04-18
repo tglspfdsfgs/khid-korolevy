@@ -3,7 +3,7 @@
         class="footer sm:footer-horizontal container mx-auto max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
         <aside>
             <div>
-                <a href="#">
+                <a href="/">
                     <x-assets.logos.small class="mx-auto px-5 pb-3" background="var(--color-base-300)" pieces="black"
                         primary="black" secondary="#FFFF00" />
                 </a>
@@ -15,7 +15,7 @@
                     <span>2021</span>
                 </p>
             </div>
-            {{-- --}}
+            {{-- TODO: add social links #1 --}}
             <nav class="my-4 hidden w-full max-lg:block">
                 <div class="grid grid-flow-col gap-4">
                     <a href="#">
@@ -29,8 +29,8 @@
                     </a>
                 </div>
             </nav>
-            {{-- --}}
         </aside>
+        {{-- TODO: add social links #2 --}}
         <nav class="max-lg:hidden">
             <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
             <div class="grid grid-flow-col gap-4">
@@ -45,11 +45,12 @@
                 </a>
             </div>
         </nav>
+        {{-- TODO: add these pages --}}
         <nav class="max-lg:order-2">
             <h6 class="footer-title inline-block max-sm:mx-auto">Legal</h6>
-            <a href="#" class="link link-hover">Умови використання</a>
-            <a href="#" class="link link-hover">Політика конфіденційності</a>
-            <a href="#" class="link link-hover">Cookies</a>
+            <a href="/terms_of_use" class="link link-hover">Умови використання</a>
+            <a href="/private_policy" class="link link-hover">Політика конфіденційності</a>
+            <a href="/cookies" class="link link-hover">Cookies</a>
         </nav>
         <div>
             <h6 class="footer-title inline-block max-sm:mx-auto">Контакти</h6>
