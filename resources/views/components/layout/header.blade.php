@@ -1,20 +1,22 @@
-@props([
-    "navLinks" => [
-        "Головна" => "#",
+@php
+    $navLinks = [
+        "Головна" => "/",
         "Турніри" => [
             "Шахові" => "#",
             "Настільні" => "#",
             "Спортивні" => "#",
         ],
-        "Про нас" => "#",
-    ],
-])
+        "Про нас" => "about_us",
+    ];
+@endphp
+
+{{-- TODO: add About Us page --}}
 
 <div>
     <header
         class="bg-[url('http://127.0.0.1:8000/storage/header-image.jpg')] bg-cover bg-center bg-no-repeat max-md:h-auto">
         <div class="mx-auto hidden md:container md:flex">
-            <a href="#">
+            <a href="/">
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
             </a>
             <h1 class="text-base-content mb-5 ml-5 mt-5 grid flex-1 flex-col content-center">
@@ -50,7 +52,7 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="#" class="flex-1 md:hidden">
+                    <a href="/" class="flex-1 md:hidden">
                         <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
                             secondary="#FFFF00" />
                     </a>
