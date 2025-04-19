@@ -15,35 +15,13 @@
                     <span>2021</span>
                 </p>
             </div>
-            {{-- TODO: add social links #1 --}}
             <nav class="my-4 hidden w-full max-lg:block">
-                <div class="grid grid-flow-col gap-4">
-                    <a href="#">
-                        <x-assets.icons.socials.twitter />
-                    </a>
-                    <a href="#">
-                        <x-assets.icons.socials.youtube />
-                    </a>
-                    <a href="#">
-                        <x-assets.icons.socials.facebook />
-                    </a>
-                </div>
+                <x-blocks.socials />
             </nav>
         </aside>
-        {{-- TODO: add social links #2 --}}
         <nav class="max-lg:hidden">
             <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
-            <div class="grid grid-flow-col gap-4">
-                <a href="#">
-                    <x-assets.icons.socials.twitter />
-                </a>
-                <a href="#">
-                    <x-assets.icons.socials.youtube />
-                </a>
-                <a href="#">
-                    <x-assets.icons.socials.facebook />
-                </a>
-            </div>
+            <x-blocks.socials />
         </nav>
         {{-- TODO: add these pages --}}
         <nav class="max-lg:order-2">
