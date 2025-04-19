@@ -1,22 +1,17 @@
-<div class="bg-bottom-right bg-size-[30%] bg-[url('http://127.0.0.1:8000/storage/corner-image.png')] bg-no-repeat">
+<div class="bg-bottom-right bg-size-[30%] bg-no-repeat"
+    style="background-image: url('{{ asset("storage/corner-image.png", $secureAssets) }}')">
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3">
-            {{--
-            wide img:
-            src="http://127.0.0.1:8000/storage/chess(1).jpg"
-            tall img: --}}
-            {{-- src="http://127.0.0.1:8000/storage/chess(1).jpg" --}}
-
-            <x-cards.event image-src="http://127.0.0.1:8000/storage/chess(1).jpg" link="#"
+            <x-cards.event image-src='{{ asset("storage/chess(1).jpg", $secureAssets) }}' link="#"
                 title="Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!"
                 description="Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!"></x-cards.event>
-            <x-cards.article image-src="http://127.0.0.1:8000/storage/chess(2).jpg" link="#"
+            <x-cards.article image-src='{{ asset("storage/chess(2).jpg", $secureAssets) }}' link="#"
                 title="Шахи: правила, стратегії та цікаві факти для початківців і професіоналів"
                 description="Все про шахи: від основ до просунутих тактик. Читайте!"></x-cards.article>
-            <x-cards.event image-src="http://127.0.0.1:8000/storage/chess(1).jpg" link="#"
+            <x-cards.event image-src='{{ asset("storage/chess(1).jpg", $secureAssets) }}' link="#"
                 title="Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!"
                 description="Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!"></x-cards.event>
-            <x-cards.article image-src="http://127.0.0.1:8000/storage/chess(2).jpg" link="#"
+            <x-cards.article image-src='{{ asset("storage/chess(2).jpg", $secureAssets) }}' link="#"
                 title="Шахи: правила, стратегії та цікаві факти для початківців і професіоналів"
                 description="Все про шахи: від основ до просунутих тактик. Читайте!"></x-cards.article>
             <div class="join my-5 flex justify-center">

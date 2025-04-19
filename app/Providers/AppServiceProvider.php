@@ -18,5 +18,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        view()->share('secureAssets', app()->isProduction());
     }
 }

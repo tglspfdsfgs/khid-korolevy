@@ -13,8 +13,8 @@
 {{-- TODO: add About Us page --}}
 
 <div>
-    <header
-        class="bg-[url('http://127.0.0.1:8000/storage/header-image.jpg')] bg-cover bg-center bg-no-repeat max-md:h-auto">
+    <header class="bg-cover bg-center bg-no-repeat max-md:h-auto"
+        style="background-image: url('{{ asset("storage/header-image.jpg", $secureAssets) }}')">
         <div class="mx-auto hidden md:container md:flex">
             <a href="/">
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
