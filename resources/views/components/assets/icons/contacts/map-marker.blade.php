@@ -1,22 +1,5 @@
-<svg class="inline h-5" viewBox="-4 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>map-marker</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-    </defs>
-    <g id="Vivid.JS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Vivid-Icons" transform="translate(-125.000000, -643.000000)">
-            <g id="Icons" transform="translate(37.000000, 169.000000)">
-                <g id="map-marker" transform="translate(78.000000, 468.000000)">
-                    <g transform="translate(10.000000, 6.000000)">
-                        <path
-                            d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"
-                            id="Shape" fill="#ff4646">
-                        </path>
-                        <circle id="Oval" fill="#590000" fill-rule="nonzero" cx="14" cy="14" r="7">
-                        </circle>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="inline-block h-5">
+    <path fill-rule="evenodd"
+        d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+        clip-rule="evenodd" />
 </svg>
