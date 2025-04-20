@@ -5,7 +5,7 @@
     "link",
 ])
 
-<div class="card lg:card-side bg-base-100 static p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr] mb-5">
+<div class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <a href="{{ $link }}}" class="block h-auto">
         <img class="h-full w-full rounded-xl object-cover object-center" src="{{ $imageSrc }}"
             alt="{{ $title }}" />
