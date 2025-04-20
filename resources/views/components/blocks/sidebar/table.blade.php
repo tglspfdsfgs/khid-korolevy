@@ -1,4 +1,4 @@
-<table class="table-zebra table break-words">
+<table class="table-zebra static table break-words">
     <caption class="font-semibold">
         Топ українців шахістів за рейтингом ФІДЕ
     </caption>
