@@ -9,7 +9,7 @@
     <body>
         {{-- TODO: bind links to contoller actions --}}
         <x-layout.header />
-        <x-pages.index />
+        <x-pages.articles />
         <x-layout.footer />
         @vite("resources/js/app.js")
     </body>
