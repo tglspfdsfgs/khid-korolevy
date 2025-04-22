@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
     <head>
+        <link rel="icon" type="image/x-icon" href="{{ asset("storage/favicon.ico", $secureAssets) }}">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Хід королеви - {{ $title }} </title>
