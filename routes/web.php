@@ -17,3 +17,7 @@ Route::get('/tournaments', function () {
 Route::get('/article/1', function () {
     return view('article', ['title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів']);
 });
+
+Route::get('/article/1/edit', function () {
+    return view('editor', ['title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів']);
+});

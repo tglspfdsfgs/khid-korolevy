@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default.css";
+
+/*disable auto switch dark theme*/
+@custom-variant dark (&:where(.qwerty, .qwerty *));
 
 @plugin "daisyui/theme" {
     name: "main";
@@ -37,6 +41,18 @@
 
 @plugin "daisyui" {
     themes: main --default;
+}
+@plugin "flowbite-typography";
+@plugin "flowbite/plugin";
+
+/*tailwindCSS safelists for text-editor:*/
+@source inline("md:mx-auto,my-0,md:ml-auto,md:mr-auto,md:float-right,md:float-left,md:ml-6,md:mr-6 aspect-video");
+@source inline("md:w-[5%],md:w-[10%],md:w-[15%],md:w-[20%],md:w-[25%],md:w-[30%],md:w-[35%],md:w-[40%],md:w-[45%],md:w-[50%],md:w-[55%],md:w-[60%],md:w-[65%],md:w-[70%],md:w-[75%],md:w-[80%],md:w-[85%],md:w-[90%],md:w-[95%],md:w-[100%]");
+/* youtube iframe */
+@layer components {
+    iframe {
+        @apply aspect-video w-full h-auto;
+    }
 }
 
 @source '../../storage/framework/views/*.php';
