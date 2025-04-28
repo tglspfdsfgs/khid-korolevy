@@ -2,7 +2,7 @@
     style="background-image: url('{{ asset("storage/corner-image.png", $secureAssets) }}')">
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3 lg:mr-10">
-            <div class="format text-base-content max-w-none px-4 py-2">
+            <div class="format px-4 py-2">
                 <p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first
                     Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p>
                 <p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns,

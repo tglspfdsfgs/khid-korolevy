@@ -55,6 +55,12 @@
     }
 }
 
+@layer utilities {
+    .format {
+        @apply text-base-content max-w-none;
+    }
+}
+
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
