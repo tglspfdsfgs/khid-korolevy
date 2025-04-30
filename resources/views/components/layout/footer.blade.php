@@ -28,29 +28,33 @@
             <h6 class="footer-title inline-block max-sm:mx-auto">Legal</h6>
             <a href="/terms_of_use" class="link link-hover">Умови використання</a>
             <a href="/private_policy" class="link link-hover">Політика конфіденційності</a>
-            <a href="/cookies" class="link link-hover">Cookies</a>
         </nav>
         <div>
             <h6 class="footer-title inline-block max-sm:mx-auto">Контакти</h6>
             <div class="mb-2">
                 <x-assets.icons.contacts.map-marker />
-                <a class="link" href="https://maps.app.goo.gl/Dbb1h2Uetaz2zxRB8">
-                    м. Васильків, вул. Декабристів, 777
+                <a class="link" href="https://maps.app.goo.gl/xYRGDaawMR6XrQ7F6">
+                    м. Васильків, вул. Керамічна
                 </a>
             </div>
             <div class="mb-2">
                 <x-assets.icons.contacts.phone />
-                <a class="link inline" href="tel:+380998887766">
-                    +380 99 888 77 66
+                <a class="link inline" href="tel:+380685950516">
+                    +38 (068) 595 05 16
                 </a>
-                (адміністратор)
             </div>
             <div class="mb-2">
+                <x-assets.icons.contacts.phone />
+                <a class="link inline" href="tel:+380937146067">
+                    +38 (093) 714 60 67
+                </a>
+            </div>
+            {{-- <div class="mb-2">
                 <x-assets.icons.contacts.email />
                 <a class="link" href="mailto:khid-korolevy@email.com">
                     khid-korolevy@email.com
                 </a>
-            </div>
+            </div> --}}
         </div>
     </div>
 </footer>
