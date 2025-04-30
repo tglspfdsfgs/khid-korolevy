@@ -10,6 +10,10 @@ import TextStyle from "@tiptap/extension-text-style";
 import FontFamily from "@tiptap/extension-font-family";
 import { Color } from "@tiptap/extension-color";
 import Bold from "@tiptap/extension-bold";
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 
 window.addEventListener("load", function () {
     if (document.getElementById("wysiwyg")) {
@@ -62,6 +66,28 @@ window.addEventListener("load", function () {
                 };
             },
         });
+        const TipTapExtensionTableCell = TableCell.extend({
+            addAttributes() {
+                return {
+                    ...this.parent?.(),
+                    backgroundColor: {
+                        default: null,
+                        renderHTML: (attributes) => {
+                            if (!attributes.backgroundColor) {
+                                return {};
+                            }
+
+                            return {
+                                style: "background-color: " + attributes.backgroundColor,
+                            };
+                        },
+                        parseHTML: (element) => {
+                            return element.style.backgroundColor.replace(/['"]+/g, "");
+                        },
+                    },
+                };
+            },
+        });
 
         // tip tap editor setup
         const editor = new Editor({
@@ -95,6 +121,13 @@ window.addEventListener("load", function () {
                 }),
                 CustomImage,
                 YouTube,
+                Table.configure({
+                    resizable: true,
+                }),
+                TableRow,
+                TableHeader,
+                TableCell,
+                TipTapExtensionTableCell,
             ],
             content:
                 '<p>Flowbite is an <strong>open-source library of UI components</strong> based on the utility-first Tailwind CSS framework featuring dark mode support, a Figma design system, and more.</p><p>It includes all of the commonly used components that a website requires, such as buttons, dropdowns, navigation bars, modals, datepickers, advanced charts and the list goes on.</p><p>Here is an example of a button component:</p><code>&#x3C;button type=&#x22;button&#x22; class=&#x22;text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800&#x22;&#x3E;Default&#x3C;/button&#x3E;</code><p>Learn more about all components from the <a href="https://flowbite.com/docs/getting-started/introduction/">Flowbite Docs</a>.</p>',
@@ -298,6 +331,109 @@ window.addEventListener("load", function () {
                 // Hide the dropdown after selection
                 fontFamilyDropdown.hide();
             });
+        });
+
+        // set up custom event listeners for the buttons
+        document.getElementById("addTableButton").addEventListener("click", () => {
+            editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
+        });
+
+        // add column before
+        document.getElementById("addColumnBeforeButton").addEventListener("click", () => {
+            editor.chain().focus().addColumnBefore().run();
+        });
+
+        // add column after
+        document.getElementById("addColumnAfterButton").addEventListener("click", () => {
+            editor.chain().focus().addColumnAfter().run();
+        });
+
+        // remove column
+        document.getElementById("removeColumnButton").addEventListener("click", () => {
+            editor.chain().focus().deleteColumn().run();
+        });
+
+        // add row before
+        document.getElementById("addRowBeforeButton").addEventListener("click", () => {
+            editor.chain().focus().addRowBefore().run();
+        });
+
+        // add row after
+        document.getElementById("addRowAfterButton").addEventListener("click", () => {
+            editor.chain().focus().addRowAfter().run();
+        });
+
+        // remove row
+        document.getElementById("removeRowButton").addEventListener("click", () => {
+            editor.chain().focus().deleteRow().run();
+        });
+
+        // delete table
+        document.getElementById("deleteTableButton").addEventListener("click", () => {
+            editor.chain().focus().deleteTable().run();
+        });
+
+        // merge cells
+        document.getElementById("mergeCellsButton").addEventListener("click", () => {
+            editor.chain().focus().mergeCells().run();
+        });
+
+        // split cells
+        document.getElementById("splitCellsButton").addEventListener("click", () => {
+            editor.chain().focus().splitCell().run();
+        });
+
+        // merge or split
+        document.getElementById("mergeOrSplitButton").addEventListener("click", () => {
+            editor.chain().focus().mergeOrSplit().run();
+        });
+
+        // toggle header column
+        document.getElementById("toggleHeaderColumnButton").addEventListener("click", () => {
+            editor.chain().focus().toggleHeaderColumn().run();
+        });
+
+        // toggle header row
+        document.getElementById("toggleHeaderRowButton").addEventListener("click", () => {
+            editor.chain().focus().toggleHeaderRow().run();
+        });
+
+        // toggle header cell
+        document.getElementById("toggleHeaderCellButton").addEventListener("click", () => {
+            editor.chain().focus().toggleHeaderCell().run();
+        });
+
+        const cellAttributeModal = FlowbiteInstances.getInstance("Modal", "cell-attribute-modal");
+
+        document.getElementById("addCellAttributeForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const attributeName = document.getElementById("attribute-name").value;
+            const attributeValue = document.getElementById("attribute-value").value;
+
+            if (attributeName && attributeValue) {
+                const result = editor.commands.setCellAttribute(
+                    attributeName ? attributeName : "",
+                    attributeValue ? attributeValue : ""
+                );
+                document.getElementById("addCellAttributeForm").reset();
+                cellAttributeModal.hide();
+            }
+        });
+
+        // fix tables
+        document.getElementById("fixTablesButton").addEventListener("click", () => {
+            editor.commands.fixTables();
+        });
+
+        // go to previous cell
+        document.getElementById("previousCellButton").addEventListener("click", () => {
+            editor.chain().focus().goToPreviousCell().run();
+        });
+
+        // go to the next cell
+        document.getElementById("nextCellButton").addEventListener("click", () => {
+            editor.chain().focus().goToNextCell().run();
         });
     }
 });
