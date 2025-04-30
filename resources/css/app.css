@@ -65,6 +65,10 @@
     .ProseMirror table th:focus {
         @apply bg-blue-50 outline outline-2 outline-blue-500;
     }
+
+    .drawer {
+        z-index: 40;
+    }
 }
 
 @source '../../storage/framework/views/*.php';

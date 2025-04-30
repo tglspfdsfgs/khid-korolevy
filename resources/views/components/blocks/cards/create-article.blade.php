@@ -25,10 +25,11 @@
         </div>
     </button>
     <div x-data="{ titleEditing: false, title: '{{ $title }}', descriptionEditing: false, description: '{{ $description }}' }" class="card-body lg:pt-0">
-        <h2 class="card-title" x-show="!titleEditing" @click="titleEditing = true" @touchstart="titleEditing = true">
+        <h2 class="card-title relative" x-show="!titleEditing" @click="titleEditing = true"
+            @touchstart="titleEditing = true">
             <span x-text="title"></span>
-            <svg class="inline size-6" style="fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024"
-                version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <svg class="absolute right-0 inline size-6" style="fill: currentColor;overflow: hidden;"
+                viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M512 85.333333C276.053333 85.333333 85.333333 276.053333 85.333333 512s190.72 426.666667 426.666667 426.666667 426.666667-190.72 426.666667-426.666667S747.946667 85.333333 512 85.333333m132.266667 216.32c5.973333 0 11.946667 2.133333 17.066666 6.826667l54.186667 54.186667c9.813333 9.386667 9.813333 24.32 0 33.28l-42.666667 42.666666-87.466666-87.466666 42.666666-42.666667c4.266667-4.693333 10.24-6.826667 16.213334-6.826667m-84.053334 74.24l87.893334 87.893334-258.56 258.56H301.653333v-87.893334l258.56-258.56z"
                     fill="" />
