@@ -8,8 +8,8 @@
             "♞ Настільні" => "/tournaments?query=board",
             "♞ Спортивні" => "/tournaments?query=sports",
         ],
-        "Галерея" => "",
-        "Про нас" => "about_us",
+        "Галерея" => "/gallery",
+        "Про нас" => "/about_us",
     ];
 @endphp
 
@@ -17,7 +17,7 @@
 
 <div>
     <header class="bg-cover bg-center bg-no-repeat max-md:h-auto"
-        style="background-image: url('{{ asset("storage/header-image.jpg", $secureAssets) }}')">
+        style="background-image: url('/storage/header-image.jpg')">
         <div class="mx-auto hidden md:container md:flex">
             <a href="/">
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
