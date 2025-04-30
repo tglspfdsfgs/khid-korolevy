@@ -3,21 +3,36 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index', ['title' => 'головна']);
+    return view('main', [
+        'title' => 'головна',
+        'content' => 'components.pages.index',
+    ]);
 });
 
 Route::get('/articles', function () {
-    return view('articles', ['title' => 'новини і статті']);
+    return view('main', [
+        'title' => 'новини і статті',
+        'content' => 'components.pages.articles',
+    ]);
 });
 
 Route::get('/tournaments', function () {
-    return view('tournaments', ['title' => 'турніри']);
+    return view('main', [
+        'title' => 'турніри',
+        'content' => 'components.pages.tournaments',
+    ]);
 });
 
 Route::get('/article/1', function () {
-    return view('article', ['title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів']);
+    return view('main', [
+        'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
+        'content' => 'components.pages.article',
+    ]);
 });
 
 Route::get('/article/1/edit', function () {
-    return view('editor', ['title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів']);
+    return view('main', [
+        'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
+        'content' => 'components.pages.editor',
+    ]);
 });
