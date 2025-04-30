@@ -1,4 +1,3 @@
-<div class="bg-bottom-right bg-size-[30%] bg-no-repeat" style="background-image: url('/storage/corner-image.png')">
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3 lg:mr-10">
             <x-blocks.cards.create-article image-src="/storage/chess(2).jpg" link="#"
@@ -8,4 +7,3 @@
         </section>
         <x-blocks.sidebar.right />
     </main>
-</div>
