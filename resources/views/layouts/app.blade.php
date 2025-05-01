@@ -9,7 +9,7 @@
     </head>
     <body>
         <x-layout.header />
-        @yield("content")
+        @yield("page")
         <x-layout.footer />
         @vite("resources/js/app.js")
     </body>
