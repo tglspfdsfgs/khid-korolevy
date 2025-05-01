@@ -6,7 +6,8 @@
                 <p>Шаховий клуб <span style="font-weight: bold;">[Назва клубу]</span> запрошує всіх охочих взяти участь у
                     <span style="font-weight: bold;">відкритому турнірі "Король дошки"</span>, який відбудеться <span
                         style="font-weight: bold;">[дата]</span> за адресою <span style="font-weight: bold;">[місце
-                        проведення]</span>.</p>
+                        проведення]</span>.
+                </p>
                 <p><span style="font-weight: bold;">Формат турніру:</span></p>
                 <ul>
                     <li>
