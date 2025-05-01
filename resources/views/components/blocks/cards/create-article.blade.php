@@ -1,17 +1,28 @@
 @props([
     "imageSrc" => "",
-    "title",
-    "description",
+    "title" => "Заголовок прев`ю-картки",
+    "description" => "Текст прев`ю-картки",
     "link",
 ])
 
-<div class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
-    <button class="block h-auto">
-        {{-- <img class="h-full w-full rounded-xl object-cover object-center" src="/storage/chess(2).jpg"
-             /> --}}
-        <div class="flex h-full w-full items-center justify-center rounded-xl">
+<div x-data="{ imgURL: '{{ $imageSrc }}', titleEditing: false, title: '{{ $title }}', descriptionEditing: false, description: '{{ $description }}' }"
+    class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
+    <button class="relative block h-auto cursor-pointer"
+        x-on:click="imgURL = prompt('Додати картинку за url:', '') ?? imgURL">
+        <img x-show="Boolean(imgURL)"
+            class="h-full w-full rounded-xl object-cover object-center transition hover:scale-105"
+            x-bind:src="imgURL" />
+        <div x-show="Boolean(imgURL)" class="absolute right-2 top-2 rounded-full bg-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
+                class="size-5 p-[2px]">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+            </svg>
+        </div>
+
+        <div x-show="!Boolean(imgURL)" class="flex h-full w-full items-center justify-center rounded-xl">
             <span
-                class="flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
+                class="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
                 <div class="flex flex-col items-center justify-center pb-6 pt-5">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-8 text-gray-500 dark:text-gray-400">
@@ -24,8 +35,8 @@
             </span>
         </div>
     </button>
-    <div x-data="{ titleEditing: false, title: '{{ $title }}', descriptionEditing: false, description: '{{ $description }}' }" class="card-body lg:pt-0">
-        <h2 class="card-title relative" x-show="!titleEditing" @click="titleEditing = true"
+    <div x-data="{}" class="card-body lg:pt-0">
+        <h2 class="card-title relative cursor-pointer" x-show="!titleEditing" @click="titleEditing = true"
             @touchstart="titleEditing = true">
             <span x-text="title"></span>
             <svg class="absolute right-0 inline size-6" style="fill: currentColor;overflow: hidden;"
@@ -49,7 +60,7 @@
             Оприлюднено: 01.01.1970
         </i>
         <p x-show="!descriptionEditing" @click="descriptionEditing = true" @touchstart="descriptionEditing = true">
-            <span x-text="description"></span>
+            <span class="cursor-pointer" x-text="description"></span>
             <svg class="inline size-5" style="fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024"
                 version="1.1" xmlns="http://www.w3.org/2000/svg">
                 <path
