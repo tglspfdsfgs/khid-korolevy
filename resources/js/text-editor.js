@@ -247,6 +247,28 @@ window.addEventListener("load", function () {
             }
         });
 
+        //undo
+        document.getElementById("toggleUndoButton").addEventListener("click", () => {
+            editor.chain().focus().undo().run();
+        });
+        //redo
+        document.getElementById("toggleRedoButton").addEventListener("click", () => {
+            editor.chain().focus().redo().run();
+        });
+
+        const sourceCodeWrapper = document.getElementById("sourceCode");
+        document.getElementById("toggleHTMLButton").addEventListener("click", () => {
+            // basically just use editor.getHTML(); to get the raw html
+
+            sourceCodeWrapper.innerHTML = editor
+                .getHTML()
+                .replace(/&/g, "&amp;") // Escape & character
+                .replace(/</g, "&lt;") // Escape < character
+                .replace(/>/g, "&gt;") // Escape > character
+                .replace(/"/g, "&quot;") // Escape " character
+                .replace(/'/g, "&#039;"); // Escape ' character
+        });
+
         document.getElementById("addVideoButton").addEventListener("click", () => {
             const url = window.prompt(
                 "Вставити YouTube відео за посиланням:",
