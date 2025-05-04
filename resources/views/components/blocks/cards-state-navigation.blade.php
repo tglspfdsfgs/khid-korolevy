@@ -1,10 +1,13 @@
 @php
-    $currentQuery = request()->query();
-    $baseUrl = url()->current();
+    $activeState = fn(string $state) => request("state", "published") === $state ? "" : "btn-outline";
+    $urlBuilder = fn(string $state) => url()->current() .
+        "?" .
+        http_build_query(array_merge(request()->query(), ["state" => $state]));
 @endphp
+
 <div class="mb-2 flex justify-center">
     <div class="join">
-        <a href="#" class="btn btn-success join-item">
+        <a href="{{ $urlBuilder("published") }}" class="btn btn-success join-item {{ $activeState("published") }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -12,7 +15,7 @@
             </svg>
             Опубліковані
         </a>
-        <a href="#" class="btn btn-accent btn-outline join-item">
+        <a href="{{ $urlBuilder("draft") }}" class="btn btn-accent join-item {{ $activeState("draft") }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -20,7 +23,7 @@
             </svg>
             Чорновики
         </a>
-        <a href="#" class="btn btn-outline btn-error join-item">
+        <a href="{{ $urlBuilder("deleted") }}" class="btn btn-error join-item {{ $activeState("deleted") }}">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
