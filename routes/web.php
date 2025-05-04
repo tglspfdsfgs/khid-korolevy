@@ -26,7 +26,7 @@ Route::get('/tournaments', function () {
 Route::get('/tournament/1', function () {
     return view('main', [
         'title' => 'Відкритий шаховий турнір \'Король дошки\' – реєструйся та вигравай!',
-        'page' => 'components.pages.article',
+        'page' => 'components.pages.tournament',
         'content' => '',
     ]);
 });

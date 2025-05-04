@@ -1,6 +1,6 @@
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3 lg:mr-10">
-            <div class="format lg:card-side bg-base-100 static mb-8 mt-5 w-full rounded-lg px-4 py-5 shadow-sm">
+            <div class="format lg:card-side bg-base-100 static mb-5 mt-5 w-full rounded-lg px-4 py-5 shadow-sm">
 
                 <p><span style="font-weight: bold;">Шановні гравці та шанувальники шахів!</span></p>
                 <p>Шаховий клуб <span style="font-weight: bold;">[Назва клубу]</span> запрошує всіх охочих взяти участь у
@@ -45,6 +45,7 @@
                         <span style="font-weight: bold;">[посилання на соцмережі/сайт]</span>.</em></p>
 
             </div>
+
         </section>
         <x-blocks.sidebar.right />
     </main>

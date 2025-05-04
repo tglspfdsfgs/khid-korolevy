@@ -1,6 +1,6 @@
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3 lg:mr-10">
-            <div class="format lg:card-side bg-base-100 static mb-8 mt-5 w-full rounded-lg px-4 py-5 shadow-sm">
+            <div class="format lg:card-side bg-base-100 static mb-5 mt-5 w-full rounded-lg px-4 py-5 shadow-sm">
 
                 <h1><span style="font-weight: bold;">Шахи: відкрийте світ стратегії, логіки та нескінченних
                         можливостей</span></h1>
@@ -79,6 +79,7 @@
                     клуб у своєму місті!</p>
 
             </div>
+
         </section>
         <x-blocks.sidebar.right />
     </main>
