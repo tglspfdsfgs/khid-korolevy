@@ -8,9 +8,9 @@
 <div x-data="{
     imgURL: '{{ $imageSrc }}',
     titleEditing: false,
-    title: '{!! $title !!}',
+    title: '{{ html_entity_decode($title) }}',
     descriptionEditing: false,
-    description: '{!! $description !!}',
+    description: '{{ html_entity_decode($description) }}',
     dateEditing: false,
     date: '{{ $date }}'
 }"

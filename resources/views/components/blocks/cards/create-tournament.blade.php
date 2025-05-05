@@ -4,7 +4,13 @@
     "description" => "Текст прев`ю-картки",
 ])
 
-<div x-data="{ imgURL: '{{ $imageSrc }}', titleEditing: false, title: '{!! $title !!}', descriptionEditing: false, description: '{!! $description !!}' }"
+<div x-data="{
+    imgURL: '{{ $imageSrc }}',
+    titleEditing: false,
+    title: '{{ html_entity_decode($title) }}',
+    descriptionEditing: false,
+    description: '{{ html_entity_decode($description) }}',
+}"
     class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <button class="relative block h-auto cursor-pointer"
         x-on:click="imgURL = prompt('Додати картинку за url:', '') ?? imgURL">
