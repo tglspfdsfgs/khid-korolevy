@@ -8,6 +8,7 @@
         <x-blocks.cards.create-tournament image-src="{{ $imageSrc }}" title="{{ $title }}"
             description="{{ $description }}" />
         <x-blocks.text-editor />
+        <x-blocks.submit-buttons />
     </section>
     <x-blocks.sidebar.right />
 </main>
