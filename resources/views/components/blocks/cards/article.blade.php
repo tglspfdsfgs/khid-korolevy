@@ -23,7 +23,7 @@
             </svg>
             Опубліковано:
             <time class="font-bold"
-                datetime="{{ $date }}">{{ \Carbon\Carbon::parse($date)->translatedFormat("j F Y") }}</time>
+                datetime="{{ $date }}">{{ \Carbon\Carbon::parse($date)->translatedFormat("d.m.Y") }}</time>
         </i>
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
