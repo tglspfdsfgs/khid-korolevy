@@ -17,7 +17,7 @@
 
 <div>
     <header class="bg-cover bg-center bg-no-repeat max-md:h-auto"
-        style="background-image: url('/storage/header-image.jpg')">
+        style="background-image: url('{{ Vite::asset("resources/images/header-image.jpg") }}')">
         <div class="mx-auto hidden md:container md:flex">
             <a href="/">
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
