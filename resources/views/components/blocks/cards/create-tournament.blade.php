@@ -26,7 +26,7 @@
     class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <button class="relative block h-auto cursor-pointer"
         x-on:click="imgURL = prompt('Додати картинку за url:', '') ?? imgURL">
-        <img x-show="Boolean(imgURL)"
+        <img x-cloak x-show="Boolean(imgURL)"
             class="h-full w-full rounded-xl object-cover object-center transition hover:scale-105"
             x-bind:src="imgURL" />
         <div x-show="Boolean(imgURL)" class="absolute right-2 top-2">
