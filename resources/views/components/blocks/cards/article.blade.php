@@ -1,5 +1,5 @@
 @props([
-    "imageSrc" => "",
+    "imageSrc" => Vite::asset("resources/images/fallback.png"),
     "title",
     "description",
     "date",
