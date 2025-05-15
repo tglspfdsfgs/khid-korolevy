@@ -8,13 +8,13 @@
 ])
 
 <div class="card lg:card-side bg-base-100 relative mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
-    <a href="{{ $link }}" class="block h-auto">
+    <span class="block h-auto">
         <img class="h-full w-full rounded-xl object-cover object-center" src="{{ $imageSrc }}"
             alt="{{ $title }}" />
-    </a>
+    </span>
     <div class="card-body lg:pt-0">
         <h2 class="card-title">
-            <a href="{{ $link }}">{{ $title }}</a>
+            {{ $title }}
         </h2>
         <i class="badge badge-sm">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
