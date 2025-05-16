@@ -5,15 +5,18 @@
     "title" => "Заголовок прев`ю-картки для турніра",
     "description" => "Текст прев`ю-картки для турніра",
     "date" => \Carbon\Carbon::now()->addWeeks(2),
+    "hasMoreInfo" => true,
+    "hasResults" => false,
+    "hasGallery" => false,
 ])
 
 <div x-data="{
     imgURL: '{{ $imageSrc }}',
     linkToForm: '{{ $externalForm }}',
     has: {
-        moreInfo: true,
-        results: false,
-        gallery: false,
+        moreInfo: '{{ $hasMoreInfo }}',
+        results: '{{ $hasResults }}',
+        gallery: '{{ $hasGallery }}',
     },
     titleEditing: false,
     title: '{{ html_entity_decode($title) }}',

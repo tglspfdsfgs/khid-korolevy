@@ -4,9 +4,9 @@
         "Новини і статті" => "/articles",
         "Турніри" => [
             "ВСІ ТУРНІРИ" => "/tournaments?type=all",
-            "♞ Шахові" => "/tournaments?type=chess",
-            "♞ Настільні" => "/tournaments?type=board",
-            "♞ Спортивні" => "/tournaments?type=sports",
+            "♟️ Шахові" => "/tournaments?type=chess",
+            "🎲 Настільні" => "/tournaments?type=board",
+            "⚽ Спортивні" => "/tournaments?type=sports",
         ],
         "Галерея" => "/gallery",
         "Про нас" => "/about_us",
