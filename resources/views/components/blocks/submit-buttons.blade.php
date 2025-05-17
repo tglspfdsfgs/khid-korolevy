@@ -5,7 +5,7 @@
     "edit" => false,
 ])
 
-<div class="my-5 flex justify-start gap-1">
+<div class="my-5 flex justify-start gap-1 lg:mr-10">
     <button class="btn btn-success">
         <x-assets.icons.state-btns.publish-svg />
         Опублікувати
