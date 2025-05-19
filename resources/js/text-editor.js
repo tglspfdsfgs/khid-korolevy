@@ -15,9 +15,10 @@ import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 
-const LoremIpsum = `<h2 style="text-align: center">Шахи: Мистецтво Стратегії</h2><blockquote><p><span style="font-size: 16px">Шахи — це боротьба двох умів, де кожен хід — це крок до перемоги або поразки.</span></p></blockquote><h3 style="text-align: center">Основи дебюту</h3><p><span style="font-size: 16px">У шахах </span><span><span style="font-weight: bold;">дебют</span></span><span style="font-size: 16px"> — це перші ходи, які закладають фундамент для подальшої гри.<br>Найпоширеніший дебют — <em>іспанська партія</em>, що починається ходами:</span></p><p><code>1. e4 e5 2. Nf3 Nc6 3. Bb5</code></p><h3 style="text-align: center">Популярні дебюти</h3><ol><li><p><span style="font-size: 16px">Італійська партія</span></p></li><li><p><span style="font-size: 16px">Сицилійський захист</span></p></li><li><p><span style="font-size: 16px">Французький захист</span></p></li><li><p><span style="font-size: 16px">Скандинавський захист</span></p></li><li><p><span style="font-size: 16px">Каро-Канн</span></p></li></ol><h3><span style="font-size: 16px">Таблиця: Ходи та стиль</span></h3><div class="tableWrapper"><table style="min-width: 50px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1"><p><span style="font-size: 16px">Дебют</span></p></th><th colspan="1" rowspan="1"><p><span style="font-size: 16px">Стиль гри</span></p></th></tr><tr><td colspan="1" rowspan="1"><p><span style="font-size: 16px">Італійська партія</span></p></td><td colspan="1" rowspan="1"><p><span style="font-size: 16px"><em>Атакувальний</em></span></p></td></tr><tr><td colspan="1" rowspan="1"><p><span style="font-size: 16px">Каро-Канн</span></p></td><td colspan="1" rowspan="1"><p><span style="font-size: 16px">Оборонний</span></p></td></tr><tr><td colspan="1" rowspan="1"><p><span style="font-size: 16px">Сицилійський захист</span></p></td><td colspan="1" rowspan="1"><p><span style="font-size: 16px">Гнучкий</span></p></td></tr></tbody></table></div><hr contenteditable="false"><h3><span style="font-size: 14px">Корисні ресурси</span></h3><ul><li><p><a target="_blank" rel="noopener noreferrer nofollow" class="link link-info" href="http://chess.com"><span style="font-size: 12px">chess.com</span></a></p></li><li><p><a target="_blank" rel="noopener noreferrer nofollow" class="link link-info" href="http://lichess.org"><span style="font-size: 12px">lichess.org</span></a></p></li></ul>`;
+//'editor-ready' - event dispatched when Alpine.js is ready
+window.addEventListener("editor-ready", function () {
+    const initialContent = document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
 
-window.addEventListener("load", function () {
     if (document.getElementById("wysiwyg")) {
         const FontSizeTextStyle = TextStyle.extend({
             addAttributes() {
@@ -131,7 +132,7 @@ window.addEventListener("load", function () {
                 TableCell,
                 TipTapExtensionTableCell,
             ],
-            content: LoremIpsum,
+            content: initialContent,
             editorProps: {
                 attributes: {
                     class: "format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
