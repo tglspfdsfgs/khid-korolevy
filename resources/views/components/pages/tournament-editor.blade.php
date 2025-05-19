@@ -27,7 +27,7 @@
                 <select x-model="tournamentType" class="select w-40">
                     @foreach (\App\TournamentType::cases() as $type)
                         <option value="{{ $type->value }}" @selected($data["tournamentType"]->value == $type->value)>
-                            {{ $type->uk_translation() }}
+                            {{ $type->option_title() }}
                         </option>
                     @endforeach
                 </select>

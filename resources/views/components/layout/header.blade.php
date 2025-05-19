@@ -1,12 +1,14 @@
 @php
+    use App\TournamentType as Type;
+
     $navLinks = [
         "Головна" => "/",
         "Новини і статті" => "/articles",
         "Турніри" => [
             "ВСІ ТУРНІРИ" => "/tournaments?type=all",
-            "♟️ Шахові" => "/tournaments?type=chess",
-            "🎲 Настільні" => "/tournaments?type=board",
-            "⚽ Спортивні" => "/tournaments?type=sports",
+            Type::chess->nav_title() => "/tournaments?type=" . Type::chess->value,
+            Type::tabletop->nav_title() => "/tournaments?type=" . Type::tabletop->value,
+            Type::sports->nav_title() => "/tournaments?type=" . Type::sports->value,
         ],
         "Галерея" => "/gallery",
         "Про нас" => "/about_us",
