@@ -17,7 +17,8 @@ import TableRow from "@tiptap/extension-table-row";
 
 //'editor-ready' - event dispatched when Alpine.js is ready
 window.addEventListener("editor-ready", function () {
-    const initialContent = document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
+    const initialContent =
+        document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
 
     if (document.getElementById("wysiwyg")) {
         const FontSizeTextStyle = TextStyle.extend({
