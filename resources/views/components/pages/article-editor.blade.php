@@ -13,8 +13,7 @@
     <div x-data="{{ json_encode($data) }}" id="data-holder" x-init="$nextTick(() => dispatchEvent(new CustomEvent('editor-ready')))" x-bind:data-content="content"
         @update-data.window="Object.assign($data, $event.detail)">
         <section class="grow-3 lg:mr-10">
-            <x-blocks.cards.create-article :props='Arr::except($data, ["content"])' image-src="{{ $imageSrc }}" title="{{ $title }}"
-                description="{{ $description }}" />
+            <x-blocks.cards.create-article :props='Arr::except($data, ["content"])'/>
             <x-blocks.text-editor />
         </section>
         <form action="/editor" method="post"
