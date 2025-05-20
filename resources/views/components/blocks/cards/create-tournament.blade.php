@@ -1,8 +1,10 @@
 <div x-data="{
     ...{{ json_encode($props) }},
-    titleEditing: false,
-    descriptionEditing: false,
-    dateEditing: false,
+    editing: {
+        title: false,
+        description: false,
+        date: false,
+    },
     isNotAnnouncementDay: function() {
         const eventDate = new Date(this.date);
         const today = new Date();
@@ -12,7 +14,12 @@
 
         return diffDays >= 1;
     }
-}" x-effect="$dispatch('update-data', toRaw($data))"
+}"
+    x-effect="() => {
+        const dispatchedData = toRaw($data);
+        delete dispatchedData.editing;
+        $dispatch('update-data', toRaw(dispatchedData))
+    }"
     class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <button class="relative block h-auto cursor-pointer"
         x-on:click="imageSrc = prompt('Додати картинку за url:', '') ?? imageSrc">
@@ -39,18 +46,19 @@
         </div>
     </button>
     <div class="card-body lg:pt-0">
-        <h2 class="card-title relative cursor-pointer" x-show="!titleEditing" @click="titleEditing = true"
-            @touchstart="titleEditing = true">
+        <h2 class="card-title relative cursor-pointer" x-show="!editing.title" @click="editing.title = true"
+            @touchstart="editing.title = true">
             <span x-text="title"></span>
             <x-assets.icons.editor-buttons.pencil-svg class="absolute right-0 inline cursor-pointer" />
         </h2>
-        <div x-show="titleEditing" class="join">
-            <input x-model="title" @blur="titleEditing = false" @keydown.enter="titleEditing = false"
+        <div x-show="editing.title" class="join">
+            <input x-model="title" @blur="editing.title = false" @keydown.enter="editing.title = false"
                 class="input join-item w-full"></textarea>
-            <button class="btn btn-accent join-item" @click="titleEditing = false">зберегти</button>
+            <button class="btn btn-accent join-item" @click="editing.title = false">зберегти</button>
         </div>
 
-        <div x-show="!dateEditing" @click="dateEditing = true" @touchstart="dateEditing = true" class="cursor-pointer">
+        <div x-show="!editing.date" @click="editing.date = true" @touchstart="editing.date = true"
+            class="cursor-pointer">
             <strong x-show="isNotAnnouncementDay()" class="badge badge-sm badge-secondary">АНОНС!</strong>
             <time class="badge badge-sm badge-primary font-bold">
                 Дата: <span
@@ -58,20 +66,20 @@
             </time>
             <x-assets.icons.editor-buttons.pencil-svg class="inline cursor-pointer" />
         </div>
-        <div x-show="dateEditing" class="join w-65">
-            <input type="date" class="input input-sm join-item" @blur="dateEditing = false"
-                @keydown.enter="dateEditing = false" x-model="date" />
-            <button class="btn btn-accent btn-sm join-item" @click="dateEditing = false">зберегти</button>
+        <div x-show="editing.date" class="join w-65">
+            <input type="date" class="input input-sm join-item" @blur="editing.date = false"
+                @keydown.enter="editing.date = false" x-model="date" />
+            <button class="btn btn-accent btn-sm join-item" @click="editing.date = false">зберегти</button>
         </div>
 
-        <p x-show="!descriptionEditing" @click="descriptionEditing = true" @touchstart="descriptionEditing = true">
+        <p x-show="!editing.description" @click="editing.description = true" @touchstart="editing.description = true">
             <span class="cursor-pointer" x-text="description"></span>
             <x-assets.icons.editor-buttons.pencil-svg class="inline cursor-pointer" />
         </p>
-        <div x-show="descriptionEditing" class="bg-base-300 rounded-box">
-            <textarea x-model="description" @blur="descriptionEditing = false" @keydown.enter="descriptionEditing = false"
+        <div x-show="editing.description" class="bg-base-300 rounded-box">
+            <textarea x-model="description" @blur="editing.description = false" @keydown.enter="editing.description = false"
                 class="textarea join-item w-full resize-y"></textarea>
-            <button class="btn btn-accent m-2 rounded-b-lg" @click="descriptionEditing = false">зберегти</button>
+            <button class="btn btn-accent m-2 rounded-b-lg" @click="editing.description = false">зберегти</button>
         </div>
 
         <div class="card-actions justify-end">
