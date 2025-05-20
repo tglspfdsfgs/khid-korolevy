@@ -6,17 +6,17 @@
 ])
 
 <div class="my-5 flex justify-start gap-1 lg:mr-10">
-    <button class="btn btn-success">
+    <button value="publish" class="btn btn-success">
         <x-assets.icons.state-btns.publish-svg />
         Опублікувати
     </button>
 
-    <button class="btn btn-accent">
+    <button value="draft" class="btn btn-accent">
         <x-assets.icons.state-btns.draft-svg />
         В чорновики
     </button>
 
-    <button class="btn btn-error">
+    <button value='{{ "delete" . ($deleted ? "-permanently" : "") }}' class="btn btn-error">
         <x-assets.icons.state-btns.delete-svg />
         Видалити {{ $deleted ? "назавжди" : "" }}
     </button>

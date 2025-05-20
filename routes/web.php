@@ -54,3 +54,7 @@ Route::get('/article/1/edit', function () {
         'content' => '',
     ]);
 });
+
+Route::post('/editor', function () {
+    dump(request()->all());
+});

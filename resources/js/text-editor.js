@@ -94,7 +94,7 @@ window.addEventListener("editor-ready", function () {
         });
 
         // tip tap editor setup
-        const editor = new Editor({
+        window.tiptapEditor = new Editor({
             element: document.querySelector("#wysiwyg"),
             extensions: [
                 StarterKit.configure({
@@ -144,20 +144,20 @@ window.addEventListener("editor-ready", function () {
         // set up custom event listeners for the buttons
         document
             .getElementById("toggleBoldButton")
-            .addEventListener("click", () => editor.chain().focus().toggleBold().run());
+            .addEventListener("click", () => window.tiptapEditor.chain().focus().toggleBold().run());
         document
             .getElementById("toggleItalicButton")
-            .addEventListener("click", () => editor.chain().focus().toggleItalic().run());
+            .addEventListener("click", () => window.tiptapEditor.chain().focus().toggleItalic().run());
         document
             .getElementById("toggleUnderlineButton")
-            .addEventListener("click", () => editor.chain().focus().toggleUnderline().run());
+            .addEventListener("click", () => window.tiptapEditor.chain().focus().toggleUnderline().run());
         document
             .getElementById("toggleStrikeButton")
-            .addEventListener("click", () => editor.chain().focus().toggleStrike().run());
+            .addEventListener("click", () => window.tiptapEditor.chain().focus().toggleStrike().run());
         document.getElementById("toggleHighlightButton").addEventListener("click", () => {
-            const isHighlighted = editor.isActive("highlight");
+            const isHighlighted = window.tiptapEditor.isActive("highlight");
             // when using toggleHighlight(), judge if is is already highlighted.
-            editor
+            window.tiptapEditor
                 .chain()
                 .focus()
                 .toggleHighlight({
@@ -168,37 +168,37 @@ window.addEventListener("editor-ready", function () {
 
         document.getElementById("toggleLinkButton").addEventListener("click", () => {
             const url = window.prompt("Вставити посилання:", "https://example.com/");
-            editor.chain().focus().toggleLink({ href: url }).run();
+            window.tiptapEditor.chain().focus().toggleLink({ href: url }).run();
         });
         document.getElementById("removeLinkButton").addEventListener("click", () => {
-            editor.chain().focus().unsetLink().run();
+            window.tiptapEditor.chain().focus().unsetLink().run();
         });
         document.getElementById("toggleCodeButton").addEventListener("click", () => {
-            editor.chain().focus().toggleCode().run();
+            window.tiptapEditor.chain().focus().toggleCode().run();
         });
         document.getElementById("toggleLeftAlignButton").addEventListener("click", () => {
-            editor.chain().focus().setTextAlign("left").run();
+            window.tiptapEditor.chain().focus().setTextAlign("left").run();
         });
         document.getElementById("toggleCenterAlignButton").addEventListener("click", () => {
-            editor.chain().focus().setTextAlign("center").run();
+            window.tiptapEditor.chain().focus().setTextAlign("center").run();
         });
         document.getElementById("toggleRightAlignButton").addEventListener("click", () => {
-            editor.chain().focus().setTextAlign("right").run();
+            window.tiptapEditor.chain().focus().setTextAlign("right").run();
         });
         document.getElementById("toggleJustifyButton").addEventListener("click", () => {
-            editor.chain().focus().setTextAlign("justify").run();
+            window.tiptapEditor.chain().focus().setTextAlign("justify").run();
         });
         document.getElementById("toggleListButton").addEventListener("click", () => {
-            editor.chain().focus().toggleBulletList().run();
+            window.tiptapEditor.chain().focus().toggleBulletList().run();
         });
         document.getElementById("toggleOrderedListButton").addEventListener("click", () => {
-            editor.chain().focus().toggleOrderedList().run();
+            window.tiptapEditor.chain().focus().toggleOrderedList().run();
         });
         document.getElementById("toggleBlockquoteButton").addEventListener("click", () => {
-            editor.chain().focus().toggleBlockquote().run();
+            window.tiptapEditor.chain().focus().toggleBlockquote().run();
         });
         document.getElementById("toggleHRButton").addEventListener("click", () => {
-            editor.chain().focus().setHorizontalRule().run();
+            window.tiptapEditor.chain().focus().setHorizontalRule().run();
         });
 
         //add image:
@@ -236,7 +236,7 @@ window.addEventListener("editor-ready", function () {
             }
 
             if (imageUrl) {
-                editor
+                window.tiptapEditor
                     .chain()
                     .focus()
                     .setImage({
@@ -252,18 +252,18 @@ window.addEventListener("editor-ready", function () {
 
         //undo
         document.getElementById("toggleUndoButton").addEventListener("click", () => {
-            editor.chain().focus().undo().run();
+            window.tiptapEditor.chain().focus().undo().run();
         });
         //redo
         document.getElementById("toggleRedoButton").addEventListener("click", () => {
-            editor.chain().focus().redo().run();
+            window.tiptapEditor.chain().focus().redo().run();
         });
 
         const sourceCodeWrapper = document.getElementById("sourceCode");
         document.getElementById("toggleHTMLButton").addEventListener("click", () => {
-            // basically just use editor.getHTML(); to get the raw html
+            // basically just use window.tiptapEditor.getHTML(); to get the raw html
 
-            sourceCodeWrapper.innerHTML = editor
+            sourceCodeWrapper.innerHTML = window.tiptapEditor
                 .getHTML()
                 .replace(/&/g, "&amp;") // Escape & character
                 .replace(/</g, "&lt;") // Escape < character
@@ -278,7 +278,7 @@ window.addEventListener("editor-ready", function () {
                 "https://www.youtube.com/watch?v=jNQXAC9IVRw"
             );
             if (url) {
-                editor.commands.setYoutubeVideo({
+                window.tiptapEditor.commands.setYoutubeVideo({
                     src: url,
                     width: 640,
                     height: 480,
@@ -290,14 +290,14 @@ window.addEventListener("editor-ready", function () {
         const typographyDropdown = FlowbiteInstances.getInstance("Dropdown", "typographyDropdown");
 
         document.getElementById("toggleParagraphButton").addEventListener("click", () => {
-            editor.chain().focus().setParagraph().run();
+            window.tiptapEditor.chain().focus().setParagraph().run();
             typographyDropdown.hide();
         });
 
         document.querySelectorAll("[data-heading-level]").forEach((button) => {
             button.addEventListener("click", () => {
                 const level = button.getAttribute("data-heading-level");
-                editor
+                window.tiptapEditor
                     .chain()
                     .focus()
                     .toggleHeading({ level: parseInt(level) })
@@ -313,8 +313,8 @@ window.addEventListener("editor-ready", function () {
             button.addEventListener("click", () => {
                 const fontSize = button.getAttribute("data-text-size");
 
-                // Apply the selected font size via pixels using the TipTap editor chain
-                editor.chain().focus().setMark("textStyle", { fontSize }).run();
+                // Apply the selected font size via pixels using the TipTap window.tiptapEditor chain
+                window.tiptapEditor.chain().focus().setMark("textStyle", { fontSize }).run();
 
                 // Hide the dropdown after selection
                 textSizeDropdown.hide();
@@ -327,7 +327,7 @@ window.addEventListener("editor-ready", function () {
             const selectedColor = event.target.value;
 
             // Apply the selected color to the selected text
-            editor.chain().focus().setColor(selectedColor).run();
+            window.tiptapEditor.chain().focus().setColor(selectedColor).run();
         });
 
         document.querySelectorAll("[data-hex-color]").forEach((button) => {
@@ -335,12 +335,12 @@ window.addEventListener("editor-ready", function () {
                 const selectedColor = button.getAttribute("data-hex-color");
 
                 // Apply the selected color to the selected text
-                editor.chain().focus().setColor(selectedColor).run();
+                window.tiptapEditor.chain().focus().setColor(selectedColor).run();
             });
         });
 
         document.getElementById("reset-color").addEventListener("click", () => {
-            editor.commands.unsetColor();
+            window.tiptapEditor.commands.unsetColor();
         });
 
         const fontFamilyDropdown = FlowbiteInstances.getInstance("Dropdown", "fontFamilyDropdown");
@@ -350,8 +350,8 @@ window.addEventListener("editor-ready", function () {
             button.addEventListener("click", () => {
                 const fontFamily = button.getAttribute("data-font-family");
 
-                // Apply the selected font size via pixels using the TipTap editor chain
-                editor.chain().focus().setFontFamily(fontFamily).run();
+                // Apply the selected font size via pixels using the TipTap window.tiptapEditor chain
+                window.tiptapEditor.chain().focus().setFontFamily(fontFamily).run();
 
                 // Hide the dropdown after selection
                 fontFamilyDropdown.hide();
@@ -360,72 +360,72 @@ window.addEventListener("editor-ready", function () {
 
         // set up custom event listeners for the buttons
         document.getElementById("addTableButton").addEventListener("click", () => {
-            editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
+            window.tiptapEditor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
         });
 
         // add column before
         document.getElementById("addColumnBeforeButton").addEventListener("click", () => {
-            editor.chain().focus().addColumnBefore().run();
+            window.tiptapEditor.chain().focus().addColumnBefore().run();
         });
 
         // add column after
         document.getElementById("addColumnAfterButton").addEventListener("click", () => {
-            editor.chain().focus().addColumnAfter().run();
+            window.tiptapEditor.chain().focus().addColumnAfter().run();
         });
 
         // remove column
         document.getElementById("removeColumnButton").addEventListener("click", () => {
-            editor.chain().focus().deleteColumn().run();
+            window.tiptapEditor.chain().focus().deleteColumn().run();
         });
 
         // add row before
         document.getElementById("addRowBeforeButton").addEventListener("click", () => {
-            editor.chain().focus().addRowBefore().run();
+            window.tiptapEditor.chain().focus().addRowBefore().run();
         });
 
         // add row after
         document.getElementById("addRowAfterButton").addEventListener("click", () => {
-            editor.chain().focus().addRowAfter().run();
+            window.tiptapEditor.chain().focus().addRowAfter().run();
         });
 
         // remove row
         document.getElementById("removeRowButton").addEventListener("click", () => {
-            editor.chain().focus().deleteRow().run();
+            window.tiptapEditor.chain().focus().deleteRow().run();
         });
 
         // delete table
         document.getElementById("deleteTableButton").addEventListener("click", () => {
-            editor.chain().focus().deleteTable().run();
+            window.tiptapEditor.chain().focus().deleteTable().run();
         });
 
         // merge cells
         document.getElementById("mergeCellsButton").addEventListener("click", () => {
-            editor.chain().focus().mergeCells().run();
+            window.tiptapEditor.chain().focus().mergeCells().run();
         });
 
         // split cells
         document.getElementById("splitCellsButton").addEventListener("click", () => {
-            editor.chain().focus().splitCell().run();
+            window.tiptapEditor.chain().focus().splitCell().run();
         });
 
         // merge or split
         document.getElementById("mergeOrSplitButton").addEventListener("click", () => {
-            editor.chain().focus().mergeOrSplit().run();
+            window.tiptapEditor.chain().focus().mergeOrSplit().run();
         });
 
         // toggle header column
         document.getElementById("toggleHeaderColumnButton").addEventListener("click", () => {
-            editor.chain().focus().toggleHeaderColumn().run();
+            window.tiptapEditor.chain().focus().toggleHeaderColumn().run();
         });
 
         // toggle header row
         document.getElementById("toggleHeaderRowButton").addEventListener("click", () => {
-            editor.chain().focus().toggleHeaderRow().run();
+            window.tiptapEditor.chain().focus().toggleHeaderRow().run();
         });
 
         // toggle header cell
         document.getElementById("toggleHeaderCellButton").addEventListener("click", () => {
-            editor.chain().focus().toggleHeaderCell().run();
+            window.tiptapEditor.chain().focus().toggleHeaderCell().run();
         });
 
         const cellAttributeModal = FlowbiteInstances.getInstance("Modal", "cell-attribute-modal");
@@ -437,7 +437,7 @@ window.addEventListener("editor-ready", function () {
             const attributeValue = document.getElementById("attribute-value").value;
 
             if (attributeName && attributeValue) {
-                const result = editor.commands.setCellAttribute(
+                const result = window.tiptapEditor.commands.setCellAttribute(
                     attributeName ? attributeName : "",
                     attributeValue ? attributeValue : ""
                 );
@@ -448,17 +448,17 @@ window.addEventListener("editor-ready", function () {
 
         // fix tables
         document.getElementById("fixTablesButton").addEventListener("click", () => {
-            editor.commands.fixTables();
+            window.tiptapEditor.commands.fixTables();
         });
 
         // go to previous cell
         document.getElementById("previousCellButton").addEventListener("click", () => {
-            editor.chain().focus().goToPreviousCell().run();
+            window.tiptapEditor.chain().focus().goToPreviousCell().run();
         });
 
         // go to the next cell
         document.getElementById("nextCellButton").addEventListener("click", () => {
-            editor.chain().focus().goToNextCell().run();
+            window.tiptapEditor.chain().focus().goToNextCell().run();
         });
     }
 });

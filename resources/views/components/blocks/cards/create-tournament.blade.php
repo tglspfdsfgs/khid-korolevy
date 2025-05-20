@@ -1,22 +1,8 @@
-@php
-    //$imageSrc, $title, $description, $date, $buttons['linkToForm', 'hasMoreInfo', 'hasResults', 'hasGallery'];
-    extract($props);
-@endphp
-
 <div x-data="{
-    imageSrc: '{{ $imageSrc }}',
-    buttons: {
-        linkToForm: '{{ $buttons["linkToForm"] }}',
-        hasMoreInfo: Boolean({{ $buttons["hasMoreInfo"] }}),
-        hasResults: Boolean({{ $buttons["hasResults"] }}),
-        hasGallery: Boolean({{ $buttons["hasGallery"] }}),
-    },
+    ...{{ json_encode($props) }},
     titleEditing: false,
-    title: '{{ html_entity_decode($title) }}',
     descriptionEditing: false,
-    description: '{{ html_entity_decode($description) }}',
     dateEditing: false,
-    date: '{{ $date }}',
     isNotAnnouncementDay: function() {
         const eventDate = new Date(this.date);
         const today = new Date();
@@ -26,16 +12,7 @@
 
         return diffDays >= 1;
     }
-}"
-    x-effect="$dispatch('update-data', {
-        imageSrc: imageSrc,
-        title: title,
-        description: description,
-        date: date,
-        buttons: {
-            ...buttons,
-        }
-    })"
+}" x-effect="$dispatch('update-data', toRaw($data))"
     class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <button class="relative block h-auto cursor-pointer"
         x-on:click="imageSrc = prompt('Додати картинку за url:', '') ?? imageSrc">
@@ -99,7 +76,7 @@
 
         <div class="card-actions justify-end">
             <div class="relative">
-                <a :disabled="!buttons.hasResults" href="{{ "/tournament/" . $tournamentID . "/results/edit" }}"
+                <a :disabled="!hasResults" href="{{ "/tournament/" . $props["tournamentID"] . "/results/edit" }}"
                     class="btn btn-sm btn-outline btn-secondary">
                     Результати
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -109,18 +86,18 @@
                     </svg>
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="buttons.hasResults = !buttons.hasResults">
-                    <span x-show="!buttons.hasResults">
+                    x-on:click="hasResults = !hasResults">
+                    <span x-show="!hasResults">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="buttons.hasResults">
+                    <span x-show="hasResults">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
             </div>
 
             <div class="relative">
-                <a :disabled="!buttons.hasGallery" href="{{ "/tournament/" . $tournamentID . "/gallery/edit" }}"
+                <a :disabled="!hasGallery" href="{{ "/tournament/" . $props["tournamentID"] . "/gallery/edit" }}"
                     class="btn btn-sm btn-outline btn-success">
                     Галерея
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
@@ -130,18 +107,18 @@
                     </svg>
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="buttons.hasGallery = !buttons.hasGallery">
-                    <span x-show="!buttons.hasGallery">
+                    x-on:click="hasGallery = !hasGallery">
+                    <span x-show="!hasGallery">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="buttons.hasGallery">
+                    <span x-show="hasGallery">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
             </div>
 
             <div class="relative">
-                <a :disabled="!Boolean(buttons.linkToForm)" :href="buttons.linkToForm" class="btn btn-sm btn-primary">
+                <a :disabled="!Boolean(linkToForm)" :href="linkToForm" class="btn btn-sm btn-primary">
                     Записатися
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -150,19 +127,19 @@
                     </svg>
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="buttons.linkToForm = Boolean(buttons.linkToForm) ? '' : (buttons.linkToForm = prompt('Додати форму за посиланням:', ''))">
-                    <span x-show="!Boolean(buttons.linkToForm)">
+                    x-on:click="linkToForm = Boolean(linkToForm) ? '' : (linkToForm = prompt('Додати форму за посиланням:', ''))">
+                    <span x-show="!Boolean(linkToForm)">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="Boolean(buttons.linkToForm)">
+                    <span x-show="Boolean(linkToForm)">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
             </div>
 
             <div class="relative">
-                <a href="{{ "/tournament/" . $tournamentID }}" class="btn btn-sm btn-info"
-                    :disabled="!buttons.hasMoreInfo">
+                <a href="{{ "/tournament/" . $props["tournamentID"] }}" class="btn btn-sm btn-info"
+                    :disabled="!hasMoreInfo">
                     Детальніше
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -171,11 +148,11 @@
                     </svg>
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="buttons.hasMoreInfo = !buttons.hasMoreInfo">
-                    <span x-show="!buttons.hasMoreInfo">
+                    x-on:click="hasMoreInfo = !hasMoreInfo">
+                    <span x-show="!hasMoreInfo">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="buttons.hasMoreInfo">
+                    <span x-show="hasMoreInfo">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
