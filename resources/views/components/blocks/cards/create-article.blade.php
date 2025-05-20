@@ -1,30 +1,27 @@
-@props([
-    "imageSrc" => "",
-    "title" => "Заголовок прев`ю-картки для статті",
-    "description" => "Текст прев`ю-картки для статті",
-    "date" => \Carbon\Carbon::now(),
-])
-
 <div x-data="{
-    imgURL: '{{ $imageSrc }}',
-    titleEditing: false,
-    title: '{{ html_entity_decode($title) }}',
-    descriptionEditing: false,
-    description: '{{ html_entity_decode($description) }}',
-    dateEditing: false,
-    date: '{{ $date }}'
+    ...{{ json_encode($props) }},
+    editing: {
+        title: false,
+        description: false,
+        date: false,
+    }
 }"
+    x-effect="() => {
+        const dispatchedData = toRaw($data);
+        delete dispatchedData.editing;
+        $dispatch('update-data', toRaw(dispatchedData))
+    }"
     class="card lg:card-side bg-base-100 static mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <button class="relative block h-auto cursor-pointer"
-        x-on:click="imgURL = prompt('Додати картинку за url:', '') ?? imgURL">
-        <img x-cloak x-show="Boolean(imgURL)"
+        x-on:click="imageSrc = prompt('Додати картинку за url:', '') ?? imageSrc">
+        <img x-cloak x-show="Boolean(imageSrc)"
             class="h-full w-full rounded-xl object-cover object-center transition hover:scale-105"
-            x-bind:src="imgURL" />
-        <div x-show="Boolean(imgURL)" class="absolute right-2 top-2">
+            x-bind:src="imageSrc" />
+        <div x-show="Boolean(imageSrc)" class="absolute right-2 top-2">
             <x-assets.icons.editor-buttons.change-img-svg />
         </div>
 
-        <div x-show="!Boolean(imgURL)" class="flex h-full w-full items-center justify-center rounded-xl">
+        <div x-show="!Boolean(imageSrc)" class="flex h-full w-full items-center justify-center rounded-xl">
             <span
                 class="flex h-full w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600 dark:hover:bg-gray-800">
                 <div class="flex flex-col items-center justify-center pb-6 pt-5">
@@ -41,19 +38,19 @@
     </button>
 
     <div class="card-body lg:pt-0">
-        <h2 class="card-title relative cursor-pointer" x-show="!titleEditing" @click="titleEditing = true"
-            @touchstart="titleEditing = true">
+        <h2 class="card-title relative cursor-pointer" x-show="!editing.title" @click="editing.title = true"
+            @touchstart="editing.title = true">
             <span x-text="title"></span>
             <x-assets.icons.editor-buttons.pencil-svg class="absolute right-0 inline cursor-pointer" />
         </h2>
-        <div x-show="titleEditing" class="join">
-            <input x-model="title" @blur="titleEditing = false" @keydown.enter="titleEditing = false"
+        <div x-show="editing.title" class="join">
+            <input x-model="title" @blur="editing.title = false" @keydown.enter="editing.title = false"
                 class="input join-item w-full"></textarea>
-            <button class="btn btn-accent join-item" @click="titleEditing = false">зберегти</button>
+            <button class="btn btn-accent join-item" @click="editing.title = false">зберегти</button>
         </div>
 
-        <i x-show="!dateEditing" class="badge badge-sm cursor-pointer" @click="dateEditing = true"
-            @touchstart="dateEditing = true">
+        <i x-show="!editing.date" class="badge badge-sm cursor-pointer" @click="editing.date = true"
+            @touchstart="editing.date = true">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="inline size-6">
@@ -67,24 +64,24 @@
             </span>
         </i>
 
-        <div x-show="dateEditing" class="join w-65">
-            <input type="date" class="input input-sm join-item" @blur="dateEditing = false"
-                @keydown.enter="dateEditing = false" x-model="date" />
-            <button class="btn btn-accent btn-sm join-item" @click="dateEditing = false">зберегти</button>
+        <div x-show="editing.date" class="join w-65">
+            <input type="date" class="input input-sm join-item" @blur="editing.date = false"
+                @keydown.enter="editing.date = false" x-model="date" />
+            <button class="btn btn-accent btn-sm join-item" @click="editing.date = false">зберегти</button>
         </div>
 
-        <p x-show="!descriptionEditing" @click="descriptionEditing = true" @touchstart="descriptionEditing = true">
+        <p x-show="!editing.description" @click="editing.description = true" @touchstart="editing.description = true">
             <span class="cursor-pointer" x-text="description"></span>
             <x-assets.icons.editor-buttons.pencil-svg class="inline cursor-pointer" />
         </p>
-        <div x-show="descriptionEditing" class="bg-base-300 rounded-box">
-            <textarea x-model="description" @blur="descriptionEditing = false" @keydown.enter="descriptionEditing = false"
+        <div x-show="editing.description" class="bg-base-300 rounded-box">
+            <textarea x-model="description" @blur="editing.description = false" @keydown.enter="editing.description = false"
                 class="textarea join-item w-full resize-y"></textarea>
-            <button class="btn btn-accent m-2 rounded-b-lg" @click="descriptionEditing = false">зберегти</button>
+            <button class="btn btn-accent m-2 rounded-b-lg" @click="editing.description = false">зберегти</button>
         </div>
 
         <div class="card-actions justify-end">
-            <a href="#" class="btn btn-sm btn-info">
+            <a href="{{ "/article/" . $props["articleID"] }}" class="btn btn-sm btn-info">
                 Читати
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
