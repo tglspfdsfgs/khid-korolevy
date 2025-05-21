@@ -1,15 +1,11 @@
-@props([
-    "imageSrc" => Vite::asset("resources/images/fallback.png"),
-    "title",
-    "description",
-    "date",
-    "link",
-    "editPageLink" => "#",
-])
+@php
+    extract($props);
+@endphp
 
 <div class="card lg:card-side bg-base-100 relative mb-5 p-5 shadow-sm md:grid md:grid-cols-[1fr_3fr]">
     <span class="block h-auto">
-        <img class="h-full w-full rounded-xl object-cover object-center" src="{{ $imageSrc }}"
+        <img class="h-full w-full rounded-xl object-cover object-center"
+            src="{{ empty($imageSrc) ? Vite::asset("resources/images/fallback.png") : $imageSrc }}"
             alt="{{ $title }}" />
     </span>
     <div class="card-body lg:pt-0">
@@ -28,7 +24,7 @@
         </i>
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
-            <a href="{{ $link }}" class="btn btn-sm btn-info">
+            <a href='{{ "/article/" . $articleID }}' class="btn btn-sm btn-info">
                 Читати
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">
@@ -40,7 +36,7 @@
     </div>
 
     <div class="absolute right-1 top-1 rounded-lg bg-white hover:ring-1 hover:ring-white">
-        <a href="{{ $editPageLink }}" class="btn btn-outline btn-accent">
+        <a href='{{ "/article/" . $articleID . "/edit" }}' class="btn btn-outline btn-accent">
             <x-assets.icons.state-btns.edit-svg />
         </a>
     </div>
