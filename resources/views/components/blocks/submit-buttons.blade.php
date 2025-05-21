@@ -3,6 +3,7 @@
     "draft" => false,
     "deleted" => false,
     "edit" => false,
+    "editorLink" => "",
 ])
 
 <div class="my-5 flex justify-start gap-1 lg:mr-10">
@@ -21,7 +22,8 @@
         Видалити {{ $deleted ? "назавжди" : "" }}
     </button>
 
-    <a href="./edit" class='{{ "ml-auto btn btn-outline btn-accent " . ($edit ? "btn-disabled" : "") }}'>
+    <a href="{{ $editorLink }}"
+        class='{{ "ml-auto btn btn-outline btn-accent " . (Str::of($editorLink)->isEmpty() ? "btn-disabled" : "") }}'>
         <x-assets.icons.state-btns.edit-svg />
     </a>
 </div>

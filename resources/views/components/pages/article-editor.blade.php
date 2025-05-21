@@ -24,7 +24,7 @@
 
                 $nextTick(() => $el.submit());
             }">
-            <x-blocks.submit-buttons edit />
+            <x-blocks.submit-buttons />
         </form>
     </div>
     <x-blocks.sidebar.right />
