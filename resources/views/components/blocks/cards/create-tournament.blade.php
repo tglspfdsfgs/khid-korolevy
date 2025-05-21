@@ -4,15 +4,6 @@
         title: false,
         description: false,
         date: false,
-    },
-    isNotAnnouncementDay: function() {
-        const eventDate = new Date(this.date);
-        const today = new Date();
-
-        const diffTime = eventDate - today;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        return diffDays >= 1;
     }
 }"
     x-effect="() => {
@@ -59,7 +50,7 @@
 
         <div x-show="!editing.date" @click="editing.date = true" @touchstart="editing.date = true"
             class="cursor-pointer">
-            <strong x-show="isNotAnnouncementDay()" class="badge badge-sm badge-secondary">АНОНС!</strong>
+            <strong x-show="isNotAnnouncementDay(date)" class="badge badge-sm badge-secondary">АНОНС!</strong>
             <time class="badge badge-sm badge-primary font-bold">
                 Дата: <span
                     x-text="(new Date(date).toLocaleDateString('uk-UA', { day: 'numeric', month: 'short', year: 'numeric' }))"></span>
