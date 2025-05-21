@@ -52,10 +52,9 @@
     <main class="container mx-auto mt-7 lg:flex">
         <section class="grow-3 lg:mr-10">
 
-            <x-blocks.cards.tournament :props='Arr::except($cards[0], ["type"])' />
-            <x-blocks.cards.article :props='Arr::except($cards[1], ["type"])' />
-            <x-blocks.cards.tournament :props='Arr::except($cards[2], ["type"])' />
-            <x-blocks.cards.article :props='Arr::except($cards[3], ["type"])' />
+            @foreach ($cards as $card)
+                <x-card :props="$card" />
+            @endforeach
 
             {{-- pagination --}}
             <x-blocks.pagination />
