@@ -1,6 +1,7 @@
 @php
     $data = [
         "tournamentID" => 1,
+        "state" => \App\State::deleted,
         "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
         "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
         "imageSrc" => "",
@@ -41,7 +42,7 @@
 
                 $nextTick(() => $el.submit());
             }">
-            <x-blocks.submit-buttons />
+            <x-blocks.submit-buttons :state='$data["state"]' />
         </form>
     </div>
 

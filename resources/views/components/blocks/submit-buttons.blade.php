@@ -1,25 +1,22 @@
-@props([
-    "published" => false,
-    "draft" => false,
-    "deleted" => false,
-    "edit" => false,
-    "editorLink" => "",
-])
+@props(["state", "editorLink" => ""])
 
+@php
+    $state->isDeleted();
+@endphp
 <div class="my-5 flex justify-start gap-1 lg:mr-10">
-    <button value="publish" class="btn btn-success">
+    <button value="publish" class='{{ "btn btn-success " . ($state->isPublished() ? "btn-disabled" : "") }}'>
         <x-assets.icons.state-btns.publish-svg />
         Опублікувати
     </button>
 
-    <button value="draft" class="btn btn-accent">
+    <button value="draft" class='{{ "btn btn-accent " . ($state->isDraft() ? "btn-disabled" : "") }}'>
         <x-assets.icons.state-btns.draft-svg />
-        В чорновики
+        Перенести до чорновиків
     </button>
 
-    <button value='{{ "delete" . ($deleted ? "-permanently" : "") }}' class="btn btn-error">
+    <button value="delete" class="btn btn-error">
         <x-assets.icons.state-btns.delete-svg />
-        Видалити {{ $deleted ? "назавжди" : "" }}
+        Видалити {{ $state->isDeleted() ? "назавжди" : "" }}
     </button>
 
     <a href="{{ $editorLink }}"

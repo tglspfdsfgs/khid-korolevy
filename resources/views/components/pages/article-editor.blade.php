@@ -1,6 +1,7 @@
 @php
     $data = [
         "articleID" => 1,
+        "state" => \App\State::deleted,
         "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
         "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
         "imageSrc" => "",
@@ -24,7 +25,7 @@
 
                 $nextTick(() => $el.submit());
             }">
-            <x-blocks.submit-buttons />
+            <x-blocks.submit-buttons :state='$data["state"]' />
         </form>
     </div>
     <x-blocks.sidebar.right />

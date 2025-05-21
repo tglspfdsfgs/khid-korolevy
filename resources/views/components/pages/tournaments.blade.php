@@ -3,6 +3,7 @@
         [
             "type" => "tournament",
             "tournamentID" => 1,
+            "state" => \App\State::published, //published | draft | deleted
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
@@ -16,6 +17,7 @@
         [
             "type" => "article",
             "articleID" => 1,
+            "state" => "published", //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
@@ -24,6 +26,7 @@
         [
             "type" => "tournament",
             "tournamentID" => 1,
+            "state" => "published", //published | draft | deleted
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
@@ -39,6 +42,7 @@
         [
             "type" => "article",
             "articleID" => 1,
+            "state" => "published", //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
