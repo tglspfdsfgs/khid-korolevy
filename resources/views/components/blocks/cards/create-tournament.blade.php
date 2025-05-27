@@ -75,7 +75,7 @@
 
         <div class="card-actions justify-end">
             <div class="relative">
-                <a :disabled="!hasResults" href="{{ "/tournament/" . $props["tournamentID"] . "/results/edit" }}"
+                <a :disabled="!hasResults" href="{{ route("tournament.results.show", $props["id"]) }}"
                     class="btn btn-sm btn-outline btn-secondary">
                     Результати
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -96,21 +96,21 @@
             </div>
 
             <div class="relative">
-                <a :disabled="!hasGallery" href="{{ "/tournament/" . $props["tournamentID"] . "/gallery/edit" }}"
+                <a :disabled="!Boolean(linkToGallery)" :href="linkToGallery"
                     class="btn btn-sm btn-outline btn-success">
                     Галерея
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                        <path fill-rule="evenodd"
-                            d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
-                            clip-rule="evenodd" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                     </svg>
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="hasGallery = !hasGallery">
-                    <span x-show="!hasGallery">
+                    x-on:click="linkToGallery = Boolean(linkToGallery) ? '' : (linkToGallery = prompt('Додати посилання на галерею:', ''))">
+                    <span x-show="!Boolean(linkToGallery)">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="hasGallery">
+                    <span x-show="Boolean(linkToGallery)">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
@@ -137,7 +137,7 @@
             </div>
 
             <div class="relative">
-                <a href="{{ "/tournament/" . $props["tournamentID"] }}" class="btn btn-sm btn-info"
+                <a href="{{ route("tournament.show", $props["id"]) }}" class="btn btn-sm btn-info"
                     :disabled="!hasMoreInfo">
                     Детальніше
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -2,7 +2,7 @@
     $cards = [
         [
             "type" => "tournament",
-            "tournamentID" => 1,
+            "id" => 1,
             "state" => \App\State::published, //published | draft | deleted
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
@@ -12,11 +12,11 @@
             "linkToForm" => "https://workspace.google.com/intl/uk/products/forms/",
             "hasMoreInfo" => true,
             "hasResults" => false,
-            "hasGallery" => false,
+            "linkToGallery" => "",
         ],
         [
             "type" => "article",
-            "articleID" => 1,
+            "id" => 1,
             "state" => "published", //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
@@ -25,7 +25,7 @@
         ],
         [
             "type" => "tournament",
-            "tournamentID" => 1,
+            "id" => 1,
             "state" => "published", //published | draft | deleted
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
@@ -37,11 +37,11 @@
             "linkToForm" => "",
             "hasMoreInfo" => false,
             "hasResults" => true,
-            "hasGallery" => true,
+            "linkToGallery" => "/gallery/1",
         ],
         [
             "type" => "article",
-            "articleID" => 1,
+            "id" => 1,
             "state" => "published", //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
@@ -53,7 +53,7 @@
 
 <main class="container mx-auto mt-7 lg:flex">
     <section class="grow-3 lg:mr-10">
-        <x-blocks.cards.create text="Натисни щоб створити турнір" />
+        <x-blocks.cards.create text="Натисни щоб створити турнір" link='{{ route("tournament.create") }}' />
         <x-blocks.cards-state-navigation />
 
         @foreach ($cards as $card)

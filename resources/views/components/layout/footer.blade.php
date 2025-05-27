@@ -3,7 +3,7 @@
         class="footer sm:footer-horizontal container mx-auto max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
         <aside>
             <div>
-                <a href="/">
+                <a href='{{ route("index") }}'>
                     <x-assets.logos.small class="mx-auto px-5 pb-3" background="var(--color-base-300)" pieces="black"
                         primary="black" secondary="#FFFF00" />
                 </a>
@@ -23,7 +23,6 @@
             <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
             <x-blocks.socials />
         </nav>
-        {{-- TODO: add these pages --}}
         <nav class="max-lg:order-2">
             <h6 class="footer-title inline-block max-sm:mx-auto">Legal</h6>
             <a href="/terms_of_use" class="link link-hover">Умови використання</a>

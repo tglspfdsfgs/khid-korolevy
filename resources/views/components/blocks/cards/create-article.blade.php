@@ -81,7 +81,7 @@
         </div>
 
         <div class="card-actions justify-end">
-            <a href="{{ "/article/" . $props["articleID"] }}" class="btn btn-sm btn-info">
+            <a href="{{ "/article/" . $props["id"] }}" class="btn btn-sm btn-info">
                 Читати
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-6">

@@ -2,7 +2,7 @@
     $cards = [
         [
             "type" => "tournament",
-            "tournamentID" => 1,
+            "id" => 1,
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
@@ -11,11 +11,11 @@
             "linkToForm" => "https://workspace.google.com/intl/uk/products/forms/",
             "hasMoreInfo" => true,
             "hasResults" => false,
-            "hasGallery" => false,
+            "linkToGallery" => "",
         ],
         [
             "type" => "article",
-            "articleID" => 1,
+            "id" => 1,
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
@@ -23,7 +23,7 @@
         ],
         [
             "type" => "tournament",
-            "tournamentID" => 1,
+            "id" => 1,
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
@@ -34,11 +34,11 @@
             "linkToForm" => "",
             "hasMoreInfo" => false,
             "hasResults" => true,
-            "hasGallery" => true,
+            "linkToGallery" => "/gallery/1",
         ],
         [
             "type" => "article",
-            "articleID" => 1,
+            "id" => 1,
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),

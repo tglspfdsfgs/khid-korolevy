@@ -1,6 +1,6 @@
 @php
     $data = [
-        "articleID" => 1,
+        "id" => 1,
         "state" => \App\State::deleted,
         "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
         "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
@@ -17,10 +17,10 @@
             <x-blocks.cards.create-article :props='Arr::except($data, ["content"])' />
             <x-blocks.text-editor />
         </section>
-        <form action="/editor" method="post"
+        <form action="{{ route("article.show", $data["id"]) . "/" }}" method="post"
             @submit.prevent="() => {
                 $data.content = window.tiptapEditor.getHTML();
-                $data.method = $event.submitter.value;
+                $el.action += $event.submitter.value;;
                 injectDataToForm($el, toRaw($data));
 
                 $nextTick(() => $el.submit());

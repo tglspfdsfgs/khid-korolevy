@@ -2,26 +2,24 @@
     use App\TournamentType as Type;
 
     $navLinks = [
-        "Головна" => "/",
-        "Новини і статті" => "/articles",
+        "Головна" => route("index"),
+        "Новини і статті" => route("article.index"),
         "Турніри" => [
-            "ВСІ ТУРНІРИ" => "/tournaments?type=all",
-            Type::chess->nav_title() => "/tournaments?type=" . Type::chess->value,
-            Type::tabletop->nav_title() => "/tournaments?type=" . Type::tabletop->value,
-            Type::sports->nav_title() => "/tournaments?type=" . Type::sports->value,
+            "ВСІ ТУРНІРИ" => route("tournament.index") . "?type=all",
+            Type::chess->nav_title() => route("tournament.index") . "?type=" . Type::chess->value,
+            Type::tabletop->nav_title() => route("tournament.index") . "?type=" . Type::tabletop->value,
+            Type::sports->nav_title() => route("tournament.index") . "?type=" . Type::sports->value,
         ],
         "Галерея" => "/gallery",
         "Про нас" => "/about_us",
     ];
 @endphp
 
-{{-- TODO: add About Us page --}}
-
 <div>
     <header class="bg-cover bg-center bg-no-repeat max-md:h-auto"
         style="background-image: url('{{ Vite::asset("resources/images/header-image.jpg") }}')">
         <div class="mx-auto hidden md:container md:flex">
-            <a href="/">
+            <a href='{{ route("index") }}'>
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
             </a>
             <h1 class="text-base-content mb-5 ml-5 mt-5 grid flex-1 flex-col content-center">
@@ -45,7 +43,7 @@
                                     </svg>
                                 </label>
                             </div>
-                            <a href="/" class="flex-1 md:hidden">
+                            <a href='{{ route("index") }}' class="flex-1 md:hidden">
                                 <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white"
                                     primary="black" secondary="#FFFF00" />
                             </a>

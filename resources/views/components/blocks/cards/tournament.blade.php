@@ -21,8 +21,7 @@
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
             @if ($hasResults)
-                <a href="{{ "/tournament/" . $tournamentID . "/results" }}"
-                    class="btn btn-sm btn-outline btn-secondary">
+                <a href="{{ "/tournament/" . $id . "/results" }}" class="btn btn-sm btn-outline btn-secondary">
                     Результати
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -31,8 +30,8 @@
                     </svg>
                 </a>
             @endif
-            @if ($hasGallery)
-                <a href='{{ "/tournament/" . $tournamentID . "/gallery" }}' class="btn btn-sm btn-outline btn-success">
+            @if ($linkToGallery)
+                <a href="{{ $linkToGallery }}" class="btn btn-sm btn-outline btn-success">
                     Галерея
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                         <path fill-rule="evenodd"
@@ -52,7 +51,7 @@
                 </a>
             @endif
             @if ($hasMoreInfo)
-                <a href="{{ "/tournament/" . $tournamentID }}" class="btn btn-sm btn-info">
+                <a href="{{ "/tournament/" . $id }}" class="btn btn-sm btn-info">
                     Детальніше
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -65,7 +64,7 @@
     </div>
 
     <div class="absolute right-1 top-1 rounded-lg bg-white hover:ring-1 hover:ring-white">
-        <a href='{{ "/tournament/" . $tournamentID . "/edit" }}' class="btn btn-outline btn-accent">
+        <a href='{{ "/tournament/" . $id . "/edit" }}' class="btn btn-outline btn-accent">
             <x-assets.icons.state-btns.edit-svg />
         </a>
     </div>

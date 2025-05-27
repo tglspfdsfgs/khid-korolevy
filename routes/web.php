@@ -1,60 +1,19 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\Tournament\TournamentController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('main', [
-        'title' => 'головна',
-        'page' => 'components.pages.index',
-    ]);
-});
+Route::get('/', MainPageController::class)->name('index');
+Route::resourceFor('article', ArticleController::class);
+Route::resourceFor('tournament', TournamentController::class, nestedResources: ['results']);
 
-Route::get('/articles', function () {
-    return view('main', [
-        'title' => 'новини і статті',
-        'page' => 'components.pages.articles',
-    ]);
-});
-
-Route::get('/tournaments', function () {
-    return view('main', [
-        'title' => 'турніри',
-        'page' => 'components.pages.tournaments',
-    ]);
-});
-
-Route::get('/tournament/1', function () {
-    return view('main', [
-        'title' => 'Відкритий шаховий турнір \'Король дошки\' – реєструйся та вигравай!',
-        'page' => 'components.pages.tournament',
-        'content' => '',
-    ]);
-});
-
-Route::get('/article/1', function () {
-    return view('main', [
-        'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
-        'page' => 'components.pages.article',
-        'content' => '',
-    ]);
-});
-
-Route::get('/tournament/1/edit', function () {
-    return view('main', [
-        'title' => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
-        'page' => 'components.pages.tournament-editor',
-        'content' => '',
-    ]);
-});
-
-Route::get('/article/1/edit', function () {
-    return view('main', [
-        'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
-        'page' => 'components.pages.article-editor',
-        'content' => '',
-    ]);
-});
-
-Route::post('/editor', function () {
-    dump(request()->all());
-});
+/*
+ * TODO:
+ * setting
+ * logout
+ * Про нас
+ * Умови використання
+ * Політика конфіденційності
+ */

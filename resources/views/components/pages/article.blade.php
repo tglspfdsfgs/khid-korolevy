@@ -1,6 +1,6 @@
 @php
     $data = [
-        "articleID" => 1,
+        "id" => 1,
         "date" => \Carbon\Carbon::now(),
         "state" => \App\State::draft,
         "content" =>
@@ -18,7 +18,16 @@
             </p>
             {!! $data["content"] !!}
         </div>
-        <x-blocks.submit-buttons :state='$data["state"]' :editor-link='"/article/" . $data["articleID"] . "/edit"' />
+        <form x-data action="{{ route("article.show", $data["id"]) . "/" }}" method="post"
+            @submit.prevent="() => {
+
+                $el.action += $event.submitter.value;
+                injectDataToForm($el, {{ json_encode($data) }});
+
+                $nextTick(() => $el.submit());
+            }">
+            <x-blocks.submit-buttons :state='$data["state"]' :editor-link='"/article/" . $data["id"] . "/edit"' />
+        </form>
     </section>
     <x-blocks.sidebar.right />
 </main>

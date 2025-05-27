@@ -22,4 +22,13 @@ enum State: string
         }
         throw new \BadMethodCallException('Call to undefined method '.self::class."::$name()");
     }
+
+    public static function action(State $state): string
+    {
+        return match ($state) {
+            self::published => 'publish',
+            self::draft => 'draft',
+            self::deleted => 'delete',
+        };
+    }
 }
