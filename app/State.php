@@ -31,4 +31,13 @@ enum State: string
             self::deleted => 'delete',
         };
     }
+
+    public function toUkrainian(): string
+    {
+        return match ($this) {
+            self::published => 'опубліковано',
+            self::draft => 'в чорновиках',
+            self::deleted => 'видалено',
+        };
+    }
 }
