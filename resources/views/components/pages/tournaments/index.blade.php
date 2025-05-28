@@ -17,7 +17,7 @@
         [
             "type" => "article",
             "id" => 1,
-            "state" => "published", //published | draft | deleted
+            "state" => \App\State::published, //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
@@ -26,7 +26,7 @@
         [
             "type" => "tournament",
             "id" => 1,
-            "state" => "published", //published | draft | deleted
+            "state" => \App\State::published, //published | draft | deleted
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
@@ -42,7 +42,7 @@
         [
             "type" => "article",
             "id" => 1,
-            "state" => "published", //published | draft | deleted
+            "state" => \App\State::published, //published | draft | deleted
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
@@ -53,7 +53,7 @@
 
 <main class="container mx-auto mt-7 lg:flex">
     <section class="grow-3 lg:mr-10">
-        <x-blocks.cards.create text="Натисни щоб створити турнір" link='{{ route("tournament.create") }}' />
+        <x-blocks.create text="Натисни щоб створити турнір" link='{{ route("tournament.create") }}' />
         <x-blocks.cards-state-navigation />
 
         @foreach ($cards as $card)

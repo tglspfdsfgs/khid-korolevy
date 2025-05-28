@@ -16,7 +16,7 @@ class TournamentController extends Controller
     {
         return view('main', [
             'title' => 'турніри',
-            'page' => 'components.pages.tournaments',
+            'page' => 'components.pages.tournaments.index',
         ]);
     }
 
@@ -35,7 +35,7 @@ class TournamentController extends Controller
     {
         return view('main', [
             'title' => 'Відкритий шаховий турнір \'Король дошки\' – реєструйся та вигравай!',
-            'page' => 'components.pages.tournament',
+            'page' => 'components.pages.tournaments.page',
             'content' => '',
         ]);
     }
@@ -47,7 +47,7 @@ class TournamentController extends Controller
     {
         return view('main', [
             'title' => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
-            'page' => 'components.pages.tournament-editor',
+            'page' => 'components.pages.tournaments.form',
             'content' => '',
         ]);
     }

@@ -12,8 +12,8 @@ class Card extends Component
      * Locations of each card type.
      */
     private array $typeViewMap = [
-        'article' => 'components.blocks.cards.article',
-        'tournament' => 'components.blocks.cards.tournament',
+        'article' => 'components.blocks.cards.articles.card',
+        'tournament' => 'components.blocks.cards.tournaments.card',
     ];
 
     /**
