@@ -1,7 +1,7 @@
 @props(["background", "primary", "secondary", "pieces"])
 
 <div style="background-color: {{ $background }};"
-    class='pl-15 pr-15 mb-5 mt-5 pb-10 pt-5 [clip-path:ellipse(50%_50%_at_50%_50%)]'>
+    class='pl-15 pr-15 m-5 pb-10 pt-5 [clip-path:ellipse(50%_50%_at_50%_50%)]'>
     <svg class="h-35 block w-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
         y="0px" width="100%" viewBox="0 0 1550 1057" enable-background="new 0 0 1550 1057" xml:space="preserve">
         <!-- pieces: -->

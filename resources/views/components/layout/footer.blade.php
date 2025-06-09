@@ -1,4 +1,9 @@
+@props([
+    "disableResponsive" => false,
+])
+
 <footer class="bg-base-300 text-base-300-content p-10">
+    <div> {{ $disableResponsive ? "Responsive DISABLED" : "Responsive NOT DISABLED" }} </div>
     <div
         class="footer sm:footer-horizontal container mx-auto max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
         <aside>

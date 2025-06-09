@@ -9,9 +9,10 @@
         @vite(["resources/css/app.css", "resources/js/app.js"])
     </head>
     <body>
-        <x-layout.header />
+        @yield("header")
         @yield("page")
-        <x-layout.footer />
+        @yield("footer")
+
         @vite("resources/js/app.js")
     </body>
 </html>

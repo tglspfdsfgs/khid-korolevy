@@ -27,6 +27,10 @@ trait ResultsActions
      */
     public function resultsShow(Request $request, string $id)
     {
-        dump('resultsShow');
+        return view('main', [
+            'title' => 'результати турніру',
+            'page' => 'components.pages.index',
+            'isResponsive' => true,
+        ]);
     }
 }

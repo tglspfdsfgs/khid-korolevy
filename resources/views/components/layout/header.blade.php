@@ -1,3 +1,7 @@
+@props([
+    "isResponsive" => false,
+])
+
 @php
     use App\TournamentType as Type;
 
@@ -13,12 +17,15 @@
         "Галерея" => "/gallery",
         "Про нас" => "/about_us",
     ];
+
+    $unresponsiveSize = " w-[1024px] ";
 @endphp
 
 <div>
-    <header class="bg-cover bg-center bg-no-repeat max-md:h-auto"
+    <header class="bg-cover bg-fixed bg-center bg-no-repeat max-md:h-auto"
         style="background-image: url('{{ Vite::asset("resources/images/header-image.jpg") }}')">
-        <div class="mx-auto hidden md:container md:flex">
+        <div
+            class='{{ ($isResponsive ? " hidden md:container md:flex " : " mx-auto $unresponsiveSize flex ") . " mx-auto " }}'>
             <a href='{{ route("index") }}'>
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
             </a>
@@ -28,13 +35,13 @@
             </h1>
         </div>
         <div class="bg-accent text-accent-content w-full">
-            <div class="mx-auto md:container">
+            <div class='{{ ($isResponsive ? " md:container " : $unresponsiveSize) . " mx-auto " }}'>
                 <div class="drawer bg-accent text-accent-content">
                     <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
                     <div class="drawer-content flex flex-col">
                         <!-- Navbar -->
-                        <div class="navbar mx-auto md:container">
-                            <div class="flex-none md:hidden">
+                        <div class='{{ " navbar mx-auto  " . ($isResponsive ? " md:container " : $unresponsiveSize) }}'>
+                            <div class='{{ " flex-none " . ($isResponsive ? " md:hidden " : " hidden ") }}'>
                                 <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-circle btn-ghost">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         class="inline-block h-6 w-6 stroke-current">
@@ -43,11 +50,12 @@
                                     </svg>
                                 </label>
                             </div>
-                            <a href='{{ route("index") }}' class="flex-1 md:hidden">
+                            <a href='{{ route("index") }}'
+                                class='{{ "flex-1" . ($isResponsive ? " md:hidden " : " hidden ") }}'>
                                 <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white"
                                     primary="black" secondary="#FFFF00" />
                             </a>
-                            <div class="hidden flex-1 md:block">
+                            <div class='{{ "flex-1 " . ($isResponsive ? " hidden md:block " : " block ") }}'>
                                 <div class="flex grow justify-start px-2">
                                     <div class="flex items-stretch">
                                         @foreach ($navLinks as $item => $val)
@@ -79,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hidden flex-none md:block">
+                            <div class='{{ "flex-none " . ($isResponsive ? " hidden md:block " : " block ") }}'>
                                 <a href="/notifications" class="btn btn-ghost btn-circle">
                                     <div class="indicator">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
