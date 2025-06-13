@@ -3,7 +3,7 @@
 @section("title", $title)
 
 @section("header")
-    <x-layout.header :is-responsive="$isResponsive ?? false" />
+    <x-layout.header :is-responsive="$isResponsive ?? false" :unresponsive-size="$unresponsiveSize" />
 @endsection
 
 @section("page")

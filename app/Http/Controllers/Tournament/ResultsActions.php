@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 trait ResultsActions
 {
+    protected array $unresponsiveProps = [
+        'isResponsive' => false,
+        'unresponsiveSize' => ' w-[1024px] ',
+    ];
+
     /**
      * Save the specified nested resource in storage.
      */
@@ -30,7 +35,7 @@ trait ResultsActions
         return view('main', [
             'title' => 'результати турніру',
             'page' => 'components.pages.index',
-            'isResponsive' => true,
+            ...$this->unresponsiveProps,
         ]);
     }
 }
