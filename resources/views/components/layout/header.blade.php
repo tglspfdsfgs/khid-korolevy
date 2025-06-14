@@ -15,6 +15,12 @@
         "Галерея" => "/gallery",
         "Про нас" => "/about_us",
     ];
+
+    $account = [
+        "Вихід" => "/logout",
+        "Налаштування" => "/setting",
+        "Сповіщення" => "/notifications",
+    ];
 @endphp
 
 <div>
@@ -23,7 +29,7 @@
         style="background-image: url('{{ Vite::asset("resources/images/header-image.jpg") }}')">
 
         <div class='{{ " container flex flex-row justify-between" . ($isResponsive ? " mx-auto " : " lg:mx-auto ") }}'>
-            <a href='{{ route("index") }}'>
+            <a href='{{ $navLinks["Головна"] }}'>
                 <x-assets.logos.large background="white" pieces="black" primary="black" secondary="#FFFF00" />
             </a>
             <h1 class="text-base-content mb-5 ml-5 mt-5 grid flex-1 flex-col content-center">
@@ -49,7 +55,7 @@
                                 </svg>
                             </label>
                         </div>
-                        <a href='{{ route("index") }}' class='flex-1 md:hidden'>
+                        <a href='{{ $navLinks["Головна"] }}' class='flex-1 md:hidden'>
                             <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white"
                                 primary="black" secondary="#FFFF00" />
                         </a>
@@ -85,7 +91,7 @@
                             </div>
                         </div>
                         <div class="hidden flex-none md:block">
-                            <a href="/notifications" class="btn btn-ghost btn-circle">
+                            <a href='{{ $account["Сповіщення"] }}' class="btn btn-ghost btn-circle">
                                 <div class="indicator">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -105,7 +111,7 @@
                                 <ul tabindex="0"
                                     class="menu menu-sm dropdown-content text-base-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                                     <li>
-                                        <a href="/setting">
+                                        <a href='{{ $account["Налаштування"] }}'>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="currentColor" class="size-6">
                                                 <path
@@ -115,7 +121,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/logout">
+                                        <a href='{{ $account["Вихід"] }}'>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 fill="currentColor" class="size-6">
                                                 <path fill-rule="evenodd"
