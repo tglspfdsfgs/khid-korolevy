@@ -14,5 +14,5 @@
 @endsection
 
 @section("footer")
-    <x-layout.footer />
+    <x-layout.footer :is-responsive="$isResponsive ?? true" :unresponsive-size='$unresponsiveSize ?? " "' />
 @endsection

@@ -1,11 +1,9 @@
-@props([
-    "isResponsive" => false,
-])
+@props(["isResponsive", "unresponsiveSize"])
 
-<footer class="bg-base-300 text-base-300-content p-10">
-    <div> {{ $isResponsive ? "Responsive" : "NOT Responsive " }} </div>
+<footer class='{{ ($isResponsive ? " " : " $unresponsiveSize mx-auto") . " bg-base-300 text-base-300-content p-10 " }}'>
+
     <div
-        class="footer sm:footer-horizontal container mx-auto max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center">
+        class='{{ ($isResponsive ? " max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center " : " grid-cols-4 ") . "footer sm:footer-horizontal container mx-auto " }}'>
         <aside>
             <div>
                 <a href='{{ route("index") }}'>
