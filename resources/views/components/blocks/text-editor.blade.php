@@ -1,6 +1,7 @@
 @props(["isResponsive", "unresponsiveSize"])
 
-<div class='{{ ($isResponsive ? " w-full px-4 " : $unresponsiveSize) . " lg:card-side bg-base-100 static mb-8 mt-5  rounded-lg py-5 shadow-sm "}}'>
+<div
+    class='{{ ($isResponsive ? " w-full px-4 " : $unresponsiveSize) . " lg:card-side bg-base-100 static mb-8 mt-5  rounded-lg py-5 shadow-sm " }}'>
     <div class="border-b border-gray-200 px-3 py-2 dark:border-gray-600">
         <div class="flex flex-col items-start">
             <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse">

@@ -13,7 +13,7 @@
 @endsection
 
 @section("page")
-    <div class='{{ ($isResponsive ? " " : " $unresponsiveSize mx-auto") . " bg-bottom-right bg-size-[30%] bg-no-repeat "}}'
+    <div class='{{ ($isResponsive ? " " : " $unresponsiveSize mx-auto") . " bg-bottom-right bg-size-[30%] bg-no-repeat " }}'
         style="background-image: url('{{ Vite::asset("resources/images/corner-image.png") }}')">
         <x-dynamic-component :component="$page" :is-responsive="$isResponsive" :unresponsive-size='$unresponsiveSize' />
     </div>

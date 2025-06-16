@@ -22,7 +22,7 @@
                 <x-blocks.socials />
             </nav>
         </aside>
-        @if(!$isResponsive)
+        @if (!$isResponsive)
             <nav class="max-lg:hidden">
                 <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
                 <x-blocks.socials />
