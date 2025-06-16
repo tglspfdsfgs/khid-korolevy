@@ -3,7 +3,7 @@
 <footer class='{{ ($isResponsive ? " " : " $unresponsiveSize mx-auto") . " bg-base-300 text-base-300-content p-10 " }}'>
 
     <div
-        class='{{ ($isResponsive ? " max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center " : " grid-cols-4 ") . "footer sm:footer-horizontal container mx-auto " }}'>
+        class='{{ ($isResponsive ? " max-md:grid-cols-2 max-sm:grid-cols-1 max-sm:justify-items-center " : " grid-cols-3 ") . "footer sm:footer-horizontal container mx-auto " }}'>
         <aside>
             <div>
                 <a href='{{ route("index") }}'>
@@ -22,10 +22,12 @@
                 <x-blocks.socials />
             </nav>
         </aside>
-        <nav class="max-lg:hidden">
-            <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
-            <x-blocks.socials />
-        </nav>
+        @if(!$isResponsive)
+            <nav class="max-lg:hidden">
+                <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
+                <x-blocks.socials />
+            </nav>
+        @endif
         <nav class="max-lg:order-2">
             <h6 class="footer-title inline-block max-sm:mx-auto">Legal</h6>
             <a href="/terms_of_use" class="link link-hover">Умови використання</a>

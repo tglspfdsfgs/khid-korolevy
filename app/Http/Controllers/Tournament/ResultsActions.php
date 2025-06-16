@@ -16,7 +16,8 @@ trait ResultsActions
      */
     public function resultsSave(Request $request, string $id)
     {
-        dump('resultsSave');
+        dump('save');
+        dump($request->toArray());
     }
 
     /**
@@ -24,7 +25,11 @@ trait ResultsActions
      */
     public function resultsEdit(Request $request, string $id)
     {
-        dump('resultsEdit');
+        return view('main', [
+            'title' => 'результати турніру',
+            'page' => 'pages.tournaments.results-form',
+            ...$this->unresponsiveProps,
+        ]);
     }
 
     /**
@@ -34,7 +39,7 @@ trait ResultsActions
     {
         return view('main', [
             'title' => 'результати турніру',
-            'page' => 'components.pages.index',
+            'page' => 'pages.tournaments.results',
             ...$this->unresponsiveProps,
         ]);
     }
