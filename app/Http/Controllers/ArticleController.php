@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         return view('main', [
             'title' => 'новини і статті',
-            'page' => 'components.pages.articles.index',
+            'page' => 'pages.articles.index',
         ]);
     }
 
@@ -32,7 +32,7 @@ class ArticleController extends Controller
     {
         return view('main', [
             'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
-            'page' => 'components.pages.articles.page',
+            'page' => 'pages.articles.page',
             'content' => '',
         ]);
     }
@@ -44,7 +44,7 @@ class ArticleController extends Controller
     {
         return view('main', [
             'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
-            'page' => 'components.pages.articles.form',
+            'page' => 'pages.articles.form',
             'content' => '',
         ]);
     }

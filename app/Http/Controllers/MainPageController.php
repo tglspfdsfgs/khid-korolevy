@@ -13,7 +13,7 @@ class MainPageController extends Controller
     {
         return view('main', [
             'title' => 'головна',
-            'page' => 'components.pages.index',
+            'page' => 'pages.index',
         ]);
     }
 }
