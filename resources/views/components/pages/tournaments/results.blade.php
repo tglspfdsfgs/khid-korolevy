@@ -12,23 +12,25 @@
 @endphp
 <main class='{{ ($isResponsive ? " container lg:flex " : " $unresponsiveSize flex ") . " mx-auto mt-7 lg:flex " }}'>
     <section class="grow-3">
-        <div class="format lg:card-side bg-base-100 mb-25 static mt-5 w-full rounded-lg px-4 py-5 shadow-sm">
-            <p>
-                <span class="badge badge-lg badge-primary font-bold">
-                    Дата:
-                    <time
-                        datetime='{{ $data["date"] }}'>{{ \Carbon\Carbon::parse($data["date"])->translatedFormat("d.m.Y") }}</time>
-                </span>
-                <span class="badge badge-lg font-bold">
-                    Тип турніра:
-                    <span class="font-normal">{{ $data["tournamentType"]->option_title() }}</span>
-                </span>
-            </p>
-            <p class="format">
-                {!! $data["content"] !!}
-            </p>
-
-            <p>
+        <div
+            class="format lg:card-side bg-base-100 mb-25 static mt-5 flex min-h-96 w-full !flex-col rounded-lg px-4 py-5 shadow-sm">
+            <div>
+                <p>
+                    <span class="badge badge-lg badge-primary font-bold">
+                        Дата:
+                        <time
+                            datetime='{{ $data["date"] }}'>{{ \Carbon\Carbon::parse($data["date"])->translatedFormat("d.m.Y") }}</time>
+                    </span>
+                    <span class="badge badge-lg font-bold">
+                        Тип турніра:
+                        <span class="font-normal">{{ $data["tournamentType"]->option_title() }}</span>
+                    </span>
+                </p>
+                <p class="format flex-grow">
+                    {!! $data["content"] !!}
+                </p>
+            </div>
+            <p class="mr-auto mt-auto block">
                 @if ($data["linkToGallery"])
                     <a href='{{ $data["linkToGallery"] }}'
                         class="btn btn-sm btn-outline btn-success text-success hover:text-success-content no-underline">
@@ -41,6 +43,7 @@
                     </a>
                 @endif
             </p>
+
         </div>
         <x-blocks.submit-buttons :state='\App\State::published' :is-nested-resource="true" :editor-link='"/tournament/" . $data["id"] . "/results/edit"' />
     </section>
