@@ -64,7 +64,7 @@ window.addEventListener("editor-ready", function () {
                         default: null,
                         parseHTML: (element) => element.getAttribute("class"),
                         renderHTML: (attributes) => ({
-                            class: attributes.class, // Передаём класс в рендер
+                            class: attributes.class, // Pass `class` attribute to render
                         }),
                     },
                 };
