@@ -14,7 +14,7 @@
 <main class="container mx-auto mt-7 lg:flex">
     <section class="grow-3 lg:mr-10">
         <div
-            class="format lg:card-side bg-base-100 static mb-5 mt-5 flex min-h-96 w-full !flex-col rounded-lg px-4 py-5 shadow-sm">
+            class="format lg:card-side bg-base-100 mb-25 static mt-5 flex min-h-96 w-full !flex-col rounded-lg px-4 py-5 shadow-sm">
             <div>
                 <p>
                     <strong x-data x-show='isNotAnnouncementDay("{{ $data["date"] }}")'
