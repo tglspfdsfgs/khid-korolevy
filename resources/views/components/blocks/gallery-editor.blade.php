@@ -253,7 +253,7 @@
                                         <label for="URL"
                                             class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">URL
                                             картинки</label>
-                                        <input type="url" name="url" id="IMAGE-URL"
+                                        <input name="url" id="IMAGE-URL"
                                             class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400"
                                             value="https://placehold.co/600x400" required />
                                     </div>
@@ -1539,7 +1539,7 @@
         <div class="rounded-b-lg bg-white px-4 py-2 dark:bg-gray-800">
             <label for="wysiwyg" class="sr-only">Publish post</label>
             <div id="wysiwyg"
-                class="block w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400">
+                class="block min-h-96 w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400">
             </div>
         </div>
     </div>
