@@ -2,6 +2,11 @@
 
 <div
     class='{{ ($isResponsive ? " w-full px-4 " : $unresponsiveSize) . " lg:card-side bg-base-100 static mb-8 mt-5  rounded-lg py-5 shadow-sm " }}'>
+
+    <!-- tailwind savelists -->
+    <span
+        class="my-0 hidden aspect-video md:float-right md:float-left md:mx-auto md:ml-6 md:ml-auto md:mr-6 md:mr-auto md:w-[10%] md:w-[100%] md:w-[15%] md:w-[20%] md:w-[25%] md:w-[30%] md:w-[35%] md:w-[40%] md:w-[45%] md:w-[5%] md:w-[50%] md:w-[55%] md:w-[60%] md:w-[65%] md:w-[70%] md:w-[75%] md:w-[80%] md:w-[85%] md:w-[90%] md:w-[95%]"></span>
+
     <div class="border-b border-gray-200 px-3 py-2 dark:border-gray-600">
         <div class="flex flex-col items-start">
             <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse">

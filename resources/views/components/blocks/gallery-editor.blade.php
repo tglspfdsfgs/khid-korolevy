@@ -2,6 +2,11 @@
 
 <div
     class='{{ ($isResponsive ? " w-full px-4 " : $unresponsiveSize) . " lg:card-side bg-base-100 static mb-8 mt-5  rounded-lg py-5 shadow-sm " }}'>
+
+    <!-- tailwind savelists -->
+    <span
+        class="my-0 hidden aspect-video md:float-right md:float-left md:mx-auto md:ml-6 md:ml-auto md:mr-6 md:mr-auto md:w-[10%] md:w-[100%] md:w-[15%] md:w-[20%] md:w-[25%] md:w-[30%] md:w-[35%] md:w-[40%] md:w-[45%] md:w-[5%] md:w-[50%] md:w-[55%] md:w-[60%] md:w-[65%] md:w-[70%] md:w-[75%] md:w-[80%] md:w-[85%] md:w-[90%] md:w-[95%]"></span>
+
     <div class="border-b border-gray-200 px-3 py-2 dark:border-gray-600">
         <div class="flex flex-col items-start">
             <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse">
@@ -701,6 +706,16 @@
 
                 {{-- GALLERY MODAL ↑↑↑ --}}
 
+                <button id="addVideoButton" type="button" data-tooltip-target="tooltip-video"
+                    class="cursor-pointer rounded-sm p-1.5 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
+                    <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M14 7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7Zm2 9.387 4.684 1.562A1 1 0 0 0 22 17V7a1 1 0 0 0-1.316-.949L16 7.613v8.774Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span class="sr-only">Add video</span>
+                </button>
                 <div id="tooltip-video" role="tooltip"
                     class="shadow-xs tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 transition-opacity duration-300 dark:bg-gray-700">
                     Додати відео (youtube)
@@ -1182,8 +1197,8 @@
                 <div class="flex flex-wrap items-center space-x-1 rtl:space-x-reverse">
                     <button id="addTableButton" type="button" data-tooltip-target="tooltip-table"
                         class="cursor-pointer rounded-sm p-1.5 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white">
-                        <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2"
                                 d="M3 15v3c0 .5523.44772 1 1 1h10.5M3 15v-4m0 4h11M3 11V6c0-.55228.44772-1 1-1h16c.5523 0 1 .44772 1 1v5M3 11h18m0 0v1M8 11v8m4-8v8m4-8v2m1 4h2m0 0h2m-2 0v2m0-2v-2" />
