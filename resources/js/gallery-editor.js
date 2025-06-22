@@ -1,4 +1,4 @@
-import { Editor, Node } from "@tiptap/core";
+import { Editor, mergeAttributes, Node } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import Highlight from "@tiptap/extension-highlight";
 import Underline from "@tiptap/extension-underline";
@@ -20,20 +20,30 @@ window.addEventListener("editor-ready", function () {
     const initialContent =
         document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
 
+    /*    const initialContent = `
+        <p>
+          This is still the text editor you’re used to, but enriched with node views.
+        </p>
+        <node-view></node-view>
+        <p>
+          Did you see that? That’s a JavaScript node view. We are really living in the future.
+        </p>
+    `;*/
+
     if (document.getElementById("wysiwyg")) {
-        const CustomNode = Node.create({
+        /*const CustomNode = Node.create({
             // configuration …
 
             addNodeView() {
                 return ({ editor, node, getPos, HTMLAttributes, decorations, extension }) => {
-                    /*const dom = document.createElement('div')
-                    dom.innerHTML = 'Hello, I’m a node view!'*/
+                    /!*const dom = document.createElement('div')
+                    dom.innerHTML = 'Hello, I’m a node view!'*!/
 
-                    /**
+                    /!**
                      * You can even update node attributes from your node view,
                      * with the help of the getPos prop passed to your render function.
                      * Dispatch a new transaction with an object of the updated attributes:
-                     * */
+                     * *!/
                     const { view } = editor;
 
                     // Create a button …
@@ -54,13 +64,13 @@ window.addEventListener("editor-ready", function () {
                             editor.commands.focus();
                         }
                     });
-                    /** ^^^ ^^ */
+                    /!** ^^^ ^^ *!/
 
-                    /**
+                    /!**
                      * To add editable content to your node view,
                      * you need to pass a contentDOM, a container element for the content.
                      * Here is a simplified version of a node view with non-editable and editable text content:
-                     * */
+                     * *!/
                     const dom = document.createElement("div");
                     dom.innerHTML = "Hello, I’m a node view!";
 
@@ -75,18 +85,18 @@ window.addEventListener("editor-ready", function () {
                     // Append all elements to the node view container
                     dom.append(label, content);
 
-                    /*return {
+                    /!*return {
                         dom,
-                    }*/
+                    }*!/
                     return ({ node }) => {
-                        /**
+                        /!**
                          * The editor passes the node prop.
                          * This one enables you to access node attributes in your node view.
                          * Let’s say you have added an attribute named count to your node extension.
                          * You could access the attribute like this:
-                         * */
+                         * *!/
                         console.log(node.attrs.count);
-                        /** ^^^ ^^ */
+                        /!** ^^^ ^^ *!/
 
                         return {
                             // Pass the node view container …
@@ -97,7 +107,86 @@ window.addEventListener("editor-ready", function () {
                     };
                 };
             },
-        });
+        });*/
+
+        /*const CounterNode = Node.create({
+            name: 'nodeView',
+
+            group: 'block',
+
+            atom: true,
+
+            addAttributes() {
+                return {
+                    count: {
+                        default: 0,
+                    },
+                }
+            },
+
+            parseHTML() {
+                return [
+                    {
+                        tag: 'node-view',
+                    },
+                ]
+            },
+
+            renderHTML({ HTMLAttributes }) {
+                return ['node-view', mergeAttributes(HTMLAttributes)]
+            },
+
+            addNodeView() {
+                return ({ editor, node, getPos }) => {
+                    const { view } = editor
+
+                    // Markup
+                    /!*
+                      <div class="node-view">
+                        <span class="label">Node view</span>
+
+                        <div class="content">
+                          <button>
+                            This button has been clicked ${node.attrs.count} times.
+                          </button>
+                        </div>
+                      </div>
+                    *!/
+
+                    const dom = document.createElement('div')
+
+                    dom.classList.add('node-view')
+
+                    const label = document.createElement('label')
+
+                    label.innerHTML = 'Node view'
+
+                    const content = document.createElement('div')
+
+                    content.classList.add('content')
+
+                    const button = document.createElement('button')
+
+                    button.innerHTML = `This button has been clicked ${node.attrs.count} times.`
+                    button.addEventListener('click', () => {
+                        if (typeof getPos === 'function') {
+                            view.dispatch(view.state.tr.setNodeMarkup(getPos(), undefined, {
+                                count: node.attrs.count + 1,
+                            }))
+
+                            editor.commands.focus()
+                        }
+                    })
+                    content.append(button)
+
+                    dom.append(label, content)
+
+                    return {
+                        dom,
+                    }
+                }
+            },
+        })*/
 
         const FontSizeTextStyle = TextStyle.extend({
             addAttributes() {
@@ -182,7 +271,6 @@ window.addEventListener("editor-ready", function () {
                         bold: false,
                     },
                 }),
-                CustomNode,
                 CustomBold,
                 TextStyle,
                 Color,
@@ -215,7 +303,7 @@ window.addEventListener("editor-ready", function () {
             content: initialContent,
             editorProps: {
                 attributes: {
-                    class: "format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
+                    class: "flex flex-wrap format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
                 },
             },
         });
@@ -330,52 +418,24 @@ window.addEventListener("editor-ready", function () {
         });
 
         //add gallery:
-        const advancedGalleryModal = FlowbiteInstances.getInstance("Modal", "advanced-gallery-modal");
-        document.getElementById("advancedGalleryForm").addEventListener("submit", (e) => {
+        const advancedVideoModal = FlowbiteInstances.getInstance("Modal", "add-gallery");
+
+        document.getElementById("addGalleryForm").addEventListener("submit", (e) => {
             e.preventDefault();
 
-            /*const imageUrl = document.getElementById("IMAGE-URL").value;
-            const size = document.getElementById("rel-sizes-input").value;
-            const imagePlacement = document.querySelector('input[name="img-placement"]:checked').id;
+            const videoUrl = document.getElementById("URL").value;
+            const videoWidth = document.getElementById("width").value || 0;
+            const videoHeight = document.getElementById("height").value || 0;
 
-            let className = `!my-0 w-full h-auto md:w-[${size}%]`;
-
-            switch (imagePlacement) {
-                case "img-left": {
-                    className += " md:mr-auto";
-                    break;
-                }
-                case "img-right": {
-                    className += " md:ml-auto";
-                    break;
-                }
-                case "img-center": {
-                    className += " md:mx-auto";
-                    break;
-                }
-                case "img-left-float": {
-                    className += " md:float-left md:mr-6";
-                    break;
-                }
-                case "img-right-float": {
-                    className += " md:float-right md:ml-6";
-                    break;
-                }
+            if (videoUrl) {
+                window.tiptapEditor.commands.setYoutubeVideo({
+                    src: videoUrl,
+                    width: videoWidth ? videoWidth : 640,
+                    height: videoHeight ? videoHeight : 480,
+                });
+                document.getElementById("addGalleryForm").reset();
+                advancedVideoModal.hide();
             }
-
-            if (imageUrl) {
-                window.tiptapEditor
-                    .chain()
-                    .focus()
-                    .setImage({
-                        src: imageUrl,
-                        class: className,
-                    })
-                    .run();
-
-                document.getElementById("advancedGalleryForm").reset();
-                advancedGalleryModal.hide();
-            }*/
         });
 
         //undo

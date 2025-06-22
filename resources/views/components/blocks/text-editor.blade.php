@@ -1291,6 +1291,7 @@
             <label for="wysiwyg" class="sr-only">Publish post</label>
             <div id="wysiwyg"
                 class="block min-h-96 w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400">
+                {{-- JS gonna add editor on 'editor-ready' event --}}
             </div>
         </div>
     </div>
