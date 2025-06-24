@@ -1290,7 +1290,7 @@
         <div class="rounded-b-lg bg-white px-4 py-2 dark:bg-gray-800">
             <label for="wysiwyg" class="sr-only">Publish post</label>
             <div id="wysiwyg"
-                class="block min-h-96 w-full border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400">
+                class="block min-h-96 w-full overflow-hidden border-0 bg-white px-0 text-sm text-gray-800 focus:ring-0 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400">
                 {{-- JS gonna add editor on 'editor-ready' event --}}
             </div>
         </div>
