@@ -236,6 +236,7 @@ window.addEventListener("editor-ready", function () {
             }
 
             if (imageUrl) {
+                const endPos = window.tiptapEditor.state.doc.content.size;
                 window.tiptapEditor
                     .chain()
                     .focus()
@@ -243,6 +244,7 @@ window.addEventListener("editor-ready", function () {
                         src: imageUrl,
                         class: className,
                     })
+                    .setTextSelection(endPos)
                     .run();
 
                 document.getElementById("advancedImageForm").reset();
@@ -278,11 +280,18 @@ window.addEventListener("editor-ready", function () {
                 "https://www.youtube.com/watch?v=jNQXAC9IVRw"
             );
             if (url) {
-                window.tiptapEditor.commands.setYoutubeVideo({
-                    src: url,
-                    width: 640,
-                    height: 480,
-                });
+                const endPos = window.tiptapEditor.state.doc.content.size;
+
+                window.tiptapEditor
+                    .chain()
+                    .focus()
+                    .setYoutubeVideo({
+                        src: url,
+                        width: 640,
+                        height: 480,
+                    })
+                    .setTextSelection(endPos) // курсор в конец
+                    .run();
             }
         });
 
