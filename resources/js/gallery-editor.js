@@ -20,174 +20,7 @@ window.addEventListener("editor-ready", function () {
     const initialContent =
         document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
 
-    /*    const initialContent = `
-        <p>
-          This is still the text editor you’re used to, but enriched with node views.
-        </p>
-        <node-view></node-view>
-        <p>
-          Did you see that? That’s a JavaScript node view. We are really living in the future.
-        </p>
-    `;*/
-
     if (document.getElementById("wysiwyg")) {
-        /*const CustomNode = Node.create({
-            // configuration …
-
-            addNodeView() {
-                return ({ editor, node, getPos, HTMLAttributes, decorations, extension }) => {
-                    /!*const dom = document.createElement('div')
-                    dom.innerHTML = 'Hello, I’m a node view!'*!/
-
-                    /!**
-                     * You can even update node attributes from your node view,
-                     * with the help of the getPos prop passed to your render function.
-                     * Dispatch a new transaction with an object of the updated attributes:
-                     * *!/
-                    const { view } = editor;
-
-                    // Create a button …
-                    const button = document.createElement("button");
-                    button.innerHTML = `This button has been clicked ${node.attrs.count} times.`;
-
-                    // … and when it’s clicked …
-                    button.addEventListener("click", () => {
-                        if (typeof getPos === "function") {
-                            // … dispatch a transaction, for the current position in the document …
-                            view.dispatch(
-                                view.state.tr.setNodeMarkup(getPos(), undefined, {
-                                    count: node.attrs.count + 1,
-                                })
-                            );
-
-                            // … and set the focus back to the editor.
-                            editor.commands.focus();
-                        }
-                    });
-                    /!** ^^^ ^^ *!/
-
-                    /!**
-                     * To add editable content to your node view,
-                     * you need to pass a contentDOM, a container element for the content.
-                     * Here is a simplified version of a node view with non-editable and editable text content:
-                     * *!/
-                    const dom = document.createElement("div");
-                    dom.innerHTML = "Hello, I’m a node view!";
-
-                    // Give other elements containing text `contentEditable = false`
-                    const label = document.createElement("span");
-                    label.innerHTML = "CustomNode view";
-                    label.contentEditable = false;
-
-                    // Create a container for the content
-                    const content = document.createElement("div");
-
-                    // Append all elements to the node view container
-                    dom.append(label, content);
-
-                    /!*return {
-                        dom,
-                    }*!/
-                    return ({ node }) => {
-                        /!**
-                         * The editor passes the node prop.
-                         * This one enables you to access node attributes in your node view.
-                         * Let’s say you have added an attribute named count to your node extension.
-                         * You could access the attribute like this:
-                         * *!/
-                        console.log(node.attrs.count);
-                        /!** ^^^ ^^ *!/
-
-                        return {
-                            // Pass the node view container …
-                            dom,
-                            // … and the content container:
-                            contentDOM: content,
-                        };
-                    };
-                };
-            },
-        });*/
-
-        /*const CounterNode = Node.create({
-            name: 'nodeView',
-
-            group: 'block',
-
-            atom: true,
-
-            addAttributes() {
-                return {
-                    count: {
-                        default: 0,
-                    },
-                }
-            },
-
-            parseHTML() {
-                return [
-                    {
-                        tag: 'node-view',
-                    },
-                ]
-            },
-
-            renderHTML({ HTMLAttributes }) {
-                return ['node-view', mergeAttributes(HTMLAttributes)]
-            },
-
-            addNodeView() {
-                return ({ editor, node, getPos }) => {
-                    const { view } = editor
-
-                    // Markup
-                    /!*
-                      <div class="node-view">
-                        <span class="label">Node view</span>
-
-                        <div class="content">
-                          <button>
-                            This button has been clicked ${node.attrs.count} times.
-                          </button>
-                        </div>
-                      </div>
-                    *!/
-
-                    const dom = document.createElement('div')
-
-                    dom.classList.add('node-view')
-
-                    const label = document.createElement('label')
-
-                    label.innerHTML = 'Node view'
-
-                    const content = document.createElement('div')
-
-                    content.classList.add('content')
-
-                    const button = document.createElement('button')
-
-                    button.innerHTML = `This button has been clicked ${node.attrs.count} times.`
-                    button.addEventListener('click', () => {
-                        if (typeof getPos === 'function') {
-                            view.dispatch(view.state.tr.setNodeMarkup(getPos(), undefined, {
-                                count: node.attrs.count + 1,
-                            }))
-
-                            editor.commands.focus()
-                        }
-                    })
-                    content.append(button)
-
-                    dom.append(label, content)
-
-                    return {
-                        dom,
-                    }
-                }
-            },
-        })*/
-
         const FontSizeTextStyle = TextStyle.extend({
             addAttributes() {
                 return {
@@ -303,7 +136,8 @@ window.addEventListener("editor-ready", function () {
             content: initialContent,
             editorProps: {
                 attributes: {
-                    class: "flex flex-wrap format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
+                    /*class: "flex flex-wrap format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",*/
+                    class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center format p-1 lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none ",
                 },
             },
         });
@@ -377,35 +211,15 @@ window.addEventListener("editor-ready", function () {
             const size = document.getElementById("rel-sizes-input").value;
             const imagePlacement = document.querySelector('input[name="img-placement"]:checked').id;
 
-            let className = `!my-0 w-full h-auto md:w-[${size}%]`;
-
-            switch (imagePlacement) {
-                case "img-left": {
-                    className += " md:mr-auto";
-                    break;
-                }
-                case "img-right": {
-                    className += " md:ml-auto";
-                    break;
-                }
-                case "img-center": {
-                    className += " md:mx-auto";
-                    break;
-                }
-                case "img-left-float": {
-                    className += " md:float-left md:mr-6";
-                    break;
-                }
-                case "img-right-float": {
-                    className += " md:float-right md:ml-6";
-                    break;
-                }
-            }
+            let className = `rounded-lg !m-0 mx-auto`;
 
             if (imageUrl) {
+                const endPos = window.tiptapEditor.state.doc.content.size;
+
                 window.tiptapEditor
                     .chain()
                     .focus()
+                    .setTextSelection(endPos)
                     .setImage({
                         src: imageUrl,
                         class: className,
@@ -428,11 +242,19 @@ window.addEventListener("editor-ready", function () {
             const videoHeight = document.getElementById("height").value || 0;
 
             if (videoUrl) {
-                window.tiptapEditor.commands.setYoutubeVideo({
-                    src: videoUrl,
-                    width: videoWidth ? videoWidth : 640,
-                    height: videoHeight ? videoHeight : 480,
-                });
+                const endPos = window.tiptapEditor.state.doc.content.size;
+
+                window.tiptapEditor
+                    .chain()
+                    .focus()
+                    .setYoutubeVideo({
+                        src: videoUrl,
+                        width: videoWidth ? videoWidth : 640,
+                        height: videoHeight ? videoHeight : 480,
+                    })
+                    .setTextSelection(endPos)
+                    .run();
+
                 document.getElementById("addGalleryForm").reset();
                 advancedVideoModal.hide();
             }
@@ -466,11 +288,18 @@ window.addEventListener("editor-ready", function () {
                 "https://www.youtube.com/watch?v=jNQXAC9IVRw"
             );
             if (url) {
-                window.tiptapEditor.commands.setYoutubeVideo({
-                    src: url,
-                    width: 640,
-                    height: 480,
-                });
+                const endPos = window.tiptapEditor.state.doc.content.size;
+
+                window.tiptapEditor
+                    .chain()
+                    .focus()
+                    .setYoutubeVideo({
+                        src: url,
+                        width: 640,
+                        height: 480,
+                    })
+                    .setTextSelection(endPos) // курсор в конец
+                    .run();
             }
         });
 
