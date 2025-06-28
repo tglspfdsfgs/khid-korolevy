@@ -136,7 +136,7 @@ window.addEventListener("editor-ready", function () {
             content: initialContent,
             editorProps: {
                 attributes: {
-                    class: "format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
+                    class: "p-1 format lg:format-lg dark:format-invert focus:outline-none format-blue max-w-none",
                 },
             },
         });
