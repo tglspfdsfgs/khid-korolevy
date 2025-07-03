@@ -12,7 +12,7 @@
             Type::tabletop->nav_title() => route("tournament.index") . "?type=" . Type::tabletop->value,
             Type::sports->nav_title() => route("tournament.index") . "?type=" . Type::sports->value,
         ],
-        "Галерея" => "/gallery",
+        "Галерея" => route("gallery.index"),
         "Про нас" => "/about_us",
     ];
 

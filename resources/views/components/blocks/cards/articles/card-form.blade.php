@@ -81,8 +81,8 @@
         </div>
 
         <div class="card-actions justify-end">
-            <a href="{{ "/gallery/" . $props["id"] }}" class="btn btn-sm btn-success">
-                Дивитися галерею
+            <a href="{{ "/article/" . $props["id"] }}" class="btn btn-sm btn-info">
+                Читати
                 <x-assets.icons.button-icons.navigate />
             </a>
         </div>
