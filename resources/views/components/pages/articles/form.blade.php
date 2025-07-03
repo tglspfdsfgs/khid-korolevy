@@ -16,8 +16,7 @@
 
         <section class="grow-3 lg:mr-10">
 
-            {{-- <x-blocks.cards.articles.card-form :props='Arr::except($data, ["content"])' /> --}}
-            <x-blocks.cards.gallery-card />
+            <x-blocks.cards.articles.card-form :props='Arr::except($data, ["content"])' />
             {{-- <x-blocks.text-editor :is-responsive="$isResponsive" :unresponsive-size='$unresponsiveSize' /> --}}
             <x-blocks.gallery-editor :is-responsive="$isResponsive" :unresponsive-size='$unresponsiveSize' />
 
