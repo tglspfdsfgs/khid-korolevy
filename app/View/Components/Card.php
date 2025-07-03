@@ -14,6 +14,7 @@ class Card extends Component
     private array $typeViewMap = [
         'article' => 'components.blocks.cards.articles.card',
         'tournament' => 'components.blocks.cards.tournaments.card',
+        'gallery' => 'components.blocks.cards.gallery.card',
     ];
 
     /**
