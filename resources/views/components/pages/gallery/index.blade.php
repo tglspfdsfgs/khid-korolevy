@@ -18,6 +18,24 @@
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => \Carbon\Carbon::now()->toDateString(),
         ],
+        [
+            "type" => "gallery",
+            "id" => 1,
+            "state" => \App\State::published,
+            "title" => '📸 Турнір у кадрі: "Королівська битва-2025"',
+            "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
+            "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
+            "date" => \Carbon\Carbon::now()->toDateString(),
+        ],
+        [
+            "type" => "gallery",
+            "id" => 1,
+            "state" => \App\State::published,
+            "title" => '📸 Турнір у кадрі: "Королівська битва-2025"',
+            "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
+            "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
+            "date" => \Carbon\Carbon::now()->toDateString(),
+        ],
     ];
 @endphp
 

@@ -124,7 +124,7 @@
 
                 </div>
                 <div class="mt-5">
-                    <h3 class="group-hover:text-base-content/50 text-center text-lg font-semibold">Всебічний розвиток
+                    <h3 class="group-hover:text-base-content/50 text-center text-lg font-semibold">Розумаха
                     </h3>
                     <p class="mt-1 text-center">Всебічний розвиток вас та вашої дитини.</p>
                     <span
