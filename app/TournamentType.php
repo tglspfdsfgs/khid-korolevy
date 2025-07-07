@@ -9,6 +9,8 @@ namespace App;
  * */
 enum TournamentType: string
 {
+    use GalleryTypeTrait;
+
     case chess = 'chess';
     case tabletop = 'tabletop';
     case sports = 'sports';

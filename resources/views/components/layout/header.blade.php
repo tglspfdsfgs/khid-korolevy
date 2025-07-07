@@ -12,7 +12,14 @@
             Type::tabletop->nav_title() => route("tournament.index") . "?type=" . Type::tabletop->value,
             Type::sports->nav_title() => route("tournament.index") . "?type=" . Type::sports->value,
         ],
-        "Галерея" => route("gallery.index"),
+        "Галерея" => [
+            "ВСЯ ГАЛЕРЕЯ" => route("gallery.index") . "?type=all",
+            Type::chess->gallery_nav_title("club") => route("gallery.index") . "?type=" . Type::CLUB,
+            Type::chess->gallery_nav_title("chess") => route("gallery.index") . "?type=" . Type::CHESS,
+            Type::tabletop->gallery_nav_title("tabletop") => route("gallery.index") . "?type=" . Type::TABLETOP,
+            Type::sports->gallery_nav_title("sports") => route("gallery.index") . "?type=" . Type::SPORTS,
+            Type::chess->gallery_nav_title("comp_dev") => route("gallery.index") . "?type=" . Type::COMP_DEV,
+        ],
         "Про нас" => "/about_us",
     ];
 
