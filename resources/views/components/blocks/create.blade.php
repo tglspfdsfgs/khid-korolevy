@@ -8,6 +8,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
         </svg>
 
-        <h2 class="text-base-content/75 mx-auto block w-[280px] text-lg font-bold">{{ $text }}</h2>
+        <h2 class="text-base-content/75 mx-auto block w-[300px] text-lg font-bold">{{ $text }}</h2>
     </div>
 </a>
