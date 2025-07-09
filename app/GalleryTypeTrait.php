@@ -13,15 +13,22 @@ trait GalleryTypeTrait
     /**
      * @throws \Exception
      */
-    public static function gallery_nav_title(string $title): string
+    public static function gallery_title(string $title): string
     {
         return match ($title) {
             self::CLUB => '🏛️ Клуб',
             self::CHESS => '♟️ Шахи',
-            self::TABLETOP => '🎲 Настільні',
-            self::SPORTS => '⚽ Спортивні',
+            self::TABLETOP => '🎲 Настільні ігри',
+            self::SPORTS => '⚽ Спорт',
             self::COMP_DEV => '💡 Розумаха',
             default => throw new \Exception('No gallery navigator type found'),
         };
+    }
+
+    public static function getAllGalleryTypes(): array
+    {
+        $ref = new \ReflectionClass(GalleryTypeTrait::class);
+
+        return $ref->getConstants();
     }
 }

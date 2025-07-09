@@ -64,6 +64,10 @@
             </span>
         </i>
 
+        <b class="badge badge-sm tooltip" data-tip="Відобразиться після публікації">
+            [ 📦 Тип галереї ]
+        </b>
+
         <div x-show="editing.date" class="join w-65">
             <input type="date" class="input input-sm join-item" @blur="editing.date = false"
                 @keydown.enter="editing.date = false" x-model="date" />

@@ -14,11 +14,11 @@
         ],
         "Галерея" => [
             "ВСЯ ГАЛЕРЕЯ" => route("gallery.index") . "?type=all",
-            Type::chess->gallery_nav_title("club") => route("gallery.index") . "?type=" . Type::CLUB,
-            Type::chess->gallery_nav_title("chess") => route("gallery.index") . "?type=" . Type::CHESS,
-            Type::tabletop->gallery_nav_title("tabletop") => route("gallery.index") . "?type=" . Type::TABLETOP,
-            Type::sports->gallery_nav_title("sports") => route("gallery.index") . "?type=" . Type::SPORTS,
-            Type::chess->gallery_nav_title("comp_dev") => route("gallery.index") . "?type=" . Type::COMP_DEV,
+            Type::chess->gallery_title("club") => route("gallery.index") . "?type=" . Type::CLUB,
+            Type::chess->gallery_title("chess") => route("gallery.index") . "?type=" . Type::CHESS,
+            Type::tabletop->gallery_title("tabletop") => route("gallery.index") . "?type=" . Type::TABLETOP,
+            Type::sports->gallery_title("sports") => route("gallery.index") . "?type=" . Type::SPORTS,
+            Type::chess->gallery_title("comp_dev") => route("gallery.index") . "?type=" . Type::COMP_DEV,
         ],
         "Про нас" => "/about_us",
     ];
