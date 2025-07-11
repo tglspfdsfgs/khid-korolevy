@@ -22,12 +22,10 @@
                 <x-blocks.socials />
             </nav>
         </aside>
-        @if (!$isResponsive)
-            <nav class="max-lg:hidden">
-                <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
-                <x-blocks.socials />
-            </nav>
-        @endif
+        <nav class="max-lg:hidden">
+            <h6 class="footer-title">СОЦІАЛЬНІ МЕРЕЖІ</h6>
+            <x-blocks.socials />
+        </nav>
         <nav class="max-lg:order-2">
             <h6 class="footer-title inline-block max-sm:mx-auto">Legal</h6>
             <a href="/terms_of_use" class="link link-hover">Умови використання</a>
