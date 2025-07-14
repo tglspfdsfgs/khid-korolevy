@@ -6,7 +6,7 @@
         "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
         "imageSrc" => "",
         "date" => \Carbon\Carbon::now(),
-        "tournamentType" => \App\TournamentType::COMP_DEV,
+        "galleryType" => \App\TournamentType::COMP_DEV,
         "content" =>
             '<img src="https://placehold.co/1200x1200" class="!m-0 rounded-lg"><img src="https://placehold.co/600x400" class="!m-0 rounded-lg"><img src="https://placehold.co/2400x2400" class="!m-0 rounded-lg"><img src="https://placehold.co/100x400" class="!m-0 rounded-lg"><img src="https://placehold.co/40x40" class="!m-0 mx-auto rounded-lg"><img src="https://placehold.co/400x100" class="!m-0 mx-auto rounded-lg">',
     ];
@@ -18,14 +18,12 @@
         <section class="grow-3 lg:mr-10">
 
             <x-blocks.cards.gallery.card-form :props='Arr::except($data, ["content"])' />
-            {{-- @dump( \App\TournamentType::getAllGalleryTypes())
-            @dump( $data["tournamentType"] )
-            @dump( Arr::except($data, ["content"])) --}}
+
             <fieldset class="fieldset ml-5">
                 <legend class="fieldset-legend">Тип галереї:</legend>
-                <select x-model="tournamentType" class="select w-40">
+                <select x-model="galleryType" class="select w-40">
                     @foreach (\App\TournamentType::getAllGalleryTypes() as $key => $value)
-                        <option value="{{ $value }}" @selected($data["tournamentType"] == $value)>
+                        <option value="{{ $value }}" @selected($data["galleryType"] == $value)>
                             {{ \App\TournamentType::gallery_title($value) }}
                         </option>
                     @endforeach

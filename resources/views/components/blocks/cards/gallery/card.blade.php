@@ -22,6 +22,11 @@
             <time class="font-bold"
                 datetime="{{ $date }}">{{ \Carbon\Carbon::parse($date)->translatedFormat("d.m.Y") }}</time>
         </i>
+
+        <b class="badge badge-sm">
+            [ {{ \App\TournamentType::gallery_title($galleryType) }} ]
+        </b>
+
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
             <a href='{{ "/gallery/" . $id }}' class="btn btn-sm btn-success">
