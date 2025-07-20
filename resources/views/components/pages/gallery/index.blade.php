@@ -1,6 +1,7 @@
 @php
-    use \App\State as State;
-    use \Carbon\Carbon as Carbon;
+    use App\State as State;
+    use Carbon\Carbon as Carbon;
+    use App\TournamentType as Type;
 
     $cards = [
         [
@@ -11,7 +12,7 @@
             "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => Carbon::now()->toDateString(),
-            "galleryType" => \App\TournamentType::TABLETOP,
+            "galleryType" => Type::TABLETOP,
         ],
         [
             "type" => "gallery",
@@ -21,7 +22,7 @@
             "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
             "date" => Carbon::now()->toDateString(),
-            "galleryType" => \App\TournamentType::COMP_DEV,
+            "galleryType" => Type::COMP_DEV,
         ],
         [
             "type" => "gallery",
@@ -31,7 +32,7 @@
             "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => Carbon::now()->toDateString(),
-            "galleryType" => \App\TournamentType::CHESS,
+            "galleryType" => Type::CHESS,
         ],
         [
             "type" => "gallery",
@@ -41,7 +42,7 @@
             "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
             "date" => Carbon::now()->toDateString(),
-            "galleryType" => \App\TournamentType::CLUB,
+            "galleryType" => Type::CLUB,
         ],
         [
             "type" => "gallery",
@@ -51,7 +52,7 @@
             "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => Carbon::now()->toDateString(),
-            "galleryType" => \App\TournamentType::SPORTS,
+            "galleryType" => Type::SPORTS,
         ],
     ];
 @endphp
