@@ -18,6 +18,12 @@
             <time class="badge badge-sm badge-primary font-bold"
                 datetime="{{ $date }}">{{ \Carbon\Carbon::parse($date)->translatedFormat("d.m.Y") }}</time>
         </div>
+
+        <b class="badge badge-sm">
+            <span>Тип турніру: </span>
+            [ {{ $tournamentType->option_title() }} ]
+        </b>
+
         <p>{{ $description }}</p>
         <div class="card-actions justify-end">
             @if ($hasResults)
