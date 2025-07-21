@@ -24,7 +24,7 @@
             <fieldset class="fieldset ml-5">
                 <legend class="fieldset-legend">Тип турніра:</legend>
                 <select x-model="tournamentType" class="select w-40">
-                    @foreach (\App\TournamentType::cases() as $type)
+                    @foreach ($data["tournamentType"]::cases() as $type)
                         <option value="{{ $type->value }}" @selected($data["tournamentType"]->value == $type->value)>
                             {{ $type->option_title() }}
                         </option>
