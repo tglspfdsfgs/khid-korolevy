@@ -15,6 +15,7 @@ class Card extends Component
         'article' => 'components.blocks.cards.articles.card',
         'tournament' => 'components.blocks.cards.tournaments.card',
         'gallery' => 'components.blocks.cards.gallery.card',
+        'education' => 'components.blocks.cards.education.card',
     ];
 
     /**

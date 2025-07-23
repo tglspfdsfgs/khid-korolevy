@@ -6,6 +6,7 @@
     $navLinks = [
         "Головна" => route("index"),
         "Новини і статті" => route("article.index"),
+        "Навчання" => route("education.index"),
         "Турніри" => [
             "ВСІ ТУРНІРИ" => route("tournament.index") . "?type=all",
             Type::chess->nav_title() => route("tournament.index") . "?type=" . Type::chess->value,
