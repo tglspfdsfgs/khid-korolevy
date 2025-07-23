@@ -37,7 +37,7 @@
             </div>
             <p class="mr-auto mt-auto block">
                 @if ($data["linkToForm"])
-                    <a href="{{ $data["linkToForm"] }}"
+                    <a href="{{ $data["linkToForm"] }}" target="_blank"
                         class="btn btn-sm btn-primary text-primary-content no-underline">
                         Записатися
                         <x-assets.icons.button-icons.sign-up />

@@ -114,7 +114,8 @@
             </div>
 
             <div class="relative">
-                <a :disabled="!Boolean(linkToForm)" :href="linkToForm" class="btn btn-sm btn-primary">
+                <a :disabled="!Boolean(linkToForm)" :href="linkToForm" target="_blank"
+                    class="btn btn-sm btn-primary">
                     Записатися
                     <x-assets.icons.button-icons.sign-up />
                 </a>

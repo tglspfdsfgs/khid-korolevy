@@ -39,7 +39,7 @@
                 </a>
             @endif
             @if ($linkToForm)
-                <a href="{{ $linkToForm }}" class="btn btn-sm btn-primary">
+                <a href="{{ $linkToForm }}" target="_blank" class="btn btn-sm btn-primary">
                     Записатися
                     <x-assets.icons.button-icons.sign-up />
                 </a>
