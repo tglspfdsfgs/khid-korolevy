@@ -2,6 +2,7 @@
 
 @php
     use App\TournamentType as Type;
+    use App\EducationType as EduType;
 
     $navLinks = [
         "Головна" => route("index"),
