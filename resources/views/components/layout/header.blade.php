@@ -22,6 +22,7 @@
             Type::sports->gallery_title("sports") => route("gallery.index") . "?type=" . Type::SPORTS,
             Type::chess->gallery_title("comp_dev") => route("gallery.index") . "?type=" . Type::COMP_DEV,
         ],
+        "Розумаха" => route("comp_dev.index"),
         "Про нас" => "/about_us",
     ];
 

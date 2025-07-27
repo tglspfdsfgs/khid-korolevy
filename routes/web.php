@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ComprehensiveDevelopment;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MainPageController;
@@ -12,6 +13,7 @@ Route::resourceFor('article', ArticleController::class);
 Route::resourceFor('tournament', TournamentController::class, nestedResources: ['results']);
 Route::resourceFor('gallery', GalleryController::class);
 Route::resourceFor('education', EducationController::class);
+Route::resourceFor('comp_dev', ComprehensiveDevelopment::class);
 
 /*
  * TODO:
