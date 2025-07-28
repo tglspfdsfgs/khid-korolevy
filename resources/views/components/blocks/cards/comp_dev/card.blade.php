@@ -1,5 +1,4 @@
 @php
-    use App\EducationType as Type;
     extract($props);
 @endphp
 
@@ -15,22 +14,22 @@
         </h2>
 
         <b class="badge badge-sm">
-            [ {{ Type::stringify($educationType) }} ]
+            [ {{ $badge }} ]
         </b>
 
         <p>{{ $description }}</p>
 
         <div class="card-actions justify-end">
-            @if ($linkToForm)
-                <a href="{{ $linkToForm }}" target="_blank" class="btn btn-sm btn-primary">
-                    Записатися
-                    <x-assets.icons.button-icons.sign-up />
+            @if ($link)
+                <a href="{{ $link }}" target="_blank" class="btn btn-sm btn-outline btn-secondary">
+                    Посилання
+                    <x-assets.icons.button-icons.link />
                 </a>
             @endif
             <div class="card-actions justify-end">
-                <a href='{{ "/education/" . $id }}' class="btn btn-sm btn-success">
-                    Графік занять
-                    <x-assets.icons.button-icons.schedule />
+                <a href='{{ "/comp_dev/" . $id }}' class="btn btn-sm btn-info">
+                    Детальніше
+                    <x-assets.icons.button-icons.navigate />
                 </a>
             </div>
         </div>

@@ -45,21 +45,19 @@
         </h2>
         <div x-show="editing.title" class="join">
             <input x-model="title" @blur="editing.title = false" @keydown.enter="editing.title = false"
-                class="input join-item w-full"></textarea>
+                class="input join-item w-full" />
             <button class="btn btn-accent join-item" @click="editing.title = false">зберегти</button>
         </div>
 
-        {{-- --}}
-
-        <div>
-            <b class="badge badge-sm relative cursor-pointer" x-show="!editing.badge" @click="editing.badge = true"
-                @touchstart="editing.badge = true">
-                [ <span x-text="badge"></span> ]
-                {{-- <x-assets.icons.editor-buttons.pencil-svg class="absolute right-0 inline cursor-pointer" /> --}}
-            </b>
+        <p x-show="!editing.badge" @click="editing.badge = true" @touchstart="editing.badge = true">
+            [ <span class="cursor-pointer" x-text="badge"></span> ]
+            <x-assets.icons.editor-buttons.pencil-svg class="inline cursor-pointer" />
+        </p>
+        <div x-show="editing.badge" class="join">
+            <input x-model="badge" @blur="editing.badge = false" @keydown.enter="editing.badge = false"
+                class="input join-item w-40">
+            <button class="btn btn-accent join-item" @click="editing.badge = false">зберегти</button>
         </div>
-
-        {{-- --}}
 
         <p x-show="!editing.description" @click="editing.description = true" @touchstart="editing.description = true">
             <span class="cursor-pointer" x-text="description"></span>
@@ -73,17 +71,17 @@
 
         <div class="card-actions justify-end">
             <div class="relative">
-                <a :disabled="!Boolean(linkToForm)" :href="linkToForm" target="_blank"
-                    class="btn btn-sm btn-primary">
-                    Реєстрація
-                    <x-assets.icons.button-icons.sign-up />
+                <a :disabled="!Boolean(link)" :href="link" target="_blank"
+                    class="btn btn-sm btn-outline btn-secondary">
+                    Посилання
+                    <x-assets.icons.button-icons.link />
                 </a>
                 <button type="button" class="absolute right-[-7px] top-[-7px] cursor-pointer rounded-full bg-white"
-                    x-on:click="linkToForm = Boolean(linkToForm) ? '' : (linkToForm = prompt('Додати форму за посиланням:', ''))">
-                    <span x-show="!Boolean(linkToForm)">
+                    x-on:click="link = Boolean(link) ? '' : (link = prompt('Додати посилання:', ''))">
+                    <span x-show="!Boolean(link)">
                         <x-assets.icons.editor-buttons.add-svg />
                     </span>
-                    <span x-show="Boolean(linkToForm)">
+                    <span x-show="Boolean(link)">
                         <x-assets.icons.editor-buttons.remove-svg />
                     </span>
                 </button>
