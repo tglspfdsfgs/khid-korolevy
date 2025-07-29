@@ -32,18 +32,11 @@ trait GalleryTypeTrait
         return $ref->getConstants();
     }
 
-    /**
-     * @throws \Exception
-     */
     public static function isTournament(string $type): bool
     {
-        switch ($type) {
-            case self::TABLETOP:
-            case self::CHESS:
-            case self::SPORTS:
-                return true;
-            default:
-                return false;
-        }
+        return match ($type) {
+            self::TABLETOP, self::CHESS, self::SPORTS => true,
+            default => false,
+        };
     }
 }
