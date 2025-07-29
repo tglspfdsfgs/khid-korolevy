@@ -44,7 +44,7 @@
         </h2>
         <div x-show="editing.title" class="join">
             <input x-model="title" @blur="editing.title = false" @keydown.enter="editing.title = false"
-                class="input join-item w-full"></textarea>
+                class="input join-item w-full">
             <button class="btn btn-accent join-item" @click="editing.title = false">зберегти</button>
         </div>
 
