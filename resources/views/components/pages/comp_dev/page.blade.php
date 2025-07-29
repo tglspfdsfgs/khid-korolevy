@@ -31,9 +31,9 @@
                         <x-assets.icons.button-icons.link />
                     </a>
                 @endif
+            </p>
         </div>
 
-        </p>
         <form x-data action="{{ route("comp_dev.show", $data["id"]) . "/" }}" method="post"
             @submit.prevent="() => {
 
