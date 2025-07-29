@@ -19,7 +19,7 @@
     <div x-data="{{ json_encode($data) }}" id="data-holder" x-init="$nextTick(() => dispatchEvent(new CustomEvent('editor-ready')))" x-bind:data-content="content"
         @update-data.window="Object.assign($data, $event.detail)">
         <section class="grow-3 lg:mr-10">
-            <x-blocks.cards.tournaments.create-tournament :props='Arr::except($data, ["content"])' />
+            <x-blocks.cards.tournaments.card-form :props='Arr::except($data, ["content"])' />
 
             <fieldset class="fieldset ml-5">
                 <legend class="fieldset-legend">Тип турніра:</legend>
