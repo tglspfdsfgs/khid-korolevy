@@ -1,11 +1,14 @@
 @php
+    use App\EducationType as EduType;
+    use App\TournamentType as Type;
+
     $links = [
-        "school" => "#",
-        "qualification" => "#",
-        "comprehensive development" => "#",
-        "tabletop tournaments" => "#",
-        "sports tournaments" => "#",
-        "chess tournaments" => "#",
+        "school" => route("education.index") . "?type=" . EduType::beginners->value,
+        "qualification" => route("education.index") . "?type=" . EduType::adults->value,
+        "comprehensive development" => route("comp_dev.index"),
+        "tabletop tournaments" => route("tournament.index") . "?type=" . Type::tabletop->value,
+        "sports tournaments" => route("tournament.index") . "?type=" . Type::sports->value,
+        "chess tournaments" => route("tournament.index") . "?type=" . Type::chess->value,
     ];
 @endphp
 

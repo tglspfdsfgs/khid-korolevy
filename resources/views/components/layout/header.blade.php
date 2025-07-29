@@ -7,7 +7,13 @@
     $navLinks = [
         "Головна" => route("index"),
         "Новини і статті" => route("article.index"),
-        "Навчання" => route("education.index"),
+        "Навчання" => [
+            "ВСІ НАВЧАННЯ" => route("education.index") . "?type=all",
+            EduType::beginners->to_string() => route("education.index") . "?type=" . EduType::beginners->value,
+            EduType::adults->to_string() => route("education.index") . "?type=" . EduType::adults->value,
+            EduType::individual->to_string() => route("education.index") . "?type=" . EduType::individual->value,
+            EduType::group->to_string() => route("education.index") . "?type=" . EduType::group->value,
+        ],
         "Турніри" => [
             "ВСІ ТУРНІРИ" => route("tournament.index") . "?type=all",
             Type::chess->nav_title() => route("tournament.index") . "?type=" . Type::chess->value,

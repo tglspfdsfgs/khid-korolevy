@@ -36,8 +36,8 @@ enum EducationType: string
     private static function matcher($arg): string
     {
         return match ($arg) {
-            self::beginners => '🌱 Заняття для початківців',
-            self::adults => '🎓 Заняття для дорослих',
+            self::beginners => '🌱 Для початківців',
+            self::adults => '🎓 Для дорослих',
             self::individual => '👤 Індивідуальні заняття',
             self::group => '👥️ Групові заняття',
             default => throw new \Exception('No education type found'),
