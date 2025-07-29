@@ -20,6 +20,15 @@
 
             {!! $data["content"] !!}
 
+            <p class="mr-auto mt-auto block">
+                @if ($data["linkToForm"])
+                    <a href="{{ $data["linkToForm"] }}" target="_blank"
+                        class="btn btn-sm btn-primary text-primary-content no-underline">
+                        Записатися
+                        <x-assets.icons.button-icons.sign-up />
+                    </a>
+                @endif
+
         </div>
         <form x-data action="{{ route("education.show", $data["id"]) . "/" }}" method="post"
             @submit.prevent="() => {
