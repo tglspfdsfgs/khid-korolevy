@@ -2,8 +2,8 @@
     $data = [
         "id" => 1,
         "date" => \Carbon\Carbon::now()->addWeeks(2)->toDateString(),
-        "tournamentType" => \App\TournamentType::chess,
-        "state" => \App\State::draft,
+        "tournamentType" => \App\Enums\TournamentType::chess,
+        "state" => \App\Enums\State::draft,
         "linkToForm" => "https://workspace.google.com/intl/uk/products/forms/",
         "hasResults" => true,
         "linkToGallery" => "/gallery/1",

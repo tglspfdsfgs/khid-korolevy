@@ -1,11 +1,11 @@
 @php
-    use App\TournamentType as Type;
+    use App\Enums\TournamentType as Type;
     use Carbon\Carbon;
 
     $data = [
         "id" => 1,
         "date" => Carbon::now(),
-        "state" => \App\State::draft,
+        "state" => \App\Enums\State::draft,
         "galleryType" => Type::CHESS,
         "content" =>
             '<img src="https://placehold.co/1200x1200" class="!m-0 rounded-lg"><img src="https://placehold.co/600x400" class="!m-0 rounded-lg"><img src="https://placehold.co/2400x2400" class="!m-0 rounded-lg"><img src="https://placehold.co/100x400" class="!m-0 rounded-lg"><img src="https://placehold.co/40x40" class="!m-0 mx-auto rounded-lg"><img src="https://placehold.co/400x100" class="!m-0 mx-auto rounded-lg">',

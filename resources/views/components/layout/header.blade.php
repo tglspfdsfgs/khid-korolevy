@@ -1,8 +1,8 @@
 @props(["isResponsive", "unresponsiveSize"])
 
 @php
-    use App\TournamentType as Type;
-    use App\EducationType as EduType;
+    use App\Enums\TournamentType as Type;
+    use App\Enums\EducationType as EduType;
 
     $navLinks = [
         "Головна" => route("index"),

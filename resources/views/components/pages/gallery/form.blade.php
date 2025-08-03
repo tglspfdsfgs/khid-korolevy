@@ -1,8 +1,8 @@
 @php
-    use App\TournamentType as Type;
+    use App\Enums\TournamentType as Type;
     $data = [
         "id" => 1,
-        "state" => \App\State::deleted,
+        "state" => \App\Enums\State::deleted,
         "title" => '📸 Турнір у кадрі: "Королівська битва-2025"',
         "description" => "Найкращі моменти та емоції турніру. Дивися галерею!",
         "imageSrc" => "",

@@ -1,6 +1,6 @@
 @php
-    use App\EducationType as EduType;
-    use App\TournamentType as Type;
+    use App\Enums\EducationType as EduType;
+    use App\Enums\TournamentType as Type;
 
     $links = [
         "school" => route("education.index") . "?type=" . EduType::beginners->value,

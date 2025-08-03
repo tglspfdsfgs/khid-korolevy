@@ -1,7 +1,7 @@
 @php
-    use App\State as State;
+    use App\Enums\State as State;
     use Carbon\Carbon as Carbon;
-    use App\TournamentType as Type;
+    use App\Enums\TournamentType as Type;
 
     $cards = [
         [

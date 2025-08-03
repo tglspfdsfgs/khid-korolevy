@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Enums;
 
 /** TODO: add casts to model
  * protected $casts = [

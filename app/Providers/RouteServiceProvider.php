@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\State;
+use App\Enums\State;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 

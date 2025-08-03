@@ -1,7 +1,7 @@
 @php
     $data = [
         "id" => 1,
-        "state" => \App\State::deleted,
+        "state" => \App\Enums\State::deleted,
         "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
         "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
         "imageSrc" => "",

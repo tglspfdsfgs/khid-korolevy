@@ -1,12 +1,12 @@
 @php
     $data = [
         "id" => 1,
-        "state" => \App\State::draft,
+        "state" => \App\Enums\State::draft,
         "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
         "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
         "imageSrc" => "",
         "date" => \Carbon\Carbon::now()->addWeeks(2)->toDateString(),
-        "tournamentType" => \App\TournamentType::chess,
+        "tournamentType" => \App\Enums\TournamentType::chess,
         "linkToForm" => "https://workspace.google.com/intl/uk/products/forms/",
         "hasMoreInfo" => true,
         "hasResults" => false,

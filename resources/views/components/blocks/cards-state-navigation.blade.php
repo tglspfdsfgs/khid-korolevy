@@ -1,5 +1,5 @@
 @php
-    use App\State;
+    use App\Enums\State;
     $activeState = fn(string $currState) => request("state", State::published->value) === $currState
         ? ""
         : "btn-outline";

@@ -1,13 +1,13 @@
 @php
-    use App\State as State;
+    use App\Enums\State as State;
     use Carbon\Carbon as Carbon;
-    use App\TournamentType as Type;
+    use App\Enums\TournamentType as Type;
 
     $cards = [
         [
             "type" => "comp_dev",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "💻 PROграмування",
             "description" =>
                 "Опануйте IT-професії з нуля за 3 місяці – створюйте реальні проекти вже під час навчання!",
@@ -20,7 +20,7 @@
         [
             "type" => "comp_dev",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "🧠 Інтелектуально-розвиваючий гурток",
             "description" => "Ігри, головоломки та експерименти для розумних і допитливих!",
             "badge" => "💡 Бейдж",
@@ -32,7 +32,7 @@
         [
             "type" => "comp_dev",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "🇬🇧 English Boost",
             "description" => "Говори вільно —  інтенсивні заняття з носіями для швидкого результату!",
             "badge" => "🗣️ Розмовні курси",

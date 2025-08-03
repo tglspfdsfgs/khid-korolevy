@@ -3,12 +3,12 @@
         [
             "type" => "tournament",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => \Carbon\Carbon::now()->addWeeks(2)->toDateString(),
-            "tournamentType" => \App\TournamentType::tabletop,
+            "tournamentType" => \App\Enums\TournamentType::tabletop,
             "linkToForm" => "https://workspace.google.com/intl/uk/products/forms/",
             "hasMoreInfo" => true,
             "hasResults" => false,
@@ -17,7 +17,7 @@
         [
             "type" => "article",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),
@@ -26,14 +26,14 @@
         [
             "type" => "tournament",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
             "description" => "Шановні шахисти! Реєструйтесь на турнір 'Король дошки'!",
             "imageSrc" => Vite::asset("resources/images/chess(1).jpg"),
             "date" => \Carbon\Carbon::now()
                 ->addWeeks(-2)
                 ->toDateString(),
-            "tournamentType" => \App\TournamentType::chess,
+            "tournamentType" => \App\Enums\TournamentType::chess,
             "linkToForm" => "",
             "hasMoreInfo" => false,
             "hasResults" => true,
@@ -42,7 +42,7 @@
         [
             "type" => "article",
             "id" => 1,
-            "state" => \App\State::published,
+            "state" => \App\Enums\State::published,
             "title" => "Шахи: правила, стратегії та цікаві факти для початківців і професіоналів",
             "description" => "Все про шахи: від основ до просунутих тактик. Читайте!",
             "imageSrc" => Vite::asset("resources/images/chess(2).jpg"),

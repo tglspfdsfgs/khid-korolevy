@@ -1,5 +1,5 @@
 @php
-    use App\EducationType as Type;
+    use App\Enums\EducationType as Type;
     extract($props);
 @endphp
 

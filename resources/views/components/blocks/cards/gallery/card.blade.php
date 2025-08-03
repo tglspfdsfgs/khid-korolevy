@@ -1,5 +1,5 @@
 @php
-    use App\TournamentType as Type;
+    use App\Enums\TournamentType as Type;
     extract($props);
 @endphp
 
