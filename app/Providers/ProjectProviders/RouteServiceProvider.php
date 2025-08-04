@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers\ProjectProviders;
 
 use App\Enums\State;
 use Illuminate\Support\Facades\Route;

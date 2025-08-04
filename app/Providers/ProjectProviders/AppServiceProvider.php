@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace App\Providers\ProjectProviders;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
