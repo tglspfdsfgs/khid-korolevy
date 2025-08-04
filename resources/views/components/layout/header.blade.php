@@ -81,7 +81,8 @@
                                     @foreach ($navLinks as $item => $val)
                                         @if (is_array($val))
                                             <div class="dropdown">
-                                                <div tabindex="0" role="button" class="btn btn-ghost rounded-field">
+                                                <div tabindex="0" role="button"
+                                                    class="btn btn-ghost rounded-field max-lg:px-2.5">
                                                     {{ $item }}
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                         fill="currentColor" class="size-5">
@@ -100,7 +101,7 @@
                                             </div>
                                         @else
                                             <a href="{{ $val }}"
-                                                class="btn btn-ghost rounded-field">{{ $item }}</a>
+                                                class="btn btn-ghost rounded-field max-lg:px-2.5">{{ $item }}</a>
                                         @endif
                                     @endforeach
                                 </div>
