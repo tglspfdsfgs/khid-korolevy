@@ -13,6 +13,12 @@ enum State: string
     case draft = 'draft';
     case deleted = 'deleted';
 
+    /**
+     * Checks if the current state is actual:
+     * $state->isCurrState().
+     *
+     * @return bool
+     */
     public function __call(string $name, array $arguments)
     {
         foreach (self::cases() as $case) {
