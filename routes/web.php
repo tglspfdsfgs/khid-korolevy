@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComprehensiveDevelopment;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\GalleryController;
@@ -14,6 +15,10 @@ Route::resourceFor('tournament', TournamentController::class, nestedResources: [
 Route::resourceFor('gallery', GalleryController::class);
 Route::resourceFor('education', EducationController::class);
 Route::resourceFor('comp_dev', ComprehensiveDevelopment::class);
+
+Route::get('/login', [AuthController::class, 'create'])->name('auth.create');
+Route::post('/login', [AuthController::class, 'store'])->name('auth.store');
+Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy');
 
 /*
  * TODO:
