@@ -11,7 +11,10 @@ class AuthController extends Controller
      */
     public function create(Request $request)
     {
-        dump('login form');
+        return view('main', [
+            'title' => 'вхід',
+            'page' => 'pages.auth.login',
+        ]);
     }
 
     /**
