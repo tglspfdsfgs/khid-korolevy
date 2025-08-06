@@ -27,9 +27,8 @@ class RouteServiceProvider extends ServiceProvider
                 Route::get('/', [$controller, 'index'])->name('index');
                 Route::get('/{id}', [$controller, 'show'])->name('show');
 
-                // TODO: add auth middleware
-                Route::get('/create', [$controller, 'create'])->name('create');
-                Route::prefix('/{id}')->group(function () use ($controller) {
+                Route::get('/create', [$controller, 'create'])->name('create')->middleware('auth:web');
+                Route::prefix('/{id}')->middleware('auth:web')->group(function () use ($controller) {
                     Route::get('/edit', [$controller, 'edit'])->name('edit');
                     Route::post('/publish', [$controller, State::action(State::published)])->name('publish');
                     Route::post('/draft', [$controller, State::action(State::draft)])->name('draft');
@@ -39,8 +38,8 @@ class RouteServiceProvider extends ServiceProvider
                 foreach ($nestedResources as $resource) {
                     Route::prefix('/{id}'."/$resource")->group(function () use ($controller, $resource) {
                         Route::get('/', [$controller, "$resource".'Show'])->name("$resource.show");
-                        Route::get('/edit', [$controller, "$resource".'Edit'])->name("$resource.edit");
-                        Route::post('/save', [$controller, $resource.'Save'])->name("$resource.save");
+                        Route::get('/edit', [$controller, "$resource".'Edit'])->name("$resource.edit")->middleware('auth:web');
+                        Route::post('/save', [$controller, $resource.'Save'])->name("$resource.save")->middleware('auth:web');
                     });
                 }
             });

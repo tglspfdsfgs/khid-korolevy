@@ -6,7 +6,9 @@
                 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Вхід в обліковий запис
                 </h1>
-                <form class="space-y-4 md:space-y-6" action="#">
+                <form class="space-y-4 md:space-y-6" method="post" action="{{ route("auth.store") }}">
+                    @csrf
+
                     <div class="relative">
                         <label class="input validator mb-2.5 w-full">
                             <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -16,7 +18,7 @@
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                 </g>
                             </svg>
-                            <input type="email" placeholder="mail@site.com" required />
+                            <input type="email" placeholder="mail@site.com" name="email" required />
                         </label>
                         <div class="validator-hint absolute bottom-[-0.80rem] mb-1 hidden">Введіть дійсну адресу
                             електронної пошти</div>
@@ -33,10 +35,9 @@
                                     <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
                                 </g>
                             </svg>
-                            <input type="password" required placeholder="Пароль" minlength="8"
+                            <input name="password" type="password" required placeholder="Пароль" minlength="8"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                title="Має бути більше 8 символів, включаючи цифру, малу літеру, велику літеру
-" />
+                                title="Має бути більше 8 символів, включаючи цифру, малу літеру, велику літеру" />
                         </label>
                         <p class="validator-hint mb-0 mt-2 hidden">
                             Має бути більше 8 символів, включаючи
@@ -44,14 +45,15 @@
                             літеру
                         </p>
                     </div>
+
                     <div class="flex items-center justify-between">
                         <div class="flex items-start">
                             <div class="flex h-5 items-center">
-                                <input checked id="yellow-checkbox" type="checkbox" value=""
+                                <input name="remember-me" checked id="remember-me" type="checkbox"
                                     class="h-5 w-5 rounded-full border-gray-300 bg-gray-100 text-yellow-400 focus:ring-2 focus:ring-yellow-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-yellow-600">
                             </div>
                             <div class="text-md ml-1">
-                                <label for="yellow-checkbox"
+                                <label for="remember-me"
                                     class="ms-2 font-medium text-gray-900 dark:text-gray-300">Запамʼятати мене</label>
                             </div>
                         </div>
