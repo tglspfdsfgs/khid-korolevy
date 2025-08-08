@@ -59,16 +59,8 @@
                                     class="ms-2 font-medium text-gray-900 dark:text-gray-300">Запамʼятати мене</label>
                             </div>
                         </div>
-                        <a href="#"
-                            class="text-md text-primary-600 dark:text-primary-500 font-medium hover:underline">Забули
-                            пароль?</a>
                     </div>
                     <button type="submit" class="btn btn-primary w-full">Увійти</button>
-                    {{--
-                    <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                        Немає облікового запису? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Зареєструватися</a>
-                    </p>
-                    --}}
                 </form>
             </div>
         </div>
