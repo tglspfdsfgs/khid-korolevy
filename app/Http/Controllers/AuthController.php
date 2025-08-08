@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
+use App\Providers\ProjectProviders\RouteServiceProvider as RouteSP;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    protected const ROOT = '/';
-
     /**
      * Show the login form.
      */
@@ -23,35 +22,20 @@ class AuthController extends Controller
     /**
      * Handle an auth request.
      */
-    public function store(Request $request)
+    public function store(AuthRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials, $request->boolean('remember'))) {
-            $request->session()->regenerate();
-
-            return redirect()->intended($this::ROOT);
-        }
-
-        return back()->withErrors([
-            'emailOrPassword' => 'Невірно введенні електронна пошта чи пароль',
-        ]);
+        return ($request->authenticate()) ?
+            redirect()->intended(RouteSP::ROOT) :
+            back()->withErrors('Невірно введенні електронна пошта чи пароль');
     }
 
     /**
      * Destroy an auth session.
      */
-    public function destroy(Request $request)
+    public function destroy(AuthRequest $request)
     {
-        Auth::logout();
+        $request->deauthenticate();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect($this::ROOT);
+        return redirect(RouteSP::ROOT);
     }
 }

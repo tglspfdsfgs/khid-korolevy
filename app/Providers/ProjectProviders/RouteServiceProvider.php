@@ -8,6 +8,8 @@ use Illuminate\Support\ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    public const ROOT = '/';
+
     /**
      * Register services.
      */
