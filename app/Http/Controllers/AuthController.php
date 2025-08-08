@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    protected const ROOT = '/';
+
     /**
      * Show the login form.
      */
@@ -28,10 +30,10 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended();
+            return redirect()->intended($this::ROOT);
         }
 
         return back()->withErrors([
@@ -44,6 +46,12 @@ class AuthController extends Controller
      */
     public function destroy(Request $request)
     {
-        dump('logout request');
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect($this::ROOT);
     }
 }

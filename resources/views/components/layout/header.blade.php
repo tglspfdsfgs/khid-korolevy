@@ -3,6 +3,7 @@
 @php
     use App\Enums\TournamentType as Type;
     use App\Enums\EducationType as EduType;
+    use Illuminate\Support\Facades\Auth;
 
     $navLinks = [
         "Головна" => route("index"),
@@ -32,10 +33,14 @@
         "Про нас" => "/about_us",
     ];
 
+    //
+
+    $user = Auth::user();
+
     $account = [
         "Облікові данні" => [
-            "Ім'я" => "Адміністратор",
-            "Емейл" => "khid-korolevy@email.com",
+            "Ім'я" => $user?->name,
+            "Емейл" => "$user?->email",
         ],
         "Вихід" => route("auth.destroy"),
         "Налаштування" => "/setting",

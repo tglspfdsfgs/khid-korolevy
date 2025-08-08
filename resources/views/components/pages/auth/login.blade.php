@@ -49,11 +49,11 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-start">
                             <div class="flex h-5 items-center">
-                                <input name="remember-me" checked id="remember-me" type="checkbox"
+                                <input name="remember" checked id="remember" type="checkbox"
                                     class="h-5 w-5 rounded-full border-gray-300 bg-gray-100 text-yellow-400 focus:ring-2 focus:ring-yellow-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-yellow-600">
                             </div>
                             <div class="text-md ml-1">
-                                <label for="remember-me"
+                                <label for="remember"
                                     class="ms-2 font-medium text-gray-900 dark:text-gray-300">Запамʼятати мене</label>
                             </div>
                         </div>

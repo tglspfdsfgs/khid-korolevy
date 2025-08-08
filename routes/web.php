@@ -23,7 +23,6 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy')
 /*
  * TODO:
  * setting
- * logout
  * Про нас
  * Умови використання
  * Політика конфіденційності
