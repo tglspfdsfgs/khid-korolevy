@@ -18,7 +18,8 @@
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                 </g>
                             </svg>
-                            <input type="email" placeholder="mail@site.com" name="email" required />
+                            <input class="input-bordered focus:outline-none focus:ring-0" type="email"
+                                placeholder="mail@site.com" name="email" required />
                         </label>
                         <div class="validator-hint absolute bottom-[-0.80rem] mb-1 hidden">Введіть дійсну адресу
                             електронної пошти</div>
@@ -35,7 +36,8 @@
                                     <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
                                 </g>
                             </svg>
-                            <input name="password" type="password" required placeholder="Пароль" minlength="8"
+                            <input class="input-bordered focus:outline-none focus:ring-0" name="password"
+                                type="password" required placeholder="Пароль" minlength="8"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Має бути більше 8 символів, включаючи цифру, малу літеру, велику літеру" />
                         </label>
