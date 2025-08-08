@@ -43,10 +43,6 @@
         </div>
     </div>
 
-    <div class="absolute right-1 top-1 rounded-lg bg-white hover:ring-1 hover:ring-white">
-        <a href='{{ "/gallery/" . $id . "/edit" }}' class="btn btn-outline btn-accent">
-            <x-assets.icons.state-btns.edit-svg />
-        </a>
-    </div>
+    <x-blocks.cards.edit-btn link='{{ "/gallery/" . $id . "/edit" }}' />
 
 </div>
