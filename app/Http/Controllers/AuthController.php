@@ -26,7 +26,7 @@ class AuthController extends Controller
     {
         return ($request->authenticate()) ?
             redirect()->intended(RouteSP::ROOT) :
-            back()->withErrors('Невірно введенні електронна пошта чи пароль');
+            back()->withErrors(['credentials' => 'Невірно введенні електронна пошта чи пароль']);
     }
 
     /**
