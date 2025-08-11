@@ -20,6 +20,11 @@ Route::get('/login', [AuthController::class, 'create'])->name('auth.create');
 Route::post('/login', [AuthController::class, 'store'])->name('auth.store');
 Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy');
 
+Route::get('/admin-panel', function () {
+    return view('admin-panel', [
+        'title' => 'адмін-панель',
+    ]);
+});
 /*
  * TODO:
  * setting
