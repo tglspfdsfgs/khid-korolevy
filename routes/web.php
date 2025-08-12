@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComprehensiveDevelopment;
@@ -20,11 +21,12 @@ Route::get('/login', [AuthController::class, 'create'])->name('auth.create');
 Route::post('/login', [AuthController::class, 'store'])->name('auth.store');
 Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy');
 
-Route::get('/admin-panel', function () {
-    return view('admin-panel', [
-        'title' => 'адмін-панель',
-    ]);
+Route::prefix('/admin-panel')->middleware(['auth'])->group(function () {
+    Route::get('/upload-image/index', [UploadImageController::class, 'index']);
+    Route::get('/upload-image/create', [UploadImageController::class, 'create']);
+    Route::post('/upload-image/store', [UploadImageController::class, 'store']);
 });
+
 /*
  * TODO:
  * setting
