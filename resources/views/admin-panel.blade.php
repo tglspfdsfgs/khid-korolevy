@@ -165,6 +165,33 @@
             </main>
             <!-- End Body -->
         </div>
+
+        @if ($errors->any())
+            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 7000)" role="alert"
+                class="z-200 alert alert-error fixed left-1/2 top-10 w-full max-w-md -translate-x-1/2 transform">
+
+                <span>
+                    <div class="mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="inline h-9 stroke-current" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="text-center text-lg font-bold">ERROR!</span>
+                    </div>
+
+                    <ul class="ml-2 list-disc">
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+                    </ul>
+                </span>
+            </div>
+        @endif
+
     </div>
     <!-- ========== END MAIN CONTENT ========== -->
+
 @endsection
