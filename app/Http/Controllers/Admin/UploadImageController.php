@@ -32,14 +32,14 @@ class UploadImageController extends Controller
      */
     public function store(Request $request)
     {
-        /* dump(Image::all()->last()->getLastMedia()->getUrl()); */
+        dump();
 
-        $image = Image::create();
+        /*$image = Image::create();
 
         $image->addMediaFromRequest('image')
             ->toMediaCollection('gallery');
 
-        return back();
+        return back();*/
     }
 
     /**

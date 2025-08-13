@@ -22,9 +22,9 @@ Route::post('/login', [AuthController::class, 'store'])->name('auth.store');
 Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy');
 
 Route::prefix('/admin-panel')->middleware(['auth'])->group(function () {
-    Route::get('/upload-image/index', [UploadImageController::class, 'index']);
-    Route::get('/upload-image/create', [UploadImageController::class, 'create']);
-    Route::post('/upload-image/store', [UploadImageController::class, 'store']);
+    Route::get('/upload-image/index', [UploadImageController::class, 'index'])->name('upload-image.index');
+    Route::get('/upload-image/create', [UploadImageController::class, 'create'])->name('upload-image.create');
+    Route::post('/upload-image/store', [UploadImageController::class, 'store'])->name('upload-image.store');
 });
 
 /*
