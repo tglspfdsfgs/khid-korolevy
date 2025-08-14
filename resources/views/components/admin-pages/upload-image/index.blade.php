@@ -29,7 +29,7 @@
 
         @foreach ($data as $mainFolder => $inner)
             <div x-data="{ open: false }">
-                <x-assets.icons.admin-icons.main-folder x-if="!open" @click.self="open = !open" />
+                <x-assets.icons.admin-icons.upload-img.main-folder x-if="!open" @click.self="open = !open" />
                 <span @click.self="open = !open">{{ $mainFolder }}</span>
 
                 @foreach ($inner as $folderName => $images)
@@ -41,24 +41,25 @@
                                     $refs.whereTo.textContent = `{{ $mainFolder }}`;
                                     mainFolder = `{{ $mainFolder }}`;">
                                 <span class="ml-4 mr-1 inline-block select-none text-xl">+</span>
-                                <x-assets.icons.admin-icons.img-outline />
+                                <x-assets.icons.admin-icons.upload-img.img-outline />
                                 <span class="italic">Додати картинку</span>
                             </div>
 
                             <div>
                                 <span class="ml-4 inline-block select-none text-xl"
                                     onclick="show_img.showModal()">↳</span>
-                                <x-assets.icons.admin-icons.img-solid onclick="show_img.showModal()" />
+                                <x-assets.icons.admin-icons.upload-img.img-solid onclick="show_img.showModal()" />
                                 <span>
                                     <span onclick="show_img.showModal()">some-image-223.png</span>
-                                    <x-assets.icons.admin-icons.show-img onclick="show_img.showModal()" />
-                                    <x-assets.icons.admin-icons.delete-img onclick="delete_img.showModal()" />
+                                    <x-assets.icons.admin-icons.upload-img.show-img onclick="show_img.showModal()" />
+                                    <x-assets.icons.admin-icons.upload-img.delete-img
+                                        onclick="delete_img.showModal()" />
                                 </span>
                             </div>
                         @else
                             <span x-data="{ openInner: false }">
                                 <span class="ml-2 inline-block select-none text-lg">|</span>
-                                <x-assets.icons.admin-icons.inner-folder x-if="!openInner"
+                                <x-assets.icons.admin-icons.upload-img.inner-folder x-if="!openInner"
                                     @click.self="openInner = !openInner" />
                                 <span x-cloak @click.self="openInner = !openInner">{{ $folderName }}</span>
 
@@ -70,18 +71,21 @@
                                             mainFolder = `{{ $mainFolder }}`;
                                             innerFolder = `{{ $folderName }}`;">
                                         <span class="ml-4 mr-1 inline-block select-none text-xl">+</span>
-                                        <x-assets.icons.admin-icons.img-outline />
+                                        <x-assets.icons.admin-icons.upload-img.img-outline />
                                         <span class="italic">Додати картинку</span>
                                     </div>
 
                                     <div>
                                         <span class="ml-4 inline-block select-none text-xl"
                                             onclick="show_img.showModal()">↳</span>
-                                        <x-assets.icons.admin-icons.img-solid onclick="show_img.showModal()" />
+                                        <x-assets.icons.admin-icons.upload-img.img-solid
+                                            onclick="show_img.showModal()" />
                                         <span>
                                             <span onclick="show_img.showModal()">some-image-223.png</span>
-                                            <x-assets.icons.admin-icons.show-img onclick="show_img.showModal()" />
-                                            <x-assets.icons.admin-icons.delete-img onclick="delete_img.showModal()" />
+                                            <x-assets.icons.admin-icons.upload-img.show-img
+                                                onclick="show_img.showModal()" />
+                                            <x-assets.icons.admin-icons.upload-img.delete-img
+                                                onclick="delete_img.showModal()" />
                                         </span>
                                     </div>
                                 </div>

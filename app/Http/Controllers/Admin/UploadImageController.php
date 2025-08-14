@@ -24,15 +24,16 @@ class UploadImageController extends Controller
      */
     public function store(UploadImageRequest $request)
     {
-        $fields = $request->validated();
-        dump($fields);
-
-        /*$image = Image::create();
+        $image = Image::create();
 
         $image->addMediaFromRequest('image')
-            ->toMediaCollection('gallery');
+            ->withCustomProperties([
+                'subCollection' => $request?->innerFolder,
+            ])
+            ->toMediaCollection($request->mainFolder);
 
-        return back();*/
+        return back()->with('success', "Зображення успішно завантажено в {$request->mainFolder}".
+            ($request->innerFolder ? " / {$request->innerFolder}" : ''));
     }
 
     /**
