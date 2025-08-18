@@ -32,6 +32,37 @@
             "Вихід" => route("auth.destroy"),
             "Налаштування" => "/setting",
         ];
+
+        /*$data = [
+        "Новини і статті" => [
+            "Прев'ю-картинки" => [
+                "id" => 11,
+                "url" => "http://127.0.0.1:8000//storage/11/7234449911-large.webp",
+                "collection_name" => "Новини і статті",
+                "subCollection" => "Прев'ю-картинки",
+                "file_name" => "7234449911-large",
+                "size" => "104.9 KB",
+            ],
+            "Контент" => [
+                "id" => 11,
+                "url" => "http://127.0.0.1:8000//storage/11/7234449911-large.webp",
+                "collection_name" => "Новини і статті",
+                "subCollection" => "Контент",
+                "file_name" => "7234449911-large",
+                "size" => "104.9 KB",
+            ],
+        ],
+        "Інше" => [
+            [
+                "id" => 10,
+                "url" => "http://127.0.0.1:8000//storage/10/GmK9X32acAAKOUA.jpeg",
+                "collection_name" => "Інше",
+                "file_name" => "GmK9X32acAAKOUA",
+                "size" => "479 KB",
+            ],
+        ],
+    ];*/
+
     @endphp
     <!-- ========== HEADER ========== -->
     <header class="bg-accent text-accent-content">
@@ -74,7 +105,7 @@
                                 <form method="post" action='{{ $account["Вихід"] }}'>
                                     @csrf
                                     <ul tabindex="0"
-                                        class="menu menu-sm dropdown-content text-base-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                        class="menu menu-sm dropdown-content text-base-content bg-base-100 rounded-box z-60 mt-3 w-52 p-2 shadow">
                                         <li>
                                             <a href='{{ $account["Налаштування"] }}'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -160,8 +191,8 @@
                 </div>
             </div>
             <!-- Body -->
-            <main class="lg:ml-65 z-100 relative min-h-screen bg-white p-5">
-                <x-dynamic-component :component="$page" />
+            <main class="lg:ml-65 relative z-50 min-h-screen bg-white p-5">
+                <x-dynamic-component :component="$page" :data="$data" />
             </main>
             <!-- End Body -->
         </div>

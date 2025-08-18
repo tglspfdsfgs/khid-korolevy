@@ -9,6 +9,7 @@
         @vite(["resources/css/app.css", "resources/js/app.js"])
     </head>
     <body>
+
         @yield("content")
         @vite("resources/js/app.js")
     </body>

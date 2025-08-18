@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UploadImageRequest;
-use App\Models\Image;
+use App\Http\Requests\UploadImage\DeleteImageRequest;
+use App\Http\Requests\UploadImage\UploadImageRequest;
+use App\Services\Admin\UploadImage;
 
 class UploadImageController extends Controller
 {
@@ -13,9 +14,12 @@ class UploadImageController extends Controller
      */
     public function index()
     {
+        $images = UploadImage::getAllImages();
+
         return view('admin-panel', [
             'title' => 'завантаження фото',
             'page' => 'admin-pages.upload-image.index',
+            'data' => $images,
         ]);
     }
 
@@ -24,13 +28,7 @@ class UploadImageController extends Controller
      */
     public function store(UploadImageRequest $request)
     {
-        $image = Image::create();
-
-        $image->addMediaFromRequest('image')
-            ->withCustomProperties([
-                'subCollection' => $request?->innerFolder,
-            ])
-            ->toMediaCollection($request->mainFolder);
+        UploadImage::storeImage($request->mainFolder, $request?->innerFolder);
 
         return back()->with('success', "Зображення успішно завантажено в {$request->mainFolder}".
             ($request->innerFolder ? " / {$request->innerFolder}" : ''));
@@ -39,8 +37,10 @@ class UploadImageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(/* string $id */)
+    public function destroy(DeleteImageRequest $request)
     {
-        dump('destroy');
+        UploadImage::deleteImage($request->id);
+
+        return back()->with('success', 'Зображення успішно видалено');
     }
 }

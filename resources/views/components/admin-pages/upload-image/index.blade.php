@@ -1,102 +1,112 @@
-@php
-    $data = [
-        "Новини і статті" => [
-            "Прев'ю-картинки" => ["some-image-223.png"],
-            "Контент" => ["some-image-223.png"],
-        ],
-        "Навчання" => [
-            "Прев'ю-картинки" => ["some-image-223.png"],
-            "Контент" => ["some-image-223.png"],
-        ],
-        "Турніри" => [
-            "Прев'ю-картинки" => ["some-image-223.png"],
-            "Контент" => ["some-image-223.png"],
-        ],
-        "Галерея" => [
-            "Прев'ю-картинки" => ["some-image-223.png"],
-            "Контент" => ["some-image-223.png"],
-        ],
-        "Розумаха" => [
-            "Прев'ю-картинки" => ["some-image-223.png"],
-            "Контент" => ["some-image-223.png"],
-        ],
-        "Інше" => ["some-image-223.png"],
-    ];
-@endphp
+@props(["data"])
 
 <div x-data="{ mainFolder: null, innerFolder: null }" class="flex flex-col items-start">
     <div class="cursor-pointer select-none">
-
         @foreach ($data as $mainFolder => $inner)
             <div x-data="{ open: false }">
+
                 <x-assets.icons.admin-icons.upload-img.main-folder x-if="!open" @click.self="open = !open" />
                 <span @click.self="open = !open">{{ $mainFolder }}</span>
-
-                @foreach ($inner as $folderName => $images)
-                    <div x-cloak x-show="open">
-                        @if (array_is_list($inner))
-                            <div
-                                @click="
+                <span x-cloak x-show="open">
+                    @if (empty($inner) || array_is_list($inner))
+                        <div
+                            @click="
                                     upload_img.showModal();
                                     $refs.whereTo.textContent = `{{ $mainFolder }}`;
                                     mainFolder = `{{ $mainFolder }}`;">
-                                <span class="ml-4 mr-1 inline-block select-none text-xl">+</span>
-                                <x-assets.icons.admin-icons.upload-img.img-outline />
-                                <span class="italic">Додати картинку</span>
-                            </div>
-
-                            <div>
-                                <span class="ml-4 inline-block select-none text-xl"
-                                    onclick="show_img.showModal()">↳</span>
-                                <x-assets.icons.admin-icons.upload-img.img-solid onclick="show_img.showModal()" />
-                                <span>
-                                    <span onclick="show_img.showModal()">some-image-223.png</span>
-                                    <x-assets.icons.admin-icons.upload-img.show-img onclick="show_img.showModal()" />
-                                    <x-assets.icons.admin-icons.upload-img.delete-img
-                                        onclick="delete_img.showModal()" />
-                                </span>
-                            </div>
-                        @else
-                            <span x-data="{ openInner: false }">
+                            <span class="ml-4 mr-1 inline-block select-none text-xl">+</span>
+                            <x-assets.icons.admin-icons.upload-img.img-outline />
+                            <span class="italic">Додати картинку</span>
+                        </div>
+                        @foreach ($inner as $image)
+                            <span>
+                                <div>
+                                    <span class="ml-4 inline-block select-none text-xl"
+                                        @click='
+                                                show_img.showModal();
+                                                $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                        ↳
+                                    </span>
+                                    <x-assets.icons.admin-icons.upload-img.img-solid
+                                        @click='
+                                                show_img.showModal();
+                                                $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                    <span>
+                                        <span
+                                            @click='
+                                                    show_img.showModal();
+                                                    $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                            {{ $image["file_name"] }}
+                                        </span>
+                                        <x-assets.icons.admin-icons.upload-img.show-img
+                                            @click='
+                                                    show_img.showModal();
+                                                    $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                        <x-assets.icons.admin-icons.upload-img.delete-img
+                                            @click='
+                                                    delete_img.showModal();
+                                                    $refs.idToDelete.value = {{ $image["id"] }};' />
+                                    </span>
+                                </div>
+                            </span>
+                        @endforeach
+                    @else
+                        @foreach ($inner as $innerFolder => $content)
+                            <div x-data="{ openInner: false }">
                                 <span class="ml-2 inline-block select-none text-lg">|</span>
                                 <x-assets.icons.admin-icons.upload-img.inner-folder x-if="!openInner"
                                     @click.self="openInner = !openInner" />
-                                <span x-cloak @click.self="openInner = !openInner">{{ $folderName }}</span>
-
-                                <div x-cloak x-show="openInner" class="flex flex-col">
+                                <span x-cloak @click.self="openInner = !openInner">{{ $innerFolder }}</span>
+                                <div x-show="openInner" x-cloak class="flex flex-col">
                                     <div
                                         @click="
-                                            upload_img.showModal();
-                                            $refs.whereTo.textContent = `{{ $mainFolder }} / {{ $folderName }}`;
-                                            mainFolder = `{{ $mainFolder }}`;
-                                            innerFolder = `{{ $folderName }}`;">
+                                                upload_img.showModal();
+                                                $refs.whereTo.textContent = `{{ $mainFolder }} / {{ $innerFolder }}`;
+                                                mainFolder = `{{ $mainFolder }}`;
+                                                innerFolder = `{{ $innerFolder }}`;">
                                         <span class="ml-4 mr-1 inline-block select-none text-xl">+</span>
                                         <x-assets.icons.admin-icons.upload-img.img-outline />
                                         <span class="italic">Додати картинку</span>
                                     </div>
-
-                                    <div>
-                                        <span class="ml-4 inline-block select-none text-xl"
-                                            onclick="show_img.showModal()">↳</span>
-                                        <x-assets.icons.admin-icons.upload-img.img-solid
-                                            onclick="show_img.showModal()" />
+                                    @foreach ($content as $image)
                                         <span>
-                                            <span onclick="show_img.showModal()">some-image-223.png</span>
-                                            <x-assets.icons.admin-icons.upload-img.show-img
-                                                onclick="show_img.showModal()" />
-                                            <x-assets.icons.admin-icons.upload-img.delete-img
-                                                onclick="delete_img.showModal()" />
+                                            <div>
+                                                <span class="ml-4 inline-block select-none text-xl"
+                                                    @click='
+                                                            show_img.showModal();
+                                                            $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                    ↳
+                                                </span>
+                                                <x-assets.icons.admin-icons.upload-img.img-solid
+                                                    @click='
+                                                            show_img.showModal();
+                                                            $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                <span>
+                                                    <span
+                                                        @click='
+                                                                show_img.showModal();
+                                                                $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                        {{ $image["file_name"] }}
+                                                    </span>
+                                                    <x-assets.icons.admin-icons.upload-img.show-img
+                                                        @click='
+                                                                show_img.showModal();
+                                                                $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                    <x-assets.icons.admin-icons.upload-img.delete-img
+                                                        @click='
+                                                                delete_img.showModal();
+                                                                $refs.idToDelete.value = {{ $image["id"] }};' />
+                                                </span>
+                                            </div>
                                         </span>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            </span>
-                        @endif
-                    </div>
-                @endforeach
-
+                            </div>
+                        @endforeach
+                    @endif
+                </span>
             </div>
         @endforeach
-
     </div>
 
     {{-- MODALS: --}}
@@ -135,7 +145,6 @@
 
                 </button>
             </form>
-
         </div>
         <form method="dialog" class="modal-backdrop">
             <button>close</button>
@@ -150,7 +159,7 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <div>
-                <img class="mx-auto h-auto max-w-full rounded-lg" src="https://placehold.co/400x400">
+                <img x-ref="showImage" class="mx-auto h-auto max-w-full rounded-lg" src="https://placehold.co/400x400">
             </div>
         </div>
         <form method="dialog" class="modal-backdrop">
@@ -169,6 +178,7 @@
             <form action="{{ route("upload-image.destroy") }}" method="POST">
                 @csrf
                 @method("DELETE")
+                <input x-ref="idToDelete" type="hidden" value="" name="id">
                 <button
                     class="mx-auto mb-2 mt-4 block cursor-pointer rounded-lg bg-gray-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                     type="submit">

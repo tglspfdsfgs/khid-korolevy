@@ -1,6 +1,6 @@
 @php
     $svgAttributes = [
-        "onclick" => "show_img.showModal()",
+        "@click" => "show_img.showModal()",
     ];
 @endphp
 
