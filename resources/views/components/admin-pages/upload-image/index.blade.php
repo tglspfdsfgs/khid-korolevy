@@ -1,6 +1,12 @@
 @props(["data"])
 
-<div x-data="{ mainFolder: null, innerFolder: null }" class="flex flex-col items-start">
+<div x-data="{
+    mainFolder: null,
+    innerFolder: null,
+
+    openCBToast: false,
+    toggleCBToast() { this.openCBToast = !this.openCBToast }
+}" class="flex flex-col items-start">
     <div class="cursor-pointer select-none">
         @foreach ($data as $mainFolder => $inner)
             <div x-data="{ open: false }">
@@ -24,24 +30,28 @@
                                     <span class="ml-4 inline-block select-none text-xl"
                                         @click='
                                                 show_img.showModal();
-                                                $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);'>
                                         ↳
                                     </span>
                                     <x-assets.icons.admin-icons.upload-img.img-solid
                                         @click='
                                                 show_img.showModal();
-                                                $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);' />
                                     <span>
                                         <span
                                             @click='
                                                     show_img.showModal();
-                                                    $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                    $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                    $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);'>
                                             {{ $image["file_name"] }}
                                         </span>
                                         <x-assets.icons.admin-icons.upload-img.show-img
                                             @click='
                                                     show_img.showModal();
-                                                    $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                    $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                    $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);' />
                                         <x-assets.icons.admin-icons.upload-img.delete-img
                                             @click='
                                                     delete_img.showModal();
@@ -74,24 +84,28 @@
                                                 <span class="ml-4 inline-block select-none text-xl"
                                                     @click='
                                                             show_img.showModal();
-                                                            $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                            $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                            $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);'>
                                                     ↳
                                                 </span>
                                                 <x-assets.icons.admin-icons.upload-img.img-solid
                                                     @click='
                                                             show_img.showModal();
-                                                            $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                            $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                            $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);' />
                                                 <span>
                                                     <span
                                                         @click='
                                                                 show_img.showModal();
-                                                                $refs.showImage.src = `{{ $image["url"] }}`;'>
+                                                                $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                                $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);'>
                                                         {{ $image["file_name"] }}
                                                     </span>
                                                     <x-assets.icons.admin-icons.upload-img.show-img
                                                         @click='
                                                                 show_img.showModal();
-                                                                $refs.showImage.src = `{{ $image["url"] }}`;' />
+                                                                $refs.showImage.src = `/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`;
+                                                                $refs.showImage.setAttribute(`data-clipboard` ,`/storage/{{ $image["id"] }}/{{ $image["file_name"] }}`);' />
                                                     <x-assets.icons.admin-icons.upload-img.delete-img
                                                         @click='
                                                                 delete_img.showModal();
@@ -159,7 +173,21 @@
                 <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
             <div>
-                <img x-ref="showImage" class="mx-auto h-auto max-w-full rounded-lg" src="https://placehold.co/400x400">
+                <img class="mx-auto h-auto max-w-full cursor-pointer rounded-lg" x-ref="showImage" data-clipboard=""
+                    src=""
+                    @click="
+                            $clipboard($refs.showImage.getAttribute('data-clipboard'));
+                            toggleCBToast();" />
+            </div>
+            <div x-show="openCBToast"
+                x-effect="if(openCBToast) {
+                                const timer = setTimeout(() => openCBToast = false, 2000);
+                                return () => clearTimeout(timer);
+                           }"
+                class="toast toast-top toast-center">
+                <div class="alert alert-success">
+                    <span>✓ URL зображення скопійовано</span>
+                </div>
             </div>
         </div>
         <form method="dialog" class="modal-backdrop">
