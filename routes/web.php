@@ -23,6 +23,7 @@ Route::post('/logout', [AuthController::class, 'destroy'])->name('auth.destroy')
 
 Route::prefix('/admin-panel')->middleware(['auth'])->group(function () {
     Route::get('/upload-image/index', [UploadImageController::class, 'index'])->name('upload-image.index');
+    Route::get('/upload-image/show', [UploadImageController::class, 'show'])->name('upload-image.show');
     Route::post('/upload-image/store', [UploadImageController::class, 'store'])->name('upload-image.store');
     Route::delete('/upload-image/destroy', [UploadImageController::class, 'destroy'])->name('upload-image.destroy');
 });

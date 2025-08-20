@@ -1,7 +1,7 @@
 @props(["image"])
 
 <span>
-    <div>
+    <div class="cursor-pointer">
         <span class="ml-4 inline-block select-none text-xl"
             @click='
                     show_img.showModal();

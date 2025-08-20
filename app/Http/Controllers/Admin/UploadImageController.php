@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadImage\DeleteImageRequest;
+use App\Http\Requests\UploadImage\PaginationRequest;
 use App\Http\Requests\UploadImage\UploadImageRequest;
 use App\Services\Admin\UploadImage;
 
@@ -21,6 +22,25 @@ class UploadImageController extends Controller
             'page' => 'admin-pages.upload-image.index',
             'data' => $images,
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(PaginationRequest $request)
+    {
+        $images = UploadImage::getImages($request->mainFolder);
+
+        try {
+            $html = view('components.admin-pages.upload-image.blocks.add-image', [
+                'mainFolder' => $request->mainFolder,
+                'innerFolder' => $request->innerFolder,
+            ])->render();
+
+            return response()->json(['success' => true, 'html' => $html]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'error' => $e->getMessage()]);
+        }
     }
 
     /**

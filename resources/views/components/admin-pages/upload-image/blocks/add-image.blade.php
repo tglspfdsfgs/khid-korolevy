@@ -1,5 +1,5 @@
 @props(["mainFolder", "innerFolder" => false])
-<div
+<div class="cursor-pointer"
     @click='
              upload_img.showModal();
              $refs.whereTo.textContent = `{{ $mainFolder }}{{ $innerFolder ? " / " . $innerFolder : "" }}`;

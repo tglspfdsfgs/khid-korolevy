@@ -3,6 +3,7 @@
 namespace App\Services\Admin;
 
 use App\Models\Image;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UploadImage
@@ -57,12 +58,12 @@ class UploadImage
     public static function deleteImage(int $imageId): void
     {
         $media = Media::findOrFail($imageId);
-        $image = $media->model; // это твоя запись в таблице images
+        $image = $media->model;
         $media->delete();
-        $image?->delete(); // если хочешь ещё и саму запись Image убрать
+        $image?->delete();
     }
 
-    private static function getImages(string $collectionName): array
+    public static function getImages(string $collectionName): array
     {
         $media = self::queryMedia($collectionName);
 
@@ -73,17 +74,17 @@ class UploadImage
         return self::sortBySubCollection($grouped);
     }
 
-    private static function queryMedia($collectionName)
+    private static function queryMedia(string $collectionName): LengthAwarePaginator
     {
         return Media::where('model_type', Image::class)
             ->where('collection_name', $collectionName)
             ->orderBy('created_at', 'desc')
-            ->paginate(100);
+            ->paginate(15, ['*'], 'page', 1);
     }
 
-    private static function sortMediaBySubCollection($media)
+    private static function sortMediaBySubCollection(LengthAwarePaginator $media): array
     {
-        return $media->through(function ($media) {
+        $mediaCollection = $media->getCollection()->map(function ($media) {
             if (empty($media->custom_properties)
                 || empty($media->custom_properties['subCollection'])) {
                 return [
@@ -100,24 +101,31 @@ class UploadImage
                     'collection_name' => $media->collection_name,
                     'subCollection' => $media->custom_properties['subCollection'],
                     'file_name' => $media->file_name,
-                    'size' => round($media->size / 1024, 1).' KB',
-                ];
+                    'size' => round($media->size / 1024, 1).' KB', ];
             }
         });
+
+        return [
+            'data' => $mediaCollection,
+            'paginator' => $media,
+        ];
     }
 
-    private static function groupByCollection($items)
+    private static function groupByCollection(array $arguments): array
     {
-        return $items->groupBy(function ($item) {
+        $arguments['data'] = $arguments['data']->groupBy(function ($item) {
             return $item['collection_name'];
         });
+
+        return $arguments;
     }
 
-    private static function sortBySubCollection($items): array
+    /** TODO: add paginator to array folders */
+    private static function sortBySubCollection(array $arguments): array
     {
         $structure = self::$collections;
 
-        foreach ($items as $collectionName => $records) {
+        foreach ($arguments['data'] as $collectionName => $records) {
             foreach ($records as $record) {
                 $sub = $record['subCollection'] ?? null;
 

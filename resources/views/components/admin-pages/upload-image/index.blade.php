@@ -7,7 +7,7 @@
     openCBToast: false,
     toggleCBToast() { this.openCBToast = !this.openCBToast }
 }" class="flex flex-col items-start">
-    <div class="cursor-pointer select-none">
+    <div class="select-none">
         @foreach ($data as $mainFolder => $inner)
             <div x-data="{ open: false }">
                 <x-assets.icons.admin-icons.upload-img.main-folder x-if="!open" @click.self="open = !open" />
@@ -18,6 +18,8 @@
                         @foreach ($inner as $image)
                             <x-admin-pages.upload-image.blocks.image :$image />
                         @endforeach
+
+                        <x-admin-pages.upload-image.blocks.pagnation />
                     @else
                         @foreach ($inner as $innerFolder => $content)
                             <div x-data="{ openInner: false }">
@@ -30,6 +32,8 @@
                                     @foreach ($content as $image)
                                         <x-admin-pages.upload-image.blocks.image :$image />
                                     @endforeach
+
+                                    <x-admin-pages.upload-image.blocks.pagnation />
                                 </div>
                             </div>
                         @endforeach
