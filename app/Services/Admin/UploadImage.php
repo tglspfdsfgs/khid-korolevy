@@ -133,11 +133,11 @@ class UploadImage
 
                 if ($sub && isset($structure[$collectionName][$sub])) {
                     $structure[$collectionName][$sub][] = $record;
-                    $structure[$collectionName]['__paginator'] = $arguments['paginator'];
                 } else {
-                    $structure['Інше']['__data'] = $record;
-                    $structure['Інше']['__paginator'] = $arguments['paginator'];
+                    $structure['Інше']['__data'][] = $record;
                 }
+
+                $structure[$collectionName]['__paginator'] = $arguments['paginator'];
             }
         }
 

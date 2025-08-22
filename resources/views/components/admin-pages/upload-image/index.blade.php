@@ -1,6 +1,19 @@
 @props(["data"])
 @php
+    use Illuminate\Pagination\LengthAwarePaginator;
+
     $paginator = null;
+
+    function extractPaginator(array &$data): ?LengthAwarePaginator
+    {
+        if (array_key_exists("__paginator", $data)) {
+            $paginator = $data["__paginator"];
+            unset($data["__paginator"]);
+            $data = array_filter($data, fn($v) => is_array($v) || !empty($v));
+            return $paginator;
+        }
+        return null;
+    }
 @endphp
 
 <div x-data="{
@@ -18,19 +31,20 @@
                 <span x-cloak x-show="open">
                     @if (array_key_exists("__data", $inner))
                         <x-admin-pages.upload-image.blocks.add-image :$mainFolder />
+                        @php
+                            $paginator = extractPaginator($inner);
+                        @endphp
                         @foreach ($inner["__data"] as $image)
-                            @dd($inner["__data"])
                             <x-admin-pages.upload-image.blocks.image :$image />
                         @endforeach
+                        <x-admin-pages.upload-image.blocks.pagnation :$paginator />
+                        @php
+                            $paginator = null;
+                        @endphp
                     @else
-                        @dump($inner)
-                        {{-- @php
-                            if (array_key_exists('__paginator', $inner)) {
-                                $paginator = $inner['__paginator'];
-                                unset($inner['__paginator']);
-                                $inner = array_filter($inner);
-                            }
-                        @endphp --}}
+                        @php
+                            $paginator = extractPaginator($inner);
+                        @endphp
                         @foreach ($inner as $innerFolder => $content)
                             <div x-data="{ openInner: false }">
                                 <span class="ml-2 inline-block select-none text-lg">|</span>
@@ -45,8 +59,12 @@
                                 </div>
                             </div>
                         @endforeach
+                        <x-admin-pages.upload-image.blocks.pagnation :$paginator />
+                        @php
+                            $paginator = null;
+                        @endphp
                     @endif
-                    <x-admin-pages.upload-image.blocks.pagnation />
+
                 </span>
             </div>
         @endforeach

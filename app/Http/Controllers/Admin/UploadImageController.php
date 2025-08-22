@@ -17,8 +17,6 @@ class UploadImageController extends Controller
     {
         $images = UploadImage::getAllImages();
 
-        /* dd($images); */
-
         return view('admin-panel', [
             'title' => 'завантаження фото',
             'page' => 'admin-pages.upload-image.index',
