@@ -1,4 +1,7 @@
 @props(["data"])
+@php
+    $paginator = null;
+@endphp
 
 <div x-data="{
     mainFolder: null,
@@ -13,14 +16,21 @@
                 <x-assets.icons.admin-icons.upload-img.main-folder x-if="!open" @click.self="open = !open" />
                 <span @click.self="open = !open">{{ $mainFolder }}</span>
                 <span x-cloak x-show="open">
-                    @if (empty($inner) || array_is_list($inner))
+                    @if (array_key_exists("__data", $inner))
                         <x-admin-pages.upload-image.blocks.add-image :$mainFolder />
-                        @foreach ($inner as $image)
+                        @foreach ($inner["__data"] as $image)
+                            @dd($inner["__data"])
                             <x-admin-pages.upload-image.blocks.image :$image />
                         @endforeach
-
-                        <x-admin-pages.upload-image.blocks.pagnation />
                     @else
+                        @dump($inner)
+                        {{-- @php
+                            if (array_key_exists('__paginator', $inner)) {
+                                $paginator = $inner['__paginator'];
+                                unset($inner['__paginator']);
+                                $inner = array_filter($inner);
+                            }
+                        @endphp --}}
                         @foreach ($inner as $innerFolder => $content)
                             <div x-data="{ openInner: false }">
                                 <span class="ml-2 inline-block select-none text-lg">|</span>
@@ -32,12 +42,11 @@
                                     @foreach ($content as $image)
                                         <x-admin-pages.upload-image.blocks.image :$image />
                                     @endforeach
-
-                                    <x-admin-pages.upload-image.blocks.pagnation />
                                 </div>
                             </div>
                         @endforeach
                     @endif
+                    <x-admin-pages.upload-image.blocks.pagnation />
                 </span>
             </div>
         @endforeach

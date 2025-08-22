@@ -37,11 +37,22 @@ class UploadImage
         $images = [];
 
         foreach (self::$collections as $collection => $item) {
-            $query = self::getImages($collection);
+            $query = self::getImages($collection, 1);
             $images[$collection] = $query[$collection] ?? $item;
         }
 
         return $images;
+    }
+
+    public static function getImages(string $collectionName, int $page): array
+    {
+        $media = self::queryMedia($collectionName, $page);
+
+        $sortedMedia = self::sortMediaBySubCollection($media);
+
+        $grouped = self::groupByCollection($sortedMedia);
+
+        return self::sortBySubCollection($grouped);
     }
 
     public static function storeImage(string $collectionName, ?string $subCollection): void
@@ -63,23 +74,12 @@ class UploadImage
         $image?->delete();
     }
 
-    public static function getImages(string $collectionName): array
-    {
-        $media = self::queryMedia($collectionName);
-
-        $sortedMedia = self::sortMediaBySubCollection($media);
-
-        $grouped = self::groupByCollection($sortedMedia);
-
-        return self::sortBySubCollection($grouped);
-    }
-
-    private static function queryMedia(string $collectionName): LengthAwarePaginator
+    private static function queryMedia(string $collectionName, int $page): LengthAwarePaginator
     {
         return Media::where('model_type', Image::class)
             ->where('collection_name', $collectionName)
             ->orderBy('created_at', 'desc')
-            ->paginate(15, ['*'], 'page', 1);
+            ->paginate(15, ['*'], 'page', $page);
     }
 
     private static function sortMediaBySubCollection(LengthAwarePaginator $media): array
@@ -113,14 +113,16 @@ class UploadImage
 
     private static function groupByCollection(array $arguments): array
     {
-        $arguments['data'] = $arguments['data']->groupBy(function ($item) {
+        $result = $arguments['data']->groupBy(function ($item) {
             return $item['collection_name'];
-        });
+        })->toArray();
 
-        return $arguments;
+        return [
+            'data' => $result,
+            'paginator' => $arguments['paginator'],
+        ];
     }
 
-    /** TODO: add paginator to array folders */
     private static function sortBySubCollection(array $arguments): array
     {
         $structure = self::$collections;
@@ -131,8 +133,10 @@ class UploadImage
 
                 if ($sub && isset($structure[$collectionName][$sub])) {
                     $structure[$collectionName][$sub][] = $record;
+                    $structure[$collectionName]['__paginator'] = $arguments['paginator'];
                 } else {
-                    $structure['Інше'][] = $record;
+                    $structure['Інше']['__data'] = $record;
+                    $structure['Інше']['__paginator'] = $arguments['paginator'];
                 }
             }
         }
