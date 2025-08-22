@@ -3,8 +3,7 @@
 ])
 
 <div class="mt-2 pl-5">
-    @dump($paginator?->items())
-    <hr class="w-38 my-2" />
+    <hr class="w-35 my-2" />
     <button @disabled(!($paginator && $paginator->currentPage() > 1)) class="btn btn-outline btn-accent btn-sm mr-2">
         &laquo; Prev
     </button>

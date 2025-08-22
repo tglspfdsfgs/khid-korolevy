@@ -24,6 +24,7 @@ class PaginationRequest extends FormRequest
         return [
             'mainFolder' => 'required|string',
             'innerFolder' => 'nullable|string',
+            'page' => 'required|integer|min:1',
         ];
     }
 }
