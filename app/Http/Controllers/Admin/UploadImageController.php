@@ -10,12 +10,16 @@ use App\Services\Admin\UploadImage;
 
 class UploadImageController extends Controller
 {
+    public function __construct(private UploadImage $uploader)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $images = UploadImage::getAllImages();
+        $images = $this->uploader->getAllImages();
 
         return view('admin-panel', [
             'title' => 'завантаження фото',
@@ -29,7 +33,7 @@ class UploadImageController extends Controller
      */
     public function show(PaginationRequest $request)
     {
-        $images = UploadImage::getImages($request->mainFolder);
+        $images = $this->uploader->getImages($request->mainFolder);
 
         try {
             $html = view('components.admin-pages.upload-image.blocks.add-image', [
@@ -48,7 +52,7 @@ class UploadImageController extends Controller
      */
     public function store(UploadImageRequest $request)
     {
-        UploadImage::storeImage($request->mainFolder, $request?->innerFolder);
+        $this->uploader->storeImage($request->mainFolder, $request?->innerFolder);
 
         return back()->with('success', "Зображення успішно завантажено в {$request->mainFolder}".
             ($request->innerFolder ? " / {$request->innerFolder}" : ''));
@@ -59,7 +63,7 @@ class UploadImageController extends Controller
      */
     public function destroy(DeleteImageRequest $request)
     {
-        UploadImage::deleteImage($request->id);
+        $this->uploader->deleteImage($request->id);
 
         return back()->with('success', 'Зображення успішно видалено');
     }

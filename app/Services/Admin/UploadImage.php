@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UploadImage
 {
-    protected static array $collections = [
+    protected array $collections = [
         'Новини і статті' => [
             "Прев'ю-картинки" => [],
             'Контент' => [],
@@ -32,30 +32,30 @@ class UploadImage
         'Інше' => [],
     ];
 
-    public static function getAllImages(): array
+    public function getAllImages(): array
     {
         $images = [];
 
-        foreach (self::$collections as $collection => $item) {
-            $query = self::getImages($collection, 1);
+        foreach ($this->collections as $collection => $item) {
+            $query = $this->getImages($collection, 1);
             $images[$collection] = $query[$collection] ?? $item;
         }
 
         return $images;
     }
 
-    public static function getImages(string $collectionName, int $page): array
+    public function getImages(string $collectionName, int $page): array
     {
-        $media = self::queryMedia($collectionName, $page);
+        $media = $this->queryMedia($collectionName, $page);
 
-        $sortedMedia = self::sortMediaBySubCollection($media);
+        $sortedMedia = $this->sortMediaBySubCollection($media);
 
-        $grouped = self::groupByCollection($sortedMedia);
+        $grouped = $this->groupByCollection($sortedMedia);
 
-        return self::sortBySubCollection($grouped);
+        return $this->sortBySubCollection($grouped);
     }
 
-    public static function storeImage(string $collectionName, ?string $subCollection): void
+    public function storeImage(string $collectionName, ?string $subCollection): void
     {
         $image = Image::create();
 
@@ -66,7 +66,7 @@ class UploadImage
             ->toMediaCollection($collectionName);
     }
 
-    public static function deleteImage(int $imageId): void
+    public function deleteImage(int $imageId): void
     {
         $media = Media::findOrFail($imageId);
         $image = $media->model;
@@ -74,7 +74,7 @@ class UploadImage
         $image?->delete();
     }
 
-    private static function queryMedia(string $collectionName, int $page): LengthAwarePaginator
+    private function queryMedia(string $collectionName, int $page): LengthAwarePaginator
     {
         return Media::where('model_type', Image::class)
             ->where('collection_name', $collectionName)
@@ -82,7 +82,7 @@ class UploadImage
             ->paginate(5, ['*'], 'page', $page);
     }
 
-    private static function sortMediaBySubCollection(LengthAwarePaginator $media): array
+    private function sortMediaBySubCollection(LengthAwarePaginator $media): array
     {
         $mediaCollection = $media->getCollection()->map(function ($media) {
             if (empty($media->custom_properties)
@@ -111,7 +111,7 @@ class UploadImage
         ];
     }
 
-    private static function groupByCollection(array $arguments): array
+    private function groupByCollection(array $arguments): array
     {
         $result = $arguments['data']->groupBy(function ($item) {
             return $item['collection_name'];
@@ -123,9 +123,9 @@ class UploadImage
         ];
     }
 
-    private static function sortBySubCollection(array $arguments): array
+    private function sortBySubCollection(array $arguments): array
     {
-        $structure = self::$collections;
+        $structure = $this->collections;
 
         foreach ($arguments['data'] as $collectionName => $records) {
             foreach ($records as $record) {
