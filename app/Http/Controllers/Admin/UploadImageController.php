@@ -33,7 +33,7 @@ class UploadImageController extends Controller
      */
     public function show(PaginationRequest $request)
     {
-        $images = $this->uploader->getImages($request->mainFolder);
+        $images = $this->uploader->getImages($request->mainFolder, $request->page);
 
         try {
             $html = view('components.admin-pages.upload-image.blocks.add-image', [
