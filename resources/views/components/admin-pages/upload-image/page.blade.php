@@ -5,42 +5,68 @@
     $paginator = null;
 @endphp
 
-<span>
-    @if (array_key_exists("__data", $inner))
-        <x-admin-pages.upload-image.blocks.add-image :$mainFolder />
-        @dump($inner)
-        @php
-            $paginator = Helpers::extractPaginator($inner);
-        @endphp
-        @foreach ($inner["__data"] as $image)
-            <x-admin-pages.upload-image.blocks.image :$image />
-        @endforeach
-        <x-admin-pages.upload-image.blocks.pagnation :$paginator />
-        @php
-            $paginator = null;
-        @endphp
-    @else
-        @dump($inner)
-        @php
-            $paginator = Helpers::extractPaginator($inner);
-        @endphp
-        @foreach ($inner as $innerFolder => $content)
-            <div x-data="{ openInner: false }">
-                <span class="ml-2 inline-block select-none text-lg">|</span>
-                <x-assets.icons.admin-icons.upload-img.inner-folder x-if="!openInner"
-                    @click.self="openInner = !openInner" />
-                <span x-cloak @click.self="openInner = !openInner">{{ $innerFolder }}</span>
-                <div x-show="openInner" x-cloak class="flex flex-col">
-                    <x-admin-pages.upload-image.blocks.add-image :$mainFolder :$innerFolder />
-                    @foreach ($content as $image)
-                        <x-admin-pages.upload-image.blocks.image :$image />
-                    @endforeach
+<form x-data="{ loading: false }" class="relative" action='{{ route("upload-image.show", ["mainFolder" => $mainFolder]) }}'
+    method="get"
+    @submit.prevent="() => {
+        loading = true;
+
+        const action = $el.action + '&page=' + $event.submitter.value;
+        alert( action );
+
+        (async () => {
+            try {
+                const response = await fetch(action, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                });
+                const textResponse = await response.text();
+                alert(textResponse);
+                {{-- $el.innerHTML = response;
+                document.querySelector('#images-container').innerHTML = html; --}}
+            } catch (err) {
+                console.error('Loading error:', err);
+            } finally {
+                loading = false;
+            }
+        })();
+    }">
+    <span class="loading loading-spinner text-info absolute left-1/2 top-1/2" x-cloak x-show="loading"></span>
+    <span :class="{ 'blur-sm': loading, 'pointer-events-none': loading }">
+        @if (empty($inner) || array_key_exists("__data", $inner))
+            <x-admin-pages.upload-image.blocks.add-image :$mainFolder />
+            @php
+                $paginator = Helpers::extractPaginator($inner);
+            @endphp
+            @if (!empty($inner))
+                @foreach ($inner["__data"] as $image)
+                    <x-admin-pages.upload-image.blocks.image :$image />
+                @endforeach
+            @endif
+            <x-admin-pages.upload-image.blocks.pagnation :$paginator />
+            @php
+                $paginator = null;
+            @endphp
+        @else
+            @php
+                $paginator = Helpers::extractPaginator($inner);
+            @endphp
+            @foreach ($inner as $innerFolder => $content)
+                <div x-data="{ openInner: false }">
+                    <span class="ml-2 inline-block select-none text-lg">|</span>
+                    <x-assets.icons.admin-icons.upload-img.inner-folder x-if="!openInner"
+                        @click.self="openInner = !openInner" />
+                    <span x-cloak @click.self="openInner = !openInner">{{ $innerFolder }}</span>
+                    <div x-show="openInner" x-cloak class="flex flex-col">
+                        <x-admin-pages.upload-image.blocks.add-image :$mainFolder :$innerFolder />
+                        @foreach ($content as $image)
+                            <x-admin-pages.upload-image.blocks.image :$image />
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-        @endforeach
-        <x-admin-pages.upload-image.blocks.pagnation :$paginator />
-        @php
-            $paginator = null;
-        @endphp
-    @endif
-</span>
+            @endforeach
+            <x-admin-pages.upload-image.blocks.pagnation :$paginator />
+            @php
+                $paginator = null;
+            @endphp
+        @endif
+    </span>
+</form>
