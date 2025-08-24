@@ -42,15 +42,15 @@
             </span>
         </i>
 
-        <b class="badge badge-sm tooltip" data-tip="Відобразиться після публікації">
-            [ 📦❓ Тип галереї ]
-        </b>
-
         <div x-show="editing.date" class="join w-65">
             <input type="date" class="input input-sm join-item" @blur="editing.date = false"
                 @keydown.enter="editing.date = false" x-model="date" />
             <button class="btn btn-accent btn-sm join-item" @click="editing.date = false">зберегти</button>
         </div>
+
+        <b class="badge badge-sm tooltip" data-tip="Відобразиться після публікації">
+            [ 📦❓ Тип галереї ]
+        </b>
 
         <p x-show="!editing.description" @click="editing.description = true" @touchstart="editing.description = true">
             <span class="cursor-pointer" x-text="description"></span>
