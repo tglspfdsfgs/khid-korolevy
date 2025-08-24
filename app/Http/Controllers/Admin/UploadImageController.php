@@ -33,12 +33,12 @@ class UploadImageController extends Controller
      */
     public function show(PaginationRequest $request)
     {
-        $data = $this->uploader->getSingleCollection($request->mainFolder, $request->page);
+        $result = $this->uploader->getImages($request->mainFolder, $request->page);
 
         try {
             $html = view('components.admin-pages.upload-image.page', [
                 'mainFolder' => $request->mainFolder,
-                'inner' => $data[$request->mainFolder],
+                'inner' => $result,
             ])->render();
 
             return response()->json(['success' => true, 'html' => $html]);
