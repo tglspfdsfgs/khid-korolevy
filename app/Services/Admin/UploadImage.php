@@ -44,15 +44,15 @@ class UploadImage
         return $images;
     }
 
-    public function getImages(string $collectionName, int $page): array
+    public function getSingleCollection(string $collectionName, int $page): array
     {
-        $media = $this->queryMedia($collectionName, $page);
+        $result = $this->getImages($collectionName, $page);
 
-        $sortedMedia = $this->sortMediaBySubCollection($media);
-
-        $grouped = $this->groupByCollection($sortedMedia);
-
-        return $this->sortBySubCollection($grouped);
+        return array_filter(
+            $result,
+            fn ($folder) => $folder === $collectionName,
+            mode: ARRAY_FILTER_USE_KEY
+        );
     }
 
     public function storeImage(string $collectionName, ?string $subCollection): void
@@ -74,12 +74,23 @@ class UploadImage
         $image?->delete();
     }
 
+    private function getImages(string $collectionName, int $page): array
+    {
+        $media = $this->queryMedia($collectionName, $page);
+
+        $sortedMedia = $this->sortMediaBySubCollection($media);
+
+        $grouped = $this->groupByCollection($sortedMedia);
+
+        return $this->sortBySubCollection($grouped);
+    }
+
     private function queryMedia(string $collectionName, int $page): LengthAwarePaginator
     {
         return Media::where('model_type', Image::class)
             ->where('collection_name', $collectionName)
             ->orderBy('created_at', 'desc')
-            ->paginate(5, ['*'], 'page', $page);
+            ->paginate(15, ['*'], 'page', $page);
     }
 
     private function sortMediaBySubCollection(LengthAwarePaginator $media): array

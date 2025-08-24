@@ -33,11 +33,7 @@ class UploadImageController extends Controller
      */
     public function show(PaginationRequest $request)
     {
-        $data = array_filter(
-            $this->uploader->getImages($request->mainFolder, $request->page),
-            fn ($folder) => $folder === $request->mainFolder,
-            mode: ARRAY_FILTER_USE_KEY
-        );
+        $data = $this->uploader->getSingleCollection($request->mainFolder, $request->page);
 
         try {
             $html = view('components.admin-pages.upload-image.page', [
