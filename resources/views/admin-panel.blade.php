@@ -33,36 +33,6 @@
             "Налаштування" => "/setting",
         ];
 
-        /*$data = [
-        "Новини і статті" => [
-            "Прев'ю-картинки" => [
-                "id" => 11,
-                "url" => "http://127.0.0.1:8000//storage/11/7234449911-large.webp",
-                "collection_name" => "Новини і статті",
-                "subCollection" => "Прев'ю-картинки",
-                "file_name" => "7234449911-large",
-                "size" => "104.9 KB",
-            ],
-            "Контент" => [
-                "id" => 11,
-                "url" => "http://127.0.0.1:8000//storage/11/7234449911-large.webp",
-                "collection_name" => "Новини і статті",
-                "subCollection" => "Контент",
-                "file_name" => "7234449911-large",
-                "size" => "104.9 KB",
-            ],
-        ],
-        "Інше" => [
-            [
-                "id" => 10,
-                "url" => "http://127.0.0.1:8000//storage/10/GmK9X32acAAKOUA.jpeg",
-                "collection_name" => "Інше",
-                "file_name" => "GmK9X32acAAKOUA",
-                "size" => "479 KB",
-            ],
-        ],
-    ];*/
-
     @endphp
     <!-- ========== HEADER ========== -->
     <header class="bg-accent text-accent-content">
@@ -86,7 +56,7 @@
                             <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
                                 secondary="#FFFF00" />
                         </a>
-                        <div class="ml-auto mr-3 flex flex-none">
+                        {{-- <div class="ml-auto mr-3 flex flex-none">
                             <button class="btn btn-circle tooltip tooltip-info tooltip-left mr-2" data-tip="Документація">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -94,43 +64,7 @@
                                         d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                                 </svg>
                             </button>
-                            <div class="dropdown dropdown-end tooltip tooltip-warning tooltip-left"
-                                data-tip='{{ $account["Облікові данні"]["Ім'я"] }}'>
-                                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                                    <div class="w-10 rounded-full">
-                                        <img alt="Tailwind CSS Navbar component"
-                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                    </div>
-                                </div>
-                                <form method="post" action='{{ $account["Вихід"] }}'>
-                                    @csrf
-                                    <ul tabindex="0"
-                                        class="menu menu-sm dropdown-content text-base-content bg-base-100 rounded-box z-60 mt-3 w-52 p-2 shadow">
-                                        <li>
-                                            <a href='{{ $account["Налаштування"] }}'>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    fill="currentColor" class="size-6">
-                                                    <path
-                                                        d="M6 12a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 1 1 1.5 0v7.5A.75.75 0 0 1 6 12ZM18 12a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 1 1.5 0v7.5A.75.75 0 0 1 18 12ZM6.75 20.25v-1.5a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 0 1.5 0ZM18.75 18.75v1.5a.75.75 0 0 1-1.5 0v-1.5a.75.75 0 0 1 1.5 0ZM12.75 5.25v-1.5a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 0 1.5 0ZM12 21a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 1 1.5 0v7.5A.75.75 0 0 1 12 21ZM3.75 15a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0ZM12 11.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5ZM15.75 15a2.25 2.25 0 1 0 4.5 0 2.25 2.25 0 0 0-4.5 0Z" />
-                                                </svg>
-                                                Налаштування
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <button type="submit">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    fill="currentColor" class="size-6">
-                                                    <path fill-rule="evenodd"
-                                                        d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6Zm-5.03 4.72a.75.75 0 0 0 0 1.06l1.72 1.72H2.25a.75.75 0 0 0 0 1.5h10.94l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0Z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                Вийти
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="drawer-side isolate overflow-hidden">
@@ -151,6 +85,32 @@
                                 <li><a href="{{ $val }}">{{ $item }}</a></li>
                             @endif
                         @endforeach
+                        <form method="post" action='{{ $account["Вихід"] }}'>
+                            <li class="relative mt-auto">
+                                <a href="{{ $account["Налаштування"] }}">
+                                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                                        <div class="w-10 rounded-full">
+                                            <img alt="Tailwind CSS Navbar component"
+                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="break-all font-bold">{{ $account["Облікові данні"]["Ім'я"] }}</div>
+                                        <div class="break-all font-light">{{ $account["Облікові данні"]["Емейл"] }}
+                                        </div>
+                                    </div>
+                                </a>
+                                <button type="submit" class="text-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-6">
+                                        <path fill-rule="evenodd"
+                                            d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6Zm-5.03 4.72a.75.75 0 0 0 0 1.06l1.72 1.72H2.25a.75.75 0 0 0 0 1.5h10.94l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Вийти
+                                </button>
+                            </li>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -187,11 +147,37 @@
                                 <li><a href="{{ $val }}">{{ $item }}</a></li>
                             @endif
                         @endforeach
+                        <form method="post" action='{{ $account["Вихід"] }}'>
+                            <li class="relative mt-auto">
+                                <a href="{{ $account["Налаштування"] }}">
+                                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                                        <div class="w-10 rounded-full">
+                                            <img alt="Tailwind CSS Navbar component"
+                                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="break-all font-bold">{{ $account["Облікові данні"]["Ім'я"] }}</div>
+                                        <div class="break-all font-light">{{ $account["Облікові данні"]["Емейл"] }}
+                                        </div>
+                                    </div>
+                                </a>
+                                <button type="submit" class="text-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-6">
+                                        <path fill-rule="evenodd"
+                                            d="M16.5 3.75a1.5 1.5 0 0 1 1.5 1.5v13.5a1.5 1.5 0 0 1-1.5 1.5h-6a1.5 1.5 0 0 1-1.5-1.5V15a.75.75 0 0 0-1.5 0v3.75a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V5.25a3 3 0 0 0-3-3h-6a3 3 0 0 0-3 3V9A.75.75 0 1 0 9 9V5.25a1.5 1.5 0 0 1 1.5-1.5h6Zm-5.03 4.72a.75.75 0 0 0 0 1.06l1.72 1.72H2.25a.75.75 0 0 0 0 1.5h10.94l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06l-3-3a.75.75 0 0 0-1.06 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Вийти
+                                </button>
+                            </li>
+                        </form>
                     </ul>
                 </div>
             </div>
             <!-- Body -->
-            <main class="lg:ml-65 relative z-50 min-h-screen bg-white p-5">
+            <main class="lg:ml-65 relative min-h-screen bg-white p-5 lg:z-50">
                 <x-dynamic-component :component="$page" :data="$data" />
             </main>
             <!-- End Body -->
