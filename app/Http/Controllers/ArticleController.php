@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -52,10 +53,10 @@ class ArticleController extends Controller
     /**
      * Publish the specified resource in storage.
      */
-    public function publish(Request $request, string $id)
+    public function publish(ArticleRequest $request)
     {
         dump('publish');
-        dump($request->toArray());
+        dump($request->validated());
     }
 
     /**
