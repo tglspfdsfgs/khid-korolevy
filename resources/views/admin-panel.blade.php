@@ -54,6 +54,7 @@
                             <x-assets.logos.small class="px-5" background="oklch(0% 0 0)" pieces="white" primary="black"
                                 secondary="#FFFF00" />
                         </a>
+
                         {{-- <div class="ml-auto mr-3 flex flex-none">
                             <button class="btn btn-circle tooltip tooltip-info tooltip-left mr-2" data-tip="Документація">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
