@@ -22,12 +22,10 @@
 
         //
 
-        $user = Auth::user();
-
         $account = [
             "Облікові данні" => [
-                "Ім'я" => $user?->name,
-                "Емейл" => "$user?->email",
+                "Ім'я" => auth()->user()?->name,
+                "Емейл" => auth()->user()?->email,
             ],
             "Вихід" => route("auth.destroy"),
             "Налаштування" => "/setting",
