@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadImage\DeleteImageRequest;
 use App\Http\Requests\UploadImage\PaginationRequest;
 use App\Http\Requests\UploadImage\UploadImageRequest;
-use App\Services\Admin\UploadImage;
+use App\Services\Admin\UploadImageService;
 
 class UploadImageController extends Controller
 {
-    public function __construct(private UploadImage $uploader)
+    public function __construct(private UploadImageService $uploader)
     {
     }
 

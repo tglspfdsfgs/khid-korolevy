@@ -6,7 +6,7 @@ use App\Models\Image;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class UploadImage
+class UploadImageService
 {
     protected array $collections = [
         'Новини і статті',

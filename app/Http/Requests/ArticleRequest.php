@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Enums\State;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 
 class ArticleRequest extends FormRequest
@@ -14,6 +15,18 @@ class ArticleRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * Change the data before validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        if ($this->has('date')) {
+            $this->merge([
+                'date' => Carbon::parse($this->input('date'))->toDateString(),
+            ]);
+        }
     }
 
     /**
@@ -32,7 +45,7 @@ class ArticleRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required|string',
             'imageSrc' => 'string|nullable',
-            'date' => 'required|date',
+            'date' => 'required|date_format:Y-m-d',
             'content' => 'required|string',
         ];
     }

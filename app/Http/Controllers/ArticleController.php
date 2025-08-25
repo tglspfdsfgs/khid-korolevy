@@ -3,18 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleRequest;
+use App\Services\Pages\ArticleService;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     /**
+     * Create a new controller instance.
+     */
+    public function __construct(protected ArticleService $service)
+    {
+    }
+
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $data = $this->service->getAll();
+
         return view('main', [
             'title' => 'новини і статті',
             'page' => 'pages.articles.index',
+            'data' => $data,
         ]);
     }
 
@@ -23,7 +34,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return redirect()->route('article.edit', 999);
+        return redirect()->route('article.edit', $this->service->create());
     }
 
     /**
@@ -31,10 +42,12 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
+        $data = $this->service->getById($id);
+
         return view('main', [
             'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
             'page' => 'pages.articles.page',
-            'content' => '',
+            'data' => $data,
         ]);
     }
 
@@ -43,10 +56,14 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
+        $article = $this->service->getById($id);
+
+        $article->only(array_merge(['id'], $article->getFillable()));
+
         return view('main', [
-            'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
+            'title' => $article->title,
             'page' => 'pages.articles.form',
-            'content' => '',
+            'data' => $article->only(array_merge(['id'], $article->getFillable())),
         ]);
     }
 

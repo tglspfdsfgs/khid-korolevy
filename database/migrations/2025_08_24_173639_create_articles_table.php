@@ -1,7 +1,7 @@
 <?php
 
+use App\Enums\PageType;
 use App\Enums\State;
-use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +15,12 @@ return new class extends Migration {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->enum('status', array_column(State::cases(), 'value'))->default(State::draft->value);
+            $table->enum('type', array_column(PageType::cases(), 'value'));
+            $table->enum('state', array_column(State::cases(), 'value'));
             $table->string('title');
             $table->string('description', 510);
-            $table->string('imageSrc')->default('/resources/images/fallback.png');
-            $table->date('date')->default(Carbon::now());
+            $table->string('imageSrc')->nullable();
+            $table->date('date');
             $table->text('content');
         });
     }

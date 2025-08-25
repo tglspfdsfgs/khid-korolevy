@@ -2,11 +2,6 @@
 
 namespace App\Enums;
 
-/** TODO: add casts to model
- * protected $casts = [
- *  'state' => State::class,
- * ];.
- * */
 enum State: string
 {
     case published = 'published';
@@ -15,7 +10,7 @@ enum State: string
 
     /**
      * Checks if the current state is actual:
-     * $state->isCurrState().
+     * $state->isCurrState()
      *
      * @return bool
      */
