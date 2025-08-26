@@ -20,12 +20,12 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $data = $this->service->getAll();
+        $result = $this->service->getAll();
 
         return view('main', [
             'title' => 'новини і статті',
             'page' => 'pages.articles.index',
-            'data' => $data,
+            'data' => $result['data'],
         ]);
     }
 

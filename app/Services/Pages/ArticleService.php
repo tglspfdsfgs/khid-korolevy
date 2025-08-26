@@ -10,7 +10,12 @@ class ArticleService
 {
     public function getAll(): array
     {
-        return Article::all()->toArray();
+        $paginator = Article::orderBy('created_at', 'desc')->paginate(15);
+
+        return [
+            'data' => $paginator->getCollection()->map->toArray()->all(),
+            'paginator' => $paginator,
+        ];
     }
 
     public function create(?array $fields): ?int
