@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Enums\PageType as Type;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
@@ -12,11 +13,11 @@ class Card extends Component
      * Locations of each card type.
      */
     private array $typeViewMap = [
-        'article' => 'components.blocks.cards.articles.card',
-        'tournament' => 'components.blocks.cards.tournaments.card',
-        'gallery' => 'components.blocks.cards.gallery.card',
-        'education' => 'components.blocks.cards.education.card',
-        'comp_dev' => 'components.blocks.cards.comp_dev.card',
+        Type::article->value => 'components.blocks.cards.articles.card',
+        Type::tournament->value => 'components.blocks.cards.tournaments.card',
+        Type::gallery->value => 'components.blocks.cards.gallery.card',
+        Type::education->value => 'components.blocks.cards.education.card',
+        Type::comp_dev->value => 'components.blocks.cards.comp_dev.card',
     ];
 
     /**
