@@ -20,7 +20,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $result = $this->service->getAll();
+        $result = $this->service->getAll(request()->query('state'));
 
         return view('main', [
             'title' => 'новини і статті',

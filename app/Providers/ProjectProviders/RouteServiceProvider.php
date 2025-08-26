@@ -3,6 +3,7 @@
 namespace App\Providers\ProjectProviders;
 
 use App\Enums\State;
+use App\Http\Middleware\PrepareQuery;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::macro('resourceFor', function (string $name, string $controller, array $nestedResources = []) {
             Route::prefix($name)->name("$name.")->group(function () use ($controller, $nestedResources) {
-                Route::get('/', [$controller, 'index'])->name('index');
+                Route::get('/', [$controller, 'index'])->name('index')->middleware(PrepareQuery::class);
                 Route::get('/{id}', [$controller, 'show'])->name('show');
 
                 Route::get('/create', [$controller, 'create'])->name('create')->middleware('auth:web');
