@@ -18,12 +18,12 @@ class ArticleService
         if (! isset($fields)) {
             return Article::create([
                 'type' => PageType::article,
-                'state' => State::draft,
-                'title' => 'Заголовок сторінки',
-                'description' => "Короткий опис прев'ю-картки",
-                'imageSrc' => null,
-                'date' => now(),
-                'content' => 'Контент основної сторінки',
+                'state' => State::draft, // "state" => "draft"
+                'title' => 'Заголовок сторінки', // "title" => "Заголовок сторінки"
+                'description' => "Короткий опис прев'ю-картки", // "description" => "Короткий опис прев'ю-картки"
+                'imageSrc' => null, // "imageSrc" => null
+                'date' => now(), // "date" => "2025-08-25"
+                'content' => 'Контент основної сторінки', // "content" => "<p><em><span style="font-weight: bold;">Контент основної сторінки</span></em></p>"
             ])->id;
         }
 
@@ -35,5 +35,12 @@ class ArticleService
     public function getById(int $id): Article
     {
         return Article::findOrFail($id);
+    }
+
+    public function update(int $id, array $data, State $state): bool
+    {
+        $article = $this->getById($id);
+
+        return $article->update(array_merge($data, ['id' => $id, 'state' => $state]));
     }
 }

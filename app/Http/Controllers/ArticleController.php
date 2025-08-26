@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\State;
 use App\Http\Requests\ArticleRequest;
 use App\Services\Pages\ArticleService;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -70,27 +70,30 @@ class ArticleController extends Controller
     /**
      * Publish the specified resource in storage.
      */
-    public function publish(ArticleRequest $request)
+    public function publish(ArticleRequest $request, int $id)
     {
-        dump('publish');
-        dump($request->validated());
+        $this->service->update($id, $request->validated(), State::published);
+
+        return redirect()->route('article.show', $id);
     }
 
     /**
      * Draft the specified resource in storage.
      */
-    public function draft(Request $request, string $id)
+    public function draft(ArticleRequest $request, int $id)
     {
-        dump('draft');
-        dump($request->toArray());
+        $this->service->update($id, $request->validated(), State::draft);
+
+        return redirect()->route('article.show', $id);
     }
 
     /**
      * Delete the specified resource in storage.
      */
-    public function delete(Request $request, string $id)
+    public function delete(ArticleRequest $request, int $id)
     {
-        dump('delete');
-        dump($request->toArray());
+        $this->service->update($id, $request->validated(), State::deleted);
+
+        return redirect()->route('article.show', $id);
     }
 }
