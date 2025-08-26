@@ -18,7 +18,7 @@ class ArticleService
         ];
     }
 
-    public function create(?array $fields): ?int
+    public function create(?array $fields = null): ?int
     {
         if (! isset($fields)) {
             return Article::create([
