@@ -15,7 +15,7 @@
 @section("page")
     <div class='{{ ($isResponsive ? " " : " $unresponsiveSize mx-auto") . " bg-bottom-right bg-size-[30%] bg-no-repeat " }}'
         style="background-image: url('{{ Vite::asset("resources/images/corner-image.png") }}')">
-        <x-dynamic-component :component="$page" :data="$data" :paginator="$paginator ?? null" :is-responsive="$isResponsive" :unresponsive-size='$unresponsiveSize' />
+        <x-dynamic-component :component="$page" :data="$data ?? null" :paginator="$paginator ?? null" :is-responsive="$isResponsive" :unresponsive-size='$unresponsiveSize' />
     </div>
 @endsection
 

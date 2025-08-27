@@ -2,18 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Enums\State;
+use App\Http\Requests\CompDevRequest;
+use App\Services\Pages\CompDevService;
 
 class ComprehensiveDevelopment extends Controller
 {
+    /**
+     * Create a new controller instance.
+     */
+    public function __construct(protected CompDevService $service)
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $query = request()->only(['state', 'page']);
+
+        $result = $this->service->getAll($query);
+
         return view('main', [
             'title' => 'розумаха',
             'page' => 'pages.comp_dev.index',
+            'data' => $result['data'],
+            'paginator' => $result['paginator'],
         ]);
     }
 
@@ -22,7 +37,7 @@ class ComprehensiveDevelopment extends Controller
      */
     public function create()
     {
-        return redirect()->route('comp_dev.edit', 999);
+        return redirect()->route('comp_dev.edit', $this->service->create());
     }
 
     /**
@@ -30,10 +45,12 @@ class ComprehensiveDevelopment extends Controller
      */
     public function show(string $id)
     {
+        $data = $this->service->getById($id);
+
         return view('main', [
             'title' => 'Інтелектуально-розвиваючий гурток',
             'page' => 'pages.comp_dev.page',
-            'content' => '',
+            'data' => $data,
         ]);
     }
 
@@ -42,37 +59,44 @@ class ComprehensiveDevelopment extends Controller
      */
     public function edit(string $id)
     {
+        $page = $this->service->getById($id);
+
+        $page->only(array_merge(['id'], $page->getFillable()));
+
         return view('main', [
-            'title' => 'Інтелектуально-розвиваючий гурток',
+            'title' => $page->title,
             'page' => 'pages.comp_dev.form',
-            'content' => '',
+            'data' => $page->only(array_merge(['id'], $page->getFillable())),
         ]);
     }
 
     /**
      * Publish the specified resource in storage.
      */
-    public function publish(Request $request, string $id)
+    public function publish(CompDevRequest $request, int $id)
     {
-        dump('publish');
-        dump($request->toArray());
+        $this->service->update($id, $request->validated(), State::published);
+
+        return redirect()->route('comp_dev.show', $id);
     }
 
     /**
      * Draft the specified resource in storage.
      */
-    public function draft(Request $request, string $id)
+    public function draft(CompDevRequest $request, int $id)
     {
-        dump('draft');
-        dump($request->toArray());
+        $this->service->update($id, $request->validated(), State::draft);
+
+        return redirect()->route('comp_dev.show', $id);
     }
 
     /**
      * Delete the specified resource in storage.
      */
-    public function delete(Request $request, string $id)
+    public function delete(CompDevRequest $request, int $id)
     {
-        dump('delete');
-        dump($request->toArray());
+        $this->service->update($id, $request->validated(), State::deleted);
+
+        return redirect()->route('comp_dev.show', $id);
     }
 }
