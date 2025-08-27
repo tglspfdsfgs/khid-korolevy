@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['state', 'title', 'description', 'imageSrc', 'date', 'content'];
+    protected $fillable = ['type', 'state', 'title', 'description', 'imageSrc', 'date', 'content'];
 
     /**
      * Get the attributes that should be cast.
