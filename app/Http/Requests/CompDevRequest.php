@@ -23,8 +23,6 @@ class CompDevRequest extends FormRequest
      */
     public function rules(): array
     {
-        /* dd(request()->all()); */
-
         return [
             'state' => [
                 'required',
