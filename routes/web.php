@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\UploadImageController;
-use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ComprehensiveDevelopment;
-use App\Http\Controllers\EducationController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\MainPageController;
-use App\Http\Controllers\Tournament\TournamentController;
+use App\Http\Controllers\Pages\ArticleController;
+use App\Http\Controllers\Pages\ComprehensiveDevelopment;
+use App\Http\Controllers\Pages\EducationController;
+use App\Http\Controllers\Pages\GalleryController;
+use App\Http\Controllers\Pages\MainPageController;
+use App\Http\Controllers\Pages\Tournament\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', MainPageController::class)->name('index');

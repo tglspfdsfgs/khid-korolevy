@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Tournament;
+namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TournamentController extends Controller
+class GalleryController extends Controller
 {
-    use ResultsActions;
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         return view('main', [
-            'title' => 'турніри',
-            'page' => 'pages.tournaments.index',
+            'title' => 'галерея',
+            'page' => 'pages.gallery.index',
         ]);
     }
 
@@ -25,7 +23,7 @@ class TournamentController extends Controller
      */
     public function create()
     {
-        return redirect()->route('tournament.edit', 999);
+        return redirect()->route('gallery.edit', 999);
     }
 
     /**
@@ -34,8 +32,8 @@ class TournamentController extends Controller
     public function show(string $id)
     {
         return view('main', [
-            'title' => 'Відкритий шаховий турнір \'Король дошки\' – реєструйся та вигравай!',
-            'page' => 'pages.tournaments.page',
+            'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
+            'page' => 'pages.gallery.page',
             'content' => '',
         ]);
     }
@@ -46,8 +44,8 @@ class TournamentController extends Controller
     public function edit(string $id)
     {
         return view('main', [
-            'title' => "Відкритий шаховий турнір 'Король дошки' – реєструйся та вигравай!",
-            'page' => 'pages.tournaments.form',
+            'title' => 'Галерея шахового турніру Королівська битва',
+            'page' => 'pages.gallery.form',
             'content' => '',
         ]);
     }

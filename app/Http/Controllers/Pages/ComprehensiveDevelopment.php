@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
 use App\Enums\State;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CompDevRequest;
 use App\Services\Pages\CompDevService;
 
