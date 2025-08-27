@@ -20,12 +20,15 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $result = $this->service->getAll(request()->query('state'));
+        $query = request()->only(['state', 'page']);
+
+        $result = $this->service->getAll($query);
 
         return view('main', [
             'title' => 'новини і статті',
             'page' => 'pages.articles.index',
             'data' => $result['data'],
+            'paginator' => $result['paginator'],
         ]);
     }
 

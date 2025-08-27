@@ -8,7 +8,7 @@
         @endforeach
 
         {{-- pagination --}}
-        <x-blocks.pagination />
+        <x-blocks.pagination :paginator="$paginator" />
     </section>
     <x-blocks.sidebar.right />
 </main>

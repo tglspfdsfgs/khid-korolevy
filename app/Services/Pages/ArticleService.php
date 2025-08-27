@@ -8,10 +8,12 @@ use App\Models\Article;
 
 class ArticleService
 {
-    public function getAll(string $state): array
+    public function getAll(array $query): array
     {
-        $paginator = Article::where(['state' => $state])
-            ->orderBy('created_at', 'desc')->paginate(15);
+        $paginator = Article::where(['state' => $query['state']])
+            ->orderBy('created_at', 'desc')
+            ->paginate(5)
+            ->appends(request()->except('page'));
 
         return [
             'data' => $paginator->getCollection()->map->toArray()->all(),
