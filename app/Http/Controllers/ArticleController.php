@@ -59,14 +59,14 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        $article = $this->service->getById($id);
+        $page = $this->service->getById($id);
 
-        $article->only(array_merge(['id'], $article->getFillable()));
+        $page->only(array_merge(['id'], $page->getFillable()));
 
         return view('main', [
-            'title' => $article->title,
+            'title' => $page->title,
             'page' => 'pages.articles.form',
-            'data' => $article->only(array_merge(['id'], $article->getFillable())),
+            'data' => $page->only(array_merge(['id'], $page->getFillable())),
         ]);
     }
 
