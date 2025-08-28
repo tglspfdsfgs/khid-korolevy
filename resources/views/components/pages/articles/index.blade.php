@@ -3,9 +3,15 @@
         <x-blocks.create text="Натисни щоб створити статтю" link='{{ route("article.create") }}' />
         <x-blocks.cards-state-navigation />
 
-        @foreach ($data as $card)
-            <x-card :props="$card" />
-        @endforeach
+        @if (empty($data))
+            <x-blocks.no-items text="Немає новин та статей :(" />
+        @else
+            <div class="lg:min-h-200">
+                @foreach ($data as $card)
+                    <x-card :props="$card" />
+                @endforeach
+            </div>
+        @endif
 
         {{-- pagination --}}
         <x-blocks.pagination :paginator="$paginator" />

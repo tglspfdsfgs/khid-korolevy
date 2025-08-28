@@ -3,9 +3,15 @@
         <x-blocks.create text="Натисни щоб створити гурток" link='{{ route("comp_dev.create") }}' />
         <x-blocks.cards-state-navigation />
 
-        @foreach ($data as $card)
-            <x-card :props="$card" />
-        @endforeach
+        @if (empty($data))
+            <x-blocks.no-items text="Немає гуртків :(" />
+        @else
+            <div class="lg:min-h-200">
+                @foreach ($data as $card)
+                    <x-card :props="$card" />
+                @endforeach
+            </div>
+        @endif
 
         {{-- pagination --}}
         <x-blocks.pagination :paginator="$paginator" />

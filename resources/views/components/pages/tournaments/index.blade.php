@@ -56,9 +56,15 @@
         <x-blocks.create text="Натисни щоб створити турнір" link='{{ route("tournament.create") }}' />
         <x-blocks.cards-state-navigation />
 
-        @foreach ($cards as $card)
-            <x-card :props="$card" />
-        @endforeach
+        @if (empty($data))
+            <x-blocks.no-items text="Немає турнірів :(" />
+        @else
+            <div class="lg:min-h-200">
+                @foreach ($data as $card)
+                    <x-card :props="$card" />
+                @endforeach
+            </div>
+        @endif
 
         {{-- pagination --}}
         <x-blocks.pagination />
