@@ -62,8 +62,6 @@ class ArticleController extends Controller
     {
         $page = $this->service->getById($id);
 
-        $page->only(array_merge(['id'], $page->getFillable()));
-
         return view('main', [
             'title' => $page->title,
             'page' => 'pages.articles.form',
