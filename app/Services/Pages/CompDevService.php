@@ -11,7 +11,7 @@ class CompDevService extends BaseService
     public function __construct()
     {
         parent::__construct(CompDev::class, [
-            'type' => PageType::article,
+            'type' => PageType::comp_dev,
             'state' => State::draft,
             'title' => 'Заголовок сторінки',
             'description' => "Короткий опис прев'ю-картки",
