@@ -4,8 +4,7 @@ import Image from "@tiptap/extension-image";
 
 //'editor-ready' - event dispatched when Alpine.js is ready
 window.addEventListener("editor-ready", function () {
-    const initialContent =
-        document.querySelector("#data-holder")?.dataset?.content || "<p>Йой! Сталася якась помилка!</p>";
+    const initialContent = document.querySelector("#data-holder")?.dataset?.content;
 
     const gallery = " grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 place-items-center ";
 
@@ -32,16 +31,7 @@ window.addEventListener("editor-ready", function () {
         // tip tap editor setup
         window.tiptapEditor = new Editor({
             element: document.querySelector("#wysiwyg"),
-            extensions: [
-                StarterKit.configure({
-                    textStyle: false,
-                    bold: false,
-                    marks: {
-                        bold: false,
-                    },
-                }),
-                CustomImage,
-            ],
+            extensions: [StarterKit.configure({}), CustomImage],
             content: initialContent,
             editorProps: {
                 attributes: {

@@ -11,9 +11,17 @@ abstract class BaseService
     {
     }
 
-    public function getAll(array $query): array
+    public function getAll(array $query, ?array $additionalQuery = null): array
     {
-        $paginator = $this->model::where(['state' => $query['state']])
+        $whereStatement = [
+            'state' => $query['state'],
+        ];
+
+        if (isset($additionalQuery)) {
+            $whereStatement = array_merge($whereStatement, $additionalQuery);
+        }
+
+        $paginator = $this->model::where($whereStatement)
             ->orderBy('created_at', 'desc')
             ->paginate(5)
             ->appends(request()->except('page'));

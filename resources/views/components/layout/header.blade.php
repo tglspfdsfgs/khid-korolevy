@@ -1,7 +1,8 @@
 @props(["isResponsive", "unresponsiveSize"])
 
 @php
-    use App\Enums\TournamentType as Type;
+    use App\Enums\TournamentType as TType;
+    use App\Enums\GalleryType as GType;
     use App\Enums\EducationType as EduType;
     use Illuminate\Support\Facades\Auth;
 
@@ -17,17 +18,17 @@
         ],
         "Турніри" => [
             "ВСІ ТУРНІРИ" => route("tournament.index") . "?type=all",
-            Type::chess->nav_title() => route("tournament.index") . "?type=" . Type::chess->value,
-            Type::tabletop->nav_title() => route("tournament.index") . "?type=" . Type::tabletop->value,
-            Type::sports->nav_title() => route("tournament.index") . "?type=" . Type::sports->value,
+            TType::chess->nav_title() => route("tournament.index") . "?type=" . TType::chess->value,
+            TType::tabletop->nav_title() => route("tournament.index") . "?type=" . TType::tabletop->value,
+            TType::sports->nav_title() => route("tournament.index") . "?type=" . TType::sports->value,
         ],
         "Галерея" => [
-            "ВСЯ ГАЛЕРЕЯ" => route("gallery.index") . "?type=all",
-            Type::chess->gallery_title("club") => route("gallery.index") . "?type=" . Type::CLUB,
-            Type::chess->gallery_title("chess") => route("gallery.index") . "?type=" . Type::CHESS,
-            Type::tabletop->gallery_title("tabletop") => route("gallery.index") . "?type=" . Type::TABLETOP,
-            Type::sports->gallery_title("sports") => route("gallery.index") . "?type=" . Type::SPORTS,
-            Type::chess->gallery_title("comp_dev") => route("gallery.index") . "?type=" . Type::COMP_DEV,
+            "ВСЯ ГАЛЕРЕЯ" => route("gallery.index") . "?galleryType=all",
+            GType::chess->nav_title() => route("gallery.index") . "?galleryType=" . GType::chess->value,
+            GType::club->nav_title() => route("gallery.index") . "?galleryType=" . GType::club->value,
+            GType::tabletop->nav_title() => route("gallery.index") . "?galleryType=" . GType::tabletop->value,
+            GType::sports->nav_title() => route("gallery.index") . "?galleryType=" . GType::sports->value,
+            GType::chess->nav_title() => route("gallery.index") . "?galleryType=" . GType::chess->value,
         ],
         "Розумаха" => route("comp_dev.index"),
         "Про нас" => "/about_us",

@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\GalleryType;
 use App\Enums\State;
-use App\Enums\TournamentType;
 use Illuminate\Database\Eloquent\Model;
 
-class CompDev extends Model
+class Gallery extends Model
 {
-    protected $fillable = ['type', 'state', 'title', 'description', 'imageSrc', 'badge', 'link', 'content'];
+    protected $fillable = ['type', 'state', 'title', 'description', 'imageSrc', 'date', 'galleryType', 'content'];
 
     /**
      * Get the attributes that should be cast.
@@ -19,7 +19,7 @@ class CompDev extends Model
     {
         return [
             'state' => State::class,
-            'galleryType' => TournamentType::class,
+            'galleryType' => GalleryType::class,
         ];
     }
 }
