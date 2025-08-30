@@ -46,12 +46,16 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        $data = $this->service->getById($id);
+        $model = $this->service->getById($id);
+
+        if (auth()->guest() && ! $model->state->isVisible()) {
+            abort(404);
+        }
 
         return view('main', [
             'title' => 'Шахи: правила, стратегії та цікаві факти для початківців і професіоналів',
             'page' => 'pages.articles.page',
-            'data' => $data,
+            'data' => $model->toArray(),
         ]);
     }
 

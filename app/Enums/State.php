@@ -33,6 +33,11 @@ enum State: string
         };
     }
 
+    public function isVisible(): bool
+    {
+        return 'published' === $this->value;
+    }
+
     public function toUkrainian(): string
     {
         return match ($this) {

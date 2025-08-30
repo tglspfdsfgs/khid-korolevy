@@ -46,12 +46,16 @@ class ComprehensiveDevelopment extends Controller
      */
     public function show(string $id)
     {
-        $data = $this->service->getById($id);
+        $model = $this->service->getById($id);
+
+        if (auth()->guest() && ! $model->state->isVisible()) {
+            abort(404);
+        }
 
         return view('main', [
             'title' => 'Інтелектуально-розвиваючий гурток',
             'page' => 'pages.comp_dev.page',
-            'data' => $data,
+            'data' => $model->toArray(),
         ]);
     }
 
