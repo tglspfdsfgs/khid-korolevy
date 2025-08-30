@@ -23,6 +23,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerMacros();
+
+        $this->mapWebRoutes();
+    }
+
+    private function registerMacros(): void
+    {
         Route::pattern('id', '[0-9]+');
 
         Route::macro('resourceFor', function (string $name, string $controller, array $nestedResources = []) {
@@ -47,5 +54,12 @@ class RouteServiceProvider extends ServiceProvider
                 }
             });
         });
+    }
+
+    protected function mapWebRoutes(): void
+    {
+        Route::middleware('web')->group(base_path('routes/auth.php'));
+        Route::middleware('web')->group(base_path('routes/pages.php'));
+        Route::middleware('web')->group(base_path('routes/admin-panel.php'));
     }
 }

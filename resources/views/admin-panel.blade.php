@@ -21,7 +21,6 @@
         ];
 
         //
-
         $account = [
             "Облікові данні" => [
                 "Ім'я" => auth()->user()?->name,
@@ -85,6 +84,7 @@
                             @endif
                         @endforeach
                         <form method="post" action='{{ $account["Вихід"] }}'>
+                            @csrf
                             <li class="relative mt-auto">
                                 <a href="{{ $account["Налаштування"] }}">
                                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -147,6 +147,7 @@
                             @endif
                         @endforeach
                         <form method="post" action='{{ $account["Вихід"] }}'>
+                            @csrf
                             <li class="relative mt-auto">
                                 <a href="{{ $account["Налаштування"] }}">
                                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
@@ -182,7 +183,7 @@
             <!-- End Body -->
         </div>
 
-        @if ($errors->any())
+        @if (isset($errors) && $errors->any())
             <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 7000)" role="alert"
                 class="z-200 alert alert-error fixed left-1/2 top-10 w-full max-w-md -translate-x-1/2 transform">
 
