@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use App\Providers\ProjectProviders\RouteServiceProvider as RouteSP;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
     /**
      * Show the login form.
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('main', [
             'title' => 'вхід',

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Enums\State;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompDevRequest;
+use App\Http\Requests\Pages\CompDevRequest;
 use App\Services\Pages\CompDevService;
 
 class ComprehensiveDevelopment extends Controller

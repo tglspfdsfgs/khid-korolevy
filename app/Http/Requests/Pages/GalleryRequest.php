@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Pages;
 
+use App\Enums\GalleryType;
 use App\Enums\State;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
-class ArticleRequest extends FormRequest
+class GalleryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +27,11 @@ class ArticleRequest extends FormRequest
         if ($this->has('date')) {
             $this->merge([
                 'date' => Carbon::parse($this->input('date'))->toDateString(),
+            ]);
+        }
+        if ($this->has('content') && null !== ! $this->input('content')) {
+            $this->merge([
+                'content' => '',
             ]);
         }
     }
@@ -45,8 +52,9 @@ class ArticleRequest extends FormRequest
             'title' => 'required|string',
             'description' => 'required|string',
             'imageSrc' => 'string|nullable',
-            'date' => 'required|date_format:Y-m-d',
-            'content' => 'required|string',
+            'date' => 'required|date',
+            'galleryType' => [new Enum(GalleryType::class)],
+            'content' => 'nullable|string',
         ];
     }
 }

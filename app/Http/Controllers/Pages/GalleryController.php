@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Enums\State;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GalleryRequest;
+use App\Http\Requests\Pages\GalleryRequest;
 use App\Services\Pages\GalleryService;
 
 class GalleryController extends Controller

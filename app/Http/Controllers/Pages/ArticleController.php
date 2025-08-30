@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Enums\State;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\Pages\ArticleRequest;
 use App\Services\Pages\ArticleService;
 
 class ArticleController extends Controller

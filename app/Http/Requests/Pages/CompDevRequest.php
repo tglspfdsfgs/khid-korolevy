@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Pages;
 
 use App\Enums\State;
 use Illuminate\Foundation\Http\FormRequest;
