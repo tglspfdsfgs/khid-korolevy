@@ -29,7 +29,7 @@ class GalleryRequest extends FormRequest
                 'date' => Carbon::parse($this->input('date'))->toDateString(),
             ]);
         }
-        if ($this->has('content') && null !== ! $this->input('content')) {
+        if ($this->has('content') && null === $this->input('content')) {
             $this->merge([
                 'content' => '',
             ]);
